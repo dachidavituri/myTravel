@@ -10,13 +10,18 @@ import { ChangeLanguage } from "../chang-language";
 import { useTranslation } from "react-i18next";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 const Header: React.FC = () => {
+  const { t } = useTranslation();
+  const { theme } = useTheme();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const { t } = useTranslation();
-  const { theme } = useTheme();
+
+  const navLinkClass = (isActive: boolean) => {
+    return `${navItem({ isMenuOpen })} ${isActive ? "text-orange-600" : "text-gray-600"}`;
+  };
   const headerBgColor = theme == "dark" ? "bg-gray-400" : "bg-white";
   return (
     <header className={`${headerBgColor} shadow-md font-semibold`}>
@@ -25,18 +30,17 @@ const Header: React.FC = () => {
           <TravelWorldIcon />
         </div>
         <nav className="hidden lg:flex space-x-8">
-          <NavLink to={MAIN_PATH.HOME} className={navItem({ isMenuOpen })}>
-            {t("header.home")}
-          </NavLink>
-          <NavLink to={MAIN_PATH.ABOUT} className={navItem({ isMenuOpen })}>
-            {t("header.about")}
-          </NavLink>
-          <NavLink to={MAIN_PATH.TOURS} className={navItem({ isMenuOpen })}>
-            {t("header.tours")}
-          </NavLink>
-          <NavLink to={MAIN_PATH.LOGIN} className={navItem({ isMenuOpen })}>
-            {t("header.login")}
-          </NavLink>
+          {Object.entries(MAIN_PATH)
+            .filter(([key]) => !["REGISTER", "GALLERY"].includes(key))
+            .map(([key, path]) => (
+              <NavLink
+                key={key}
+                to={path}
+                className={({ isActive }) => navLinkClass(isActive)}
+              >
+                {t(`header.${key.toLowerCase()}`)}
+              </NavLink>
+            ))}
         </nav>
         <div className="hidden lg:block">
           <Link to={MAIN_PATH.REGISTER}>

@@ -17,18 +17,19 @@ const Menu: React.FC<MenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
           <ChangeLanguage />
         </div>
         <nav className="flex flex-col space-y-4 p-4">
-          <NavLink to={MAIN_PATH.HOME} className={navItem({ isMenuOpen })}>
-            {t("header.home")}
-          </NavLink>
-          <NavLink to={MAIN_PATH.ABOUT} className={navItem({ isMenuOpen })}>
-            {t("header.about")}
-          </NavLink>
-          <NavLink to={MAIN_PATH.TOURS} className={navItem({ isMenuOpen })}>
-            {t("header.tours")}
-          </NavLink>
-          <NavLink to={MAIN_PATH.LOGIN} className={navItem({ isMenuOpen })}>
-            {t("header.login")}
-          </NavLink>
+          {Object.entries(MAIN_PATH)
+            .filter(([key]) => !["REGISTER", "GALLERY"].includes(key))
+            .map(([key, path]) => (
+              <NavLink
+                key={key}
+                to={path}
+                className={({ isActive }) =>
+                  `${navItem({ isMenuOpen })} ${isActive ? "text-orange-500" : "text-gray-600"}`
+                }
+              >
+                {t(`header.${key.toLowerCase()}`)}
+              </NavLink>
+            ))}
           <Link to={MAIN_PATH.REGISTER}>
             <Button
               className={buttonStyles()}
