@@ -10,11 +10,13 @@
     "preview": "vite preview",
     "prepare": "husky",
     "format": "prettier . --write",
-    "ts-check": "tsc -b"
+    "ts-check": "tsc -b",
+    "gen-types": "npx supabase gen types typescript --project-id hydxhqtnhvhosjhuvasa --schema public > src/supabase/database.types.ts"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
+    "@supabase/supabase-js": "^2.47.11",
     "@types/npm": "^7.19.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -41,6 +43,7 @@
     "husky": "^9.1.7",
     "postcss": "^8.4.49",
     "prettier": "3.4.2",
+    "supabase": "^2.2.1",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
