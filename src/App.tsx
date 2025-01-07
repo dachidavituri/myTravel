@@ -1,11 +1,10 @@
-// import { useTranslation } from "react-i18next";
-import Layout from "./components/layout/layout";
 import { ThemeProvider } from "@/components/theme/theme-provider.tsx";
+import AppRoutes from "./routes";
+
 const App = () => {
-  // const { t } = useTranslation();
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Layout />
+      <AppRoutes />
     </ThemeProvider>
   );
 };

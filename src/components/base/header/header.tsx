@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Menu from "./menu";
 import { ChangeLanguage } from "../chang-language";
 import { useTranslation } from "react-i18next";
+import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,21 +25,21 @@ const Header: React.FC = () => {
           <TravelWorldIcon />
         </div>
         <nav className="hidden lg:flex space-x-8">
-          <NavLink to={"home"} className={navItem({ isMenuOpen })}>
+          <NavLink to={MAIN_PATH.HOME} className={navItem({ isMenuOpen })}>
             {t("header.home")}
           </NavLink>
-          <NavLink to={"about"} className={navItem({ isMenuOpen })}>
+          <NavLink to={MAIN_PATH.ABOUT} className={navItem({ isMenuOpen })}>
             {t("header.about")}
           </NavLink>
-          <NavLink to={"tours"} className={navItem({ isMenuOpen })}>
+          <NavLink to={MAIN_PATH.TOURS} className={navItem({ isMenuOpen })}>
             {t("header.tours")}
           </NavLink>
-          <NavLink to={"login"} className={navItem({ isMenuOpen })}>
+          <NavLink to={MAIN_PATH.LOGIN} className={navItem({ isMenuOpen })}>
             {t("header.login")}
           </NavLink>
         </nav>
         <div className="hidden lg:block">
-          <Link to={"register"}>
+          <Link to={MAIN_PATH.REGISTER}>
             <Button className={buttonStyles()}>{t("header.register")}</Button>
           </Link>
         </div>

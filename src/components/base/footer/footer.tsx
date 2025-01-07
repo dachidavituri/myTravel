@@ -1,142 +1,58 @@
 import { useTheme } from "@/components/theme/theme-provider";
 import TravelWorldIcon from "../travel-world";
+import { container, navItem } from "./footer-cva";
+import { NavLink } from "react-router";
+import { useTranslation } from "react-i18next";
+import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 const Footer: React.FC = () => {
   const { theme } = useTheme();
-  const footerBgColor = theme == "dark" ? "bg-gray-400" : "bg-white";
+  const footerBgColor = theme === "dark" ? "bg-gray-400" : "bg-white";
+  const { t } = useTranslation();
   return (
-    <footer className={`${footerBgColor} border-t border-gray-200 pt-10`}>
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div>
+    <footer
+      className={`${footerBgColor} border-t border-gray-200 p-6 font-semibold`}
+    >
+      <div className={container()}>
+        <div className="flex-shrink-0">
           <div className="flex items-center mb-4">
             <TravelWorldIcon />
           </div>
-          <p className="text-gray-600 text-sm leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi,
-            enim.
-          </p>
+          <p className="text-sm leading-relaxed">{t("footer.info")}</p>
         </div>
 
-        {/* Discover Section */}
-        <div>
-          <h3 className="font-semibold text-gray-800 mb-4">Discover</h3>
-          <ul className="space-y-2">
-            <li>
-              <a
-                href="#home"
-                className="text-gray-600 hover:text-orange-500 transition"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className="text-gray-600 hover:text-orange-500 transition"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#tours"
-                className="text-gray-600 hover:text-orange-500 transition"
-              >
-                Tours
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Quick Links Section */}
-        <div>
-          <h3 className="font-semibold text-gray-800 mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            <li>
-              <a
-                href="#gallery"
-                className="text-gray-600 hover:text-orange-500 transition"
-              >
-                Gallery
-              </a>
-            </li>
-            <li>
-              <a
-                href="#login"
-                className="text-gray-600 hover:text-orange-500 transition"
-              >
-                Login
-              </a>
-            </li>
-            <li>
-              <a
-                href="#register"
-                className="text-gray-600 hover:text-orange-500 transition"
-              >
-                Register
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact Section */}
-        <div>
-          <h3 className="font-semibold text-gray-800 mb-4">Contact</h3>
-          <ul className="space-y-2">
-            <li className="text-gray-600 flex items-center space-x-2">
-              <span className="text-orange-500">
-                <i className="fas fa-map-marker-alt"></i>
-              </span>
-              <span>Address: Lorem</span>
-            </li>
-            <li className="text-gray-600 flex items-center space-x-2">
-              <span className="text-orange-500">
-                <i className="fas fa-envelope"></i>
-              </span>
-              <span>Email: xyz@mail.com</span>
-            </li>
-            <li className="text-gray-600 flex items-center space-x-2">
-              <span className="text-orange-500">
-                <i className="fas fa-phone"></i>
-              </span>
-              <span>Phone: 00022200222</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="mt-8 text-center text-gray-600 text-sm">
-        <div className="flex justify-center space-x-4 mb-4">
-          <a
-            href="#"
-            className="text-orange-500 hover:text-orange-600 transition"
-            aria-label="YouTube"
-          >
-            <i className="fab fa-youtube"></i>
-          </a>
-          <a
-            href="#"
-            className="text-orange-500 hover:text-orange-600 transition"
-            aria-label="Twitter"
-          >
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a
-            href="#"
-            className="text-orange-500 hover:text-orange-600 transition"
-            aria-label="Facebook"
-          >
-            <i className="fab fa-facebook"></i>
-          </a>
-          <a
-            href="#"
-            className="text-orange-500 hover:text-orange-600 transition"
-            aria-label="Instagram"
-          >
-            <i className="fab fa-instagram"></i>
-          </a>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div>
+            <h3 className="font-semibold text-gray-800 mb-4">Discover</h3>
+            <ul className="space-y-2 flex flex-col">
+              <NavLink to={MAIN_PATH.HOME} className={navItem()}>
+                {t("footer.home")}
+              </NavLink>
+              <NavLink to={MAIN_PATH.ABOUT} className={navItem()}>
+                {t("footer.about")}
+              </NavLink>
+              <NavLink to={MAIN_PATH.TOURS} className={navItem()}>
+                {t("footer.tours")}
+              </NavLink>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-800 mb-4">More</h3>
+            <ul className="space-y-2 flex flex-col">
+              <NavLink to={MAIN_PATH.GALLERY} className={navItem()}>
+                {t("footer.gallery")}
+              </NavLink>
+              <NavLink to={MAIN_PATH.LOGIN} className={navItem()}>
+                {t("footer.login")}
+              </NavLink>
+              <NavLink to={MAIN_PATH.REGISTER} className={navItem()}>
+                {t("footer.register")}
+              </NavLink>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
   );
 };
+
 export default Footer;
