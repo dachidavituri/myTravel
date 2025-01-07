@@ -1,3 +1,7 @@
 {
-  "logo": "hello"
+  "home": "Home",
+  "about": "About",
+  "tours": "Tours",
+  "login": "Login",
+  "register": "Register"
 }

@@ -3,42 +3,50 @@ import TravelWorldIcon from "../travel-world";
 import { navItem, buttonStyles } from "./header-cva";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { useTheme } from "@/components/theme/theme-provider";
+import { Link, NavLink } from "react-router";
+import { Button } from "@/components/ui/button";
+import Menu from "./menu";
+import { ChangeLanguage } from "../chang-language";
+import { useTranslation } from "react-i18next";
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const { t } = useTranslation();
   const { theme } = useTheme();
   const headerBgColor = theme == "dark" ? "bg-gray-400" : "bg-white";
-
   return (
     <header className={`${headerBgColor} shadow-md font-semibold`}>
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+      <div className="container mx-auto flex items-center justify-between py-4 px-2">
         <div className="flex items-center space-x-2">
           <TravelWorldIcon />
         </div>
-        <nav className="hidden md:flex space-x-8 text-gray-600">
-          <a href="#home" className={navItem()}>
-            Home
-          </a>
-          <a href="#about" className={navItem()}>
-            About
-          </a>
-          <a href="#tours" className={navItem()}>
-            Tours
-          </a>
-          <a href="#login" className={navItem()}>
-            Login
-          </a>
+        <nav className="hidden lg:flex space-x-8">
+          <NavLink to={"home"} className={navItem({ isMenuOpen })}>
+            {t("header.home")}
+          </NavLink>
+          <NavLink to={"about"} className={navItem({ isMenuOpen })}>
+            {t("header.about")}
+          </NavLink>
+          <NavLink to={"tours"} className={navItem({ isMenuOpen })}>
+            {t("header.tours")}
+          </NavLink>
+          <NavLink to={"login"} className={navItem({ isMenuOpen })}>
+            {t("header.login")}
+          </NavLink>
         </nav>
-        <div className="hidden md:block">
-          <a href="#register" className={buttonStyles()}>
-            Register
-          </a>
-          <ModeToggle />
+        <div className="hidden lg:block">
+          <Link to={"register"}>
+            <Button className={buttonStyles()}>{t("header.register")}</Button>
+          </Link>
         </div>
-        <div className="md:hidden">
+        <div className="hidden lg:flex gap-2">
+          <ModeToggle />
+          <ChangeLanguage />
+        </div>
+        <div className="lg:hidden">
           <button
             onClick={toggleMenu}
             className="text-gray-600 focus:outline-none hover:text-orange-500"
@@ -60,47 +68,7 @@ const Header: React.FC = () => {
           </button>
         </div>
       </div>
-      {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-md">
-          <nav className="flex flex-col space-y-4 p-4 text-gray-600">
-            <a
-              href="#home"
-              className={navItem()}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className={navItem()}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="#tours"
-              className={navItem()}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Tours
-            </a>
-            <a
-              href="#login"
-              className={navItem()}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Login
-            </a>
-            <a
-              href="#register"
-              className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition duration-200 text-center"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Register
-            </a>
-          </nav>
-        </div>
-      )}
+      <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
     </header>
   );
 };
