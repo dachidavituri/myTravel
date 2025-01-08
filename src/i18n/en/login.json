@@ -1,0 +1,10 @@
+{
+  "welcomeBack": "Welcome Back",
+  "signInText": "Sign in to your account",
+  "emailPlaceholder": "Email address",
+  "passwordPlaceholder": "Password",
+  "forgotPassword": "Forgot Password?",
+  "loginButton": "Log in",
+  "footerText": "Don’t have an account?",
+  "registerLinkText": "Register Now"
+}

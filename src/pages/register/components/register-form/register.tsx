@@ -15,15 +15,17 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { registerDefaultValues } from "@/data";
 import Error from "@/components/error-message";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import useCurrentLang from "@/i18n/current-lang";
 import { useRegister } from "@/react-query/mutation/auth";
+import { useTranslation } from "react-i18next";
 
 const Register: React.FC = () => {
   type RegisterForm = z.infer<typeof regiserFormSchema>;
   const currentLang = useCurrentLang();
-
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -34,13 +36,17 @@ const Register: React.FC = () => {
   });
   const { mutate: hadnleSignUp } = useRegister();
   const onSubmit: SubmitHandler<RegisterForm> = (data) => {
-    hadnleSignUp(data);
+    hadnleSignUp(data, {
+      onSuccess: () => {
+        navigate(`/${currentLang}/${MAIN_PATH.LOGIN}`);
+      },
+    });
   };
 
   return (
     <div className={container()}>
-      <h1 className={heading()}>Create Your Account</h1>
-      <p className={paragraph({ size: "md" })}>Start your journey with us!</p>
+      <h1 className={heading()}>{t("register.createAccount")}</h1>
+      <p className={paragraph({ size: "md" })}>{t("register.startJourney")}</p>
 
       <form className={form()} onSubmit={handleSubmit(onSubmit)}>
         <Controller
@@ -49,7 +55,7 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <Input
               size="large"
-              placeholder="Email address"
+              placeholder={t("register.emailPlaceholder")}
               prefix={<MailOutlined />}
               className={input({ size: "md" })}
               {...field}
@@ -63,7 +69,7 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <Input
               type="password"
-              placeholder="Password"
+              placeholder={t("register.passwordPlaceholder")}
               prefix={<LockOutlined />}
               className={input({ size: "md" })}
               {...field}
@@ -77,7 +83,7 @@ const Register: React.FC = () => {
           render={({ field }) => (
             <Input
               type="password"
-              placeholder="Confirm password"
+              placeholder={t("register.confirmPasswordPlaceholder")}
               prefix={<LockOutlined />}
               className={input({ size: "md" })}
               {...field}
@@ -94,15 +100,15 @@ const Register: React.FC = () => {
           size="large"
           className="w-full font-semibold"
         >
-          Sign up
+          {t("register.signUpButton")}
         </Button>
       </form>
 
       <div className={footerText({ size: "md" })}>
         <p>
-          Already have an account?{" "}
+          {t("register.footerText")}{" "}
           <Link to={`/${currentLang}/${MAIN_PATH.LOGIN}`} className={link()}>
-            Login
+            {t("register.loginLinkText")}
           </Link>
         </p>
       </div>

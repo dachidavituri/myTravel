@@ -16,12 +16,15 @@ import { LoginDefaultValues } from "@/data";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import Error from "@/components/error-message";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useCurrentLang from "@/i18n/current-lang";
 import { useLogin } from "@/react-query/mutation/auth";
+import { useTranslation } from "react-i18next";
 const Login: React.FC = () => {
   type LoginForm = z.infer<typeof loginFormSchema>;
   const currentLang = useCurrentLang();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -32,12 +35,16 @@ const Login: React.FC = () => {
   });
   const { mutate: handleLogin } = useLogin();
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    handleLogin(data);
+    handleLogin(data, {
+      onSuccess: () => {
+        navigate(`/${currentLang}/${MAIN_PATH.HOME}`);
+      },
+    });
   };
   return (
     <div className={container()}>
-      <h1 className={heading()}>Welcome Back</h1>
-      <p className={paragraph({ size: "md" })}>Sign in to your account</p>
+      <h1 className={heading()}>{t("login.welcomeBack")}</h1>
+      <p className={paragraph({ size: "md" })}>{t("login.signInText")}</p>
 
       <form className={form()} onSubmit={handleSubmit(onSubmit)}>
         <Controller
@@ -46,7 +53,7 @@ const Login: React.FC = () => {
           render={({ field }) => (
             <Input
               size="large"
-              placeholder="Email address"
+              placeholder={t("login.emailPlaceholder")}
               prefix={<MailOutlined />}
               className={input({ size: "md" })}
               {...field}
@@ -60,7 +67,7 @@ const Login: React.FC = () => {
           render={({ field }) => (
             <Input
               type="password"
-              placeholder="Password"
+              placeholder={t("login.passwordPlaceholder")}
               prefix={<LockOutlined />}
               className={input({ size: "md" })}
               {...field}
@@ -70,7 +77,7 @@ const Login: React.FC = () => {
         {errors.password && <Error message={errors.password.message} />}
         <div className="flex justify-end">
           <a href="#" className={link()}>
-            Forgot Password?
+            {t("login.forgotPassword")}
           </a>
         </div>
         <Button
@@ -80,15 +87,15 @@ const Login: React.FC = () => {
           size="large"
           className="w-full font-semibold"
         >
-          Log in
+          {t("login.loginButton")}
         </Button>
       </form>
 
       <div className={footerText({ size: "md" })}>
         <p>
-          Don’t have an account?{" "}
+          {t("login.footerText")}{" "}
           <Link to={`/${currentLang}/${MAIN_PATH.REGISTER}`} className={link()}>
-            Register Now
+            {t("login.registerLinkText")}
           </Link>
         </p>
       </div>

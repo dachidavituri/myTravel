@@ -5,6 +5,10 @@ import headerKa from "@/i18n/ka/header.json";
 import headerEn from "@/i18n/en/header.json";
 import footerKa from "@/i18n/ka/footer.json";
 import footerEn from "@/i18n/en/footer.json";
+import loginKa from "@/i18n/ka/login.json";
+import loginEn from "@/i18n/en/login.json";
+import registerKa from "@/i18n/ka/register.json";
+import registerEn from "@/i18n/en/register.json";
 const options = {
   order: ["path"],
   lookupFromPathIndex: 0,
@@ -22,10 +26,20 @@ i18n
     detection: options,
     resources: {
       ka: {
-        translation: { header: headerKa, footer: footerKa },
+        translation: {
+          header: headerKa,
+          footer: footerKa,
+          login: loginKa,
+          register: registerKa,
+        },
       },
       en: {
-        translation: { header: headerEn, footer: footerEn },
+        translation: {
+          header: headerEn,
+          footer: footerEn,
+          login: loginEn,
+          register: registerEn,
+        },
       },
     },
     lng: getInitialLanguage(),

@@ -1,0 +1,10 @@
+{
+  "createAccount": "შექმენი შენი ანგარიში",
+  "startJourney": "დაიწყე შენი მოგზაურობა ჩვენთან ერთად!",
+  "emailPlaceholder": "ელ. ფოსტის მისამართი",
+  "passwordPlaceholder": "პაროლი",
+  "confirmPasswordPlaceholder": "დაადასტურე პაროლი",
+  "signUpButton": "რეგისტრაცია",
+  "footerText": "გაქვთ ანგარიში?",
+  "loginLinkText": "შესვლა"
+}

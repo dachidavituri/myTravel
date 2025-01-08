@@ -3,5 +3,8 @@
   "about": "About",
   "tours": "Tours",
   "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "settings": "Settings",
+  "profile": "Profile",
+  "logout": "Log out"
 }

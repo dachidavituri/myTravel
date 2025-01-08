@@ -3,21 +3,23 @@ import type { MenuProps } from "antd";
 import { Dropdown, Space, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const ProfileSection: React.FC = () => {
   const { mutate: handleLogOut } = useLogOut();
+  const { t } = useTranslation();
   const items: MenuProps["items"] = [
     {
       key: "1",
-      label: <Link to={"settings"}>პარამეტრები</Link>,
+      label: <Link to={"settings"}>{t("header.settings")}</Link>,
     },
     {
       key: "2",
-      label: <Link to={"profile"}>პროფილი</Link>,
+      label: <Link to={"profile"}>{t("header.profile")}</Link>,
     },
     {
       key: "3",
-      label: <p onClick={() => handleLogOut()}>Log out</p>,
+      label: <p onClick={() => handleLogOut()}>{t("header.logout")}</p>,
     },
   ];
   return (

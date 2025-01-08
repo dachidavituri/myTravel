@@ -1,0 +1,10 @@
+{
+  "createAccount": "Create Your Account",
+  "startJourney": "Start your journey with us!",
+  "emailPlaceholder": "Email address",
+  "passwordPlaceholder": "Password",
+  "confirmPasswordPlaceholder": "Confirm password",
+  "signUpButton": "Sign up",
+  "footerText": "Already have an account?",
+  "loginLinkText": "Login"
+}
