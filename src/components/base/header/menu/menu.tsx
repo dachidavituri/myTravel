@@ -18,7 +18,7 @@ const Menu: React.FC<MenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
         </div>
         <nav className="flex flex-col space-y-4 p-4">
           {Object.entries(MAIN_PATH)
-            .filter(([key]) => !["REGISTER", "GALLERY"].includes(key))
+            .filter(([key]) => !["REGISTER", "GALLERY", "LOGIN"].includes(key))
             .map(([key, path]) => (
               <NavLink
                 key={key}
@@ -30,14 +30,24 @@ const Menu: React.FC<MenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                 {t(`header.${key.toLowerCase()}`)}
               </NavLink>
             ))}
-          <Link to={MAIN_PATH.REGISTER}>
-            <Button
-              className={buttonStyles()}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t("header.register")}
-            </Button>
-          </Link>
+          <div className="flex gap-3">
+            <Link to={MAIN_PATH.REGISTER}>
+              <Button
+                className={buttonStyles()}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("header.register")}
+              </Button>
+            </Link>
+            <Link to={MAIN_PATH.LOGIN}>
+              <Button
+                className={buttonStyles()}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("header.login")}
+              </Button>
+            </Link>
+          </div>
         </nav>
       </div>
     )

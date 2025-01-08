@@ -31,7 +31,7 @@ const Header: React.FC = () => {
         </div>
         <nav className="hidden lg:flex space-x-8">
           {Object.entries(MAIN_PATH)
-            .filter(([key]) => !["REGISTER", "GALLERY"].includes(key))
+            .filter(([key]) => !["REGISTER", "GALLERY", "LOGIN"].includes(key))
             .map(([key, path]) => (
               <NavLink
                 key={key}
@@ -42,9 +42,16 @@ const Header: React.FC = () => {
               </NavLink>
             ))}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex gap-2">
           <Link to={MAIN_PATH.REGISTER}>
-            <Button className={buttonStyles()}>{t("header.register")}</Button>
+            <Button className={buttonStyles({ register: true })}>
+              {t("header.register")}
+            </Button>
+          </Link>
+          <Link to={MAIN_PATH.LOGIN}>
+            <Button className={buttonStyles({ register: false })}>
+              {t("header.login")}
+            </Button>
           </Link>
         </div>
         <div className="hidden lg:flex gap-2">

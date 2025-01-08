@@ -1,7 +1,7 @@
 export enum MAIN_PATH {
   HOME = "home",
-  ABOUT = "about",
   TOURS = "tours",
+  ABOUT = "about",
   LOGIN = "login",
   REGISTER = "register",
   GALLERY = "gallery",
