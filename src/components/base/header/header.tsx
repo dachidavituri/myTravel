@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TravelWorldIcon from "../travel-world";
 import { navItem, buttonStyles } from "./header-cva";
 import { ModeToggle } from "@/components/theme/mode-toggle";
-import { useTheme } from "@/components/theme/theme-provider";
 import { Link, NavLink } from "react-router";
 import { Button } from "@/components/ui/button";
 import Menu from "./menu";
@@ -11,7 +10,6 @@ import { useTranslation } from "react-i18next";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 const Header: React.FC = () => {
   const { t } = useTranslation();
-  const { theme } = useTheme();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -22,9 +20,9 @@ const Header: React.FC = () => {
   const navLinkClass = (isActive: boolean) => {
     return `${navItem({ isMenuOpen })} ${isActive ? "text-orange-600" : "text-gray-600"}`;
   };
-  const headerBgColor = theme == "dark" ? "bg-gray-400" : "bg-white";
+
   return (
-    <header className={`${headerBgColor} shadow-md font-semibold`}>
+    <header className={`shadow-md font-semibold dark:bg-gray-400`}>
       <div className="container mx-auto flex items-center justify-between py-4 px-2">
         <div className="flex items-center space-x-2">
           <TravelWorldIcon />

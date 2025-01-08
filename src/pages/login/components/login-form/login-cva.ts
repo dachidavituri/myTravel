@@ -1,27 +1,29 @@
 import { cva } from "class-variance-authority";
 
 export const container = cva(
-  "w-full md:w-1/2 bg-white p-6 md:p-8 flex flex-col justify-center items-center",
+  "w-full md:w-1/2 bg-white p-8 md:p-12 flex flex-col justify-center items-center rounded-lg shadow-lg transition-all duration-300 dark:bg-gray-800",
 );
 
-export const heading = cva("text-3xl font-bold text-orange-500");
+export const heading = cva(
+  "text-4xl font-extrabold text-orange-500 mb-4 text-center tracking-wide",
+);
 
-export const paragraph = cva("text-gray-600 mt-2", {
+export const paragraph = cva("text-gray-600 mb-6 text-center", {
   variants: {
     size: {
       sm: "text-sm",
-      md: "text-base",
+      md: "text-lg",
     },
   },
   defaultVariants: {
-    size: "sm",
+    size: "md",
   },
 });
 
-export const form = cva("w-full mt-6 space-y-4");
+export const form = cva("w-full space-y-6");
 
 export const input = cva(
-  "w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500",
+  "w-full p-4 border border-gray-300 rounded-lg shadow-sm  text-gray-800 transition dark:bg-gray-700 dark:text-white dark:border-gray-600",
   {
     variants: {
       size: {
@@ -30,29 +32,15 @@ export const input = cva(
       },
     },
     defaultVariants: {
-      size: "sm",
+      size: "md",
     },
   },
 );
-
-export const link = cva("text-sm text-orange-500 hover:underline");
-
-export const button = cva(
-  "w-full bg-orange-500 text-white p-3 rounded-md hover:bg-orange-600",
-  {
-    variants: {
-      size: {
-        sm: "text-sm",
-        md: "text-base",
-      },
-    },
-    defaultVariants: {
-      size: "sm",
-    },
-  },
+export const link = cva(
+  "text-sm text-orange-500 font-semibold hover:underline transition-colors duration-300 dark:text-orange-400",
 );
 
-export const footerText = cva("mt-6 text-center", {
+export const footerText = cva("mt-8 text-gray-600 text-center", {
   variants: {
     size: {
       sm: "text-sm",
@@ -60,6 +48,6 @@ export const footerText = cva("mt-6 text-center", {
     },
   },
   defaultVariants: {
-    size: "sm",
+    size: "md",
   },
 });

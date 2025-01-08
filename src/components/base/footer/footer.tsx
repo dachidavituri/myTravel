@@ -1,16 +1,13 @@
-import { useTheme } from "@/components/theme/theme-provider";
 import TravelWorldIcon from "../travel-world";
 import { container, navItem } from "./footer-cva";
 import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 const Footer: React.FC = () => {
-  const { theme } = useTheme();
-  const footerBgColor = theme === "dark" ? "bg-gray-400" : "bg-white";
   const { t } = useTranslation();
   return (
     <footer
-      className={`${footerBgColor} border-t border-gray-200 p-6 font-semibold`}
+      className={`border-t border-gray-200 p-6 font-semibold dark:bg-gray-400`}
     >
       <div className={container()}>
         <div className="flex-shrink-0">
