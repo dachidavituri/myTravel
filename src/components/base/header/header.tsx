@@ -8,10 +8,15 @@ import Menu from "./menu";
 import { ChangeLanguage } from "../chang-language";
 import { useTranslation } from "react-i18next";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
+import { useAtomValue } from "jotai";
+import { loginAtom } from "@/store";
+import ProfileSection from "./profile-section";
 const Header: React.FC = () => {
   const { t } = useTranslation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const user = useAtomValue(loginAtom);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -41,16 +46,21 @@ const Header: React.FC = () => {
             ))}
         </nav>
         <div className="hidden lg:flex gap-2">
-          <Link to={MAIN_PATH.REGISTER}>
-            <Button className={buttonStyles({ register: true })}>
-              {t("header.register")}
-            </Button>
-          </Link>
-          <Link to={MAIN_PATH.LOGIN}>
-            <Button className={buttonStyles({ register: false })}>
-              {t("header.login")}
-            </Button>
-          </Link>
+          {!user && (
+            <>
+              <Link to={MAIN_PATH.REGISTER}>
+                <Button className={buttonStyles({ register: true })}>
+                  {t("header.register")}
+                </Button>
+              </Link>
+              <Link to={MAIN_PATH.LOGIN}>
+                <Button className={buttonStyles({ register: false })}>
+                  {t("header.login")}
+                </Button>
+              </Link>
+            </>
+          )}
+          {user && <ProfileSection />}
         </div>
         <div className="hidden lg:flex gap-2">
           <ModeToggle />

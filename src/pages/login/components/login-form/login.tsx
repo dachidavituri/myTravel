@@ -18,6 +18,7 @@ import Error from "@/components/error-message";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { Link } from "react-router";
 import useCurrentLang from "@/i18n/current-lang";
+import { useLogin } from "@/react-query/mutation/auth";
 const Login: React.FC = () => {
   type LoginForm = z.infer<typeof loginFormSchema>;
   const currentLang = useCurrentLang();
@@ -29,9 +30,9 @@ const Login: React.FC = () => {
     resolver: zodResolver(loginFormSchema),
     defaultValues: LoginDefaultValues,
   });
-  console.log(errors);
+  const { mutate: handleLogin } = useLogin();
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    console.log(data);
+    handleLogin(data);
   };
   return (
     <div className={container()}>
@@ -42,7 +43,7 @@ const Login: React.FC = () => {
         <Controller
           control={control}
           name="email"
-          render={(field) => (
+          render={({ field }) => (
             <Input
               size="large"
               placeholder="Email address"
@@ -52,7 +53,7 @@ const Login: React.FC = () => {
             />
           )}
         />
-        {errors.email && <Error message={errors.email.message} />}
+        {errors.email?.message && <Error message={errors.email.message} />}
         <Controller
           control={control}
           name="password"
@@ -73,6 +74,7 @@ const Login: React.FC = () => {
           </a>
         </div>
         <Button
+          htmlType="submit"
           color="danger"
           variant="solid"
           size="large"

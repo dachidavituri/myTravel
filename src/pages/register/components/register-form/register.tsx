@@ -18,6 +18,7 @@ import Error from "@/components/error-message";
 import { Link } from "react-router";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import useCurrentLang from "@/i18n/current-lang";
+import { useRegister } from "@/react-query/mutation/auth";
 
 const Register: React.FC = () => {
   type RegisterForm = z.infer<typeof regiserFormSchema>;
@@ -31,9 +32,9 @@ const Register: React.FC = () => {
     resolver: zodResolver(regiserFormSchema),
     defaultValues: registerDefaultValues,
   });
-
+  const { mutate: hadnleSignUp } = useRegister();
   const onSubmit: SubmitHandler<RegisterForm> = (data) => {
-    console.log(data);
+    hadnleSignUp(data);
   };
 
   return (
@@ -45,7 +46,7 @@ const Register: React.FC = () => {
         <Controller
           control={control}
           name="email"
-          render={(field) => (
+          render={({ field }) => (
             <Input
               size="large"
               placeholder="Email address"
@@ -87,6 +88,7 @@ const Register: React.FC = () => {
           <Error message={errors.confirmPassword.message} />
         )}
         <Button
+          htmlType="submit"
           color="danger"
           variant="solid"
           size="large"

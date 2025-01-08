@@ -6,9 +6,13 @@ import { MenuProps } from "./menu.types";
 import { ChangeLanguage } from "../../chang-language";
 import { useTranslation } from "react-i18next";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
+import { useAtomValue } from "jotai";
+import { loginAtom } from "@/store";
+import ProfileSection from "../profile-section";
 
 const Menu: React.FC<MenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const { t } = useTranslation();
+  const user = useAtomValue(loginAtom);
   return (
     isMenuOpen && (
       <div className="lg:hidden  shadow-md">
@@ -31,22 +35,27 @@ const Menu: React.FC<MenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
               </NavLink>
             ))}
           <div className="flex gap-3">
-            <Link to={MAIN_PATH.REGISTER}>
-              <Button
-                className={buttonStyles()}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("header.register")}
-              </Button>
-            </Link>
-            <Link to={MAIN_PATH.LOGIN}>
-              <Button
-                className={buttonStyles()}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("header.login")}
-              </Button>
-            </Link>
+            {!user && (
+              <>
+                <Link to={MAIN_PATH.REGISTER}>
+                  <Button
+                    className={buttonStyles()}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t("header.register")}
+                  </Button>
+                </Link>
+                <Link to={MAIN_PATH.LOGIN}>
+                  <Button
+                    className={buttonStyles()}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t("header.login")}
+                  </Button>
+                </Link>{" "}
+              </>
+            )}
+            {user && <ProfileSection />}
           </div>
         </nav>
       </div>
