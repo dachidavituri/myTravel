@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const container = cva(
-  "w-full md:w-1/2 bg-white p-8 md:p-12 flex flex-col justify-center items-center rounded-lg shadow-lg transition-all duration-300 dark:bg-gray-800",
+  "w-full md:w-[75%] bg-white p-8 md:p-12 flex flex-col justify-center items-center rounded-lg  transition-all duration-300 dark:bg-gray-800",
 );
 
 export const heading = cva(

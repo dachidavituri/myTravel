@@ -1,0 +1,35 @@
+{
+  "profile": "Profile",
+  "password": "Password",
+  "nameKa": {
+    "label": "Name (Georgian)",
+    "placeholder": "Enter your name in Georgian",
+    "requiredMessage": "Please enter your name in Georgian!"
+  },
+  "nameEn": {
+    "label": "Name (English)",
+    "placeholder": "Enter your name in English",
+    "requiredMessage": "Please enter your name in English!"
+  },
+  "username": {
+    "label": "Username",
+    "placeholder": "Enter your username",
+    "requiredMessage": "Please enter your username!"
+  },
+  "surnameKa": {
+    "label": "Surname (Georgian)",
+    "placeholder": "Enter your surname in Georgian",
+    "requiredMessage": "Please enter your surname in Georgian!"
+  },
+  "surnameEn": {
+    "label": "Surname (English)",
+    "placeholder": "Enter your surname in English",
+    "requiredMessage": "Please enter your surname in English!"
+  },
+  "phone": {
+    "label": "Phone",
+    "placeholder": "Enter your phone number",
+    "requiredMessage": "Please enter your phone number!"
+  },
+  "save": "Save Changes"
+}

@@ -1,10 +1,10 @@
 import Nature from "@/components/nature";
-import Register from "../components/register-form";
+import Register from "#/register/components/register-form";
 
 const RegisterView: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row h-screen items-center justify-center">
-      <div className="flex flex-col md:flex-row w-[95%] md:w-[75%] lg:w-[80%] h-[70%] rounded-lg overflow-hidden shadow-2xl">
+    <div className="flex h-screen flex-col items-center justify-center md:flex-row">
+      <div className="flex h-[70%] w-[95%] flex-col overflow-hidden rounded-lg shadow-2xl md:w-[75%] md:flex-row lg:w-[80%]">
         <Nature />
         <Register />
       </div>

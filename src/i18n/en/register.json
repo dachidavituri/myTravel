@@ -1,10 +1,18 @@
 {
   "createAccount": "Create Your Account",
-  "startJourney": "Start your journey with us!",
+  "startJourney": "journey with us!",
   "emailPlaceholder": "Email address",
   "passwordPlaceholder": "Password",
   "confirmPasswordPlaceholder": "Confirm password",
   "signUpButton": "Sign up",
   "footerText": "Already have an account?",
-  "loginLinkText": "Login"
+  "loginLinkText": "Login",
+  "passwordRequired": "Required",
+  "passwordMinLength": "Min 8 characters",
+  "passwordSpecialChar": "Add a special character",
+  "passwordUppercase": "Add an uppercase letter",
+  "passwordNumber": "Add a number",
+  "confirmPasswordRequired": "Required",
+  "passwordsDoNotMatch": "Does not match",
+  "emailInvalid": "Invalid email"
 }

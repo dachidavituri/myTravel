@@ -26,6 +26,7 @@ const Register: React.FC = () => {
   const currentLang = useCurrentLang();
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const {
     handleSubmit,
     control,
@@ -34,7 +35,9 @@ const Register: React.FC = () => {
     resolver: zodResolver(regiserFormSchema),
     defaultValues: registerDefaultValues,
   });
+
   const { mutate: hadnleSignUp } = useRegister();
+
   const onSubmit: SubmitHandler<RegisterForm> = (data) => {
     hadnleSignUp(data, {
       onSuccess: () => {
@@ -62,7 +65,7 @@ const Register: React.FC = () => {
             />
           )}
         />
-        {errors.email && <Error message={errors.email.message} />}
+        {errors.email && <Error message={t(`${errors.email.message}`)} />}
         <Controller
           control={control}
           name="password"
@@ -76,7 +79,7 @@ const Register: React.FC = () => {
             />
           )}
         />
-        {errors.password && <Error message={errors.password.message} />}
+        {errors.password && <Error message={t(`${errors.password.message}`)} />}
         <Controller
           control={control}
           name="confirmPassword"
@@ -91,7 +94,7 @@ const Register: React.FC = () => {
           )}
         />
         {errors.confirmPassword && (
-          <Error message={errors.confirmPassword.message} />
+          <Error message={t(`${errors.confirmPassword.message}`)} />
         )}
         <Button
           htmlType="submit"

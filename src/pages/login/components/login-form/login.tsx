@@ -25,6 +25,7 @@ const Login: React.FC = () => {
   const currentLang = useCurrentLang();
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const {
     handleSubmit,
     control,
@@ -33,7 +34,9 @@ const Login: React.FC = () => {
     resolver: zodResolver(loginFormSchema),
     defaultValues: LoginDefaultValues,
   });
+
   const { mutate: handleLogin } = useLogin();
+
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
     handleLogin(data, {
       onSuccess: () => {
@@ -41,6 +44,7 @@ const Login: React.FC = () => {
       },
     });
   };
+
   return (
     <div className={container()}>
       <h1 className={heading()}>{t("login.welcomeBack")}</h1>
@@ -60,7 +64,9 @@ const Login: React.FC = () => {
             />
           )}
         />
-        {errors.email?.message && <Error message={errors.email.message} />}
+        {errors.email?.message && (
+          <Error message={t(`${errors.email.message}`)} />
+        )}
         <Controller
           control={control}
           name="password"
@@ -74,7 +80,7 @@ const Login: React.FC = () => {
             />
           )}
         />
-        {errors.password && <Error message={errors.password.message} />}
+        {errors.password && <Error message={t(`${errors.password.message}`)} />}
         <div className="flex justify-end">
           <a href="#" className={link()}>
             {t("login.forgotPassword")}

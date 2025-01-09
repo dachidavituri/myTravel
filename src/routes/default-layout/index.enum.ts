@@ -4,5 +4,9 @@ export enum MAIN_PATH {
   ABOUT = "about",
   LOGIN = "login",
   REGISTER = "register",
+}
+
+export enum ADDITION_PATH {
   GALLERY = "gallery",
+  SETTINGS = "settings",
 }

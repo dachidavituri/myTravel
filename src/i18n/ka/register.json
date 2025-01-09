@@ -1,10 +1,18 @@
 {
   "createAccount": "შექმენი შენი ანგარიში",
-  "startJourney": "დაიწყე შენი მოგზაურობა ჩვენთან ერთად!",
+  "startJourney": "იმოგზაურე ჩვენთან ერთად!",
   "emailPlaceholder": "ელ. ფოსტის მისამართი",
   "passwordPlaceholder": "პაროლი",
   "confirmPasswordPlaceholder": "დაადასტურე პაროლი",
   "signUpButton": "რეგისტრაცია",
   "footerText": "გაქვთ ანგარიში?",
-  "loginLinkText": "შესვლა"
+  "loginLinkText": "შესვლა",
+  "passwordRequired": "სავალდებულოა",
+  "passwordMinLength": "მინიმუმ 8 სიმბოლო",
+  "passwordSpecialChar": "დაამატეთ სპეც სიმბოლო",
+  "passwordUppercase": "დაამატეთ დიდი ასო",
+  "passwordNumber": "დაამატეთ ციფრი",
+  "confirmPasswordRequired": "სავალდებულოა",
+  "passwordsDoNotMatch": "პაროლები არ ემთხვევა",
+  "emailInvalid": "არასწორი ელ.ფოსტა"
 }

@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router";
 import { ROOT_PATH } from "./index.enum";
 import { DEFAULT_LAYOUT_ROUTES } from "./default-layout";
-import Layout from "@/components/layout/layout";
+import Layout from "@/components/layout";
 import { lazy, Suspense } from "react";
 const NotFound = lazy(() => import("@/pages/not-found"));
 const AppRoutes = () => {

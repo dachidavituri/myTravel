@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import TravelWorldIcon from "../travel-world";
+import TravelWorldIcon from "&/base/travel-world";
 import { navItem, buttonStyles } from "./header-cva";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { Link, NavLink } from "react-router";
 import { Button } from "@/components/ui/button";
 import Menu from "./menu";
-import { ChangeLanguage } from "../chang-language";
+import { ChangeLanguage } from "&/base/change-language";
 import { useTranslation } from "react-i18next";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { useAtomValue } from "jotai";
@@ -27,14 +27,14 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`shadow-md font-semibold dark:bg-gray-400`}>
-      <div className="container mx-auto flex items-center justify-between py-4 px-2">
+    <header className={`font-semibold shadow-md dark:bg-gray-400`}>
+      <div className="container mx-auto flex items-center justify-between px-2 py-4">
         <div className="flex items-center space-x-2">
           <TravelWorldIcon />
         </div>
-        <nav className="hidden lg:flex space-x-8">
+        <nav className="hidden space-x-8 lg:flex">
           {Object.entries(MAIN_PATH)
-            .filter(([key]) => !["REGISTER", "GALLERY", "LOGIN"].includes(key))
+            .filter(([key]) => !["REGISTER", "LOGIN"].includes(key))
             .map(([key, path]) => (
               <NavLink
                 key={key}
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
               </NavLink>
             ))}
         </nav>
-        <div className="hidden lg:flex gap-2">
+        <div className="hidden gap-2 lg:flex">
           {!user && (
             <>
               <Link to={MAIN_PATH.REGISTER}>
@@ -62,14 +62,14 @@ const Header: React.FC = () => {
           )}
           {user && <ProfileSection />}
         </div>
-        <div className="hidden lg:flex gap-2">
+        <div className="hidden gap-2 lg:flex">
           <ModeToggle />
           <ChangeLanguage />
         </div>
         <div className="lg:hidden">
           <button
             onClick={toggleMenu}
-            className="text-gray-600 focus:outline-none hover:text-orange-500"
+            className="text-gray-600 hover:text-orange-500 focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
