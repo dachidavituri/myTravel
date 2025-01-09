@@ -1,0 +1,28 @@
+{
+  "services": {
+    "title": "What We Serve",
+    "subtitle": "We offer our best services",
+    "calculateWeather": {
+      "title": "Calculate Weather",
+      "description": "Get accurate, real-time weather forecasts."
+    },
+    "googleMapIntegration": {
+      "title": "Google Map Integration",
+      "description": "Seamlessly view and explore locations."
+    },
+    "travelPersonalityQuiz": {
+      "title": "Travel Personality Quiz",
+      "description": "Discover your ideal travel style."
+    }
+  },
+  "description": {
+    "whoWeAre": {
+      "title": "Who We Are?",
+      "content": "We're all about creating unforgettable experiences for our guests. Our journey began with a simple passion for exploring the beauty of the world."
+    },
+    "ourMission": {
+      "title": "Our Mission",
+      "content": "We believe that travel is not just about visiting new places, but about immersing yourself in new cultures, connecting with nature, and making memories that last a lifetime."
+    }
+  }
+}

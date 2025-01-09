@@ -9,4 +9,5 @@ export enum MAIN_PATH {
 export enum ADDITION_PATH {
   GALLERY = "gallery",
   SETTINGS = "settings",
+  PROFILE = "profile",
 }

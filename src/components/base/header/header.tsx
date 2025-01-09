@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TravelWorldIcon from "&/base/travel-world";
 import { navItem, buttonStyles } from "./header-cva";
 import { ModeToggle } from "@/components/theme/mode-toggle";

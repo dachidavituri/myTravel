@@ -13,6 +13,9 @@ import Error from "@/components/error-message";
 import { profileSchema } from "@/schema";
 import { z } from "zod";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
+import useCurrentLang from "@/i18n/current-lang";
 
 type EditProfile = z.infer<typeof profileSchema>;
 
@@ -20,6 +23,8 @@ const EditProfile: React.FC = () => {
   const { t } = useTranslation();
   const user = useAtomValue(loginAtom);
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const currentLang = useCurrentLang();
 
   const { data, isLoading, isFetching } = useGetProfile({
     id: user?.user.id ?? "",
@@ -64,6 +69,7 @@ const EditProfile: React.FC = () => {
               PROFILE_QUERY_KEYS.INFO,
               user?.user.id,
             ]);
+            navigate(`/${currentLang}/${ADDITION_PATH.PROFILE}`);
           },
         },
       );

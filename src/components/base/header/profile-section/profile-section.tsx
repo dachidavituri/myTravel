@@ -28,7 +28,7 @@ const ProfileSection: React.FC = () => {
     },
     {
       key: "2",
-      label: <Link to={"profile"}>{t("header.profile")}</Link>,
+      label: <Link to={ADDITION_PATH.PROFILE}>{t("header.profile")}</Link>,
     },
     {
       key: "3",
