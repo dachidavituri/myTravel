@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const passwordSchema = z
+export const passwordSchema = z
   .string()
   .min(1, { message: "register.passwordRequired" })
   .min(8, { message: "register.passwordMinLength" })
@@ -30,3 +30,22 @@ export const loginFormSchema = z.object({
   email: z.string().email({ message: "register.emailInvalid" }),
   password: passwordSchema,
 });
+
+export const profileSchema = z.object({
+  username: z.string().min(1, { message: "settings.username.requiredMessage" }),
+  name_ka: z.string().min(1, "settings.nameKa.requiredMessage"),
+  name_en: z.string().min(1, "settings.nameEn.requiredMessage"),
+  surname_ka: z.string().min(1, "settings.surnameKa.requiredMessage"),
+  surname_en: z.string().min(1, "settings.surnameEn.requiredMessage"),
+  phone: z.string().min(1, "settings.phone.requiredMessage"),
+});
+
+export const newPasswordSchema = z
+  .object({
+    currentPassword: z.string().min(1, "settings.current"),
+    newPassword: passwordSchema,
+    confirmPassword: z.string().min(1, "settings.confirmPassword"),
+  })
+  .refine((data) => data.newPassword === data.confirmPassword, {
+    message: "The two passwords do not match!",
+  });

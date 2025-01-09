@@ -1,18 +1,23 @@
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useAtomValue } from "jotai";
+import { Button, Input } from "antd";
+import { useTranslation } from "react-i18next";
 import SkeletonLoading from "@/components/skeleton-ui";
 import { useFillProfileInfo } from "@/react-query/mutation/account";
 import { useGetProfile } from "@/react-query/query/account";
 import { PROFILE_QUERY_KEYS } from "@/react-query/query/account/enum";
 import { loginAtom } from "@/store";
-import { Button, Form, Input } from "antd";
-import { useAtomValue } from "jotai";
 import { useQueryClient } from "react-query";
-import { EditProfileFormValues } from "../index.types";
-import { useTranslation } from "react-i18next";
+import Error from "@/components/error-message";
+import { profileSchema } from "@/schema";
+import { z } from "zod";
 import { useEffect } from "react";
 
+type EditProfile = z.infer<typeof profileSchema>;
+
 const EditProfile: React.FC = () => {
-  const [form] = Form.useForm();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const user = useAtomValue(loginAtom);
   const queryClient = useQueryClient();
 
@@ -23,11 +28,36 @@ const EditProfile: React.FC = () => {
 
   const { mutate: handleProfile } = useFillProfileInfo();
 
-  const onFinish = (values: EditProfileFormValues) => {
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<EditProfile>({
+    resolver: zodResolver(profileSchema),
+    defaultValues: {},
+  });
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const profileDefaultValue = {
+        name_ka: data[0]?.name_ka,
+        name_en: data[0]?.name_en,
+        username: data[0]?.username,
+        surname_ka: data[0]?.surname_ka,
+        surname_en: data[0]?.surname_en,
+        phone: data[0]?.phone,
+      };
+
+      reset(profileDefaultValue);
+    }
+  }, [data, reset]);
+
+  const onSubmit: SubmitHandler<EditProfile> = (data) => {
     if (user) {
-      const avatarUrl = `https://api.dicebear.com/9.x/pixel-art/svg?seed=${values.username}`;
+      const avatarUrl = `https://api.dicebear.com/9.x/pixel-art/svg?seed=${data.username}`;
       handleProfile(
-        { ...values, avatar_url: avatarUrl, id: user?.user.id },
+        { ...data, avatar_url: avatarUrl, id: user?.user.id },
         {
           onSuccess: () => {
             queryClient.invalidateQueries([
@@ -40,124 +70,109 @@ const EditProfile: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    form.validateFields();
-  }, [form, i18n.language]);
-
-  if (isLoading || isFetching || !data || data.length === 0) {
+  if (isLoading || isFetching) {
     return <SkeletonLoading number={6} />;
   }
 
   return (
-    <Form
-      form={form}
-      layout="vertical"
-      onFinish={onFinish}
-      className="space-y-"
-      initialValues={{
-        username: data?.[0]?.username,
-        name_ka: data?.[0]?.name_ka,
-        name_en: data?.[0]?.name_en,
-        surname_ka: data?.[0]?.surname_ka,
-        surname_en: data?.[0]?.surname_en,
-        phone: data?.[0]?.phone,
-      }}
-    >
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">
-            {t("settings.nameKa.label")}
-          </span>
-        }
-        name="name_ka"
-        rules={[
-          { required: true, message: t("settings.nameKa.requiredMessage") },
-        ]}
-      >
-        <Input placeholder={t("settings.nameKa.placeholder")} />
-      </Form.Item>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.username.label")}
+        </label>
+        <Controller
+          name="username"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="Enter your username" />
+          )}
+        />
+        {errors.username && <Error message={t(`${errors.username.message}`)} />}
+      </div>
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.nameKa.label")}
+        </label>
+        <Controller
+          name="name_ka"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="Enter your name in Georgian" />
+          )}
+        />
+        {errors.name_ka && <Error message={t(`${errors.name_ka.message}`)} />}
+      </div>
 
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">
-            {t("settings.nameEn.label")}
-          </span>
-        }
-        name="name_en"
-        rules={[
-          { required: true, message: t("settings.nameEn.requiredMessage") },
-        ]}
-      >
-        <Input placeholder={t("settings.nameEn.placeholder")} />
-      </Form.Item>
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.nameEn.label")}
+        </label>
+        <Controller
+          name="name_en"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="Enter your name in English" />
+          )}
+        />
+        {errors.name_en && <Error message={t(`${errors.name_en.message}`)} />}
+      </div>
 
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">
-            {t("settings.username.label")}
-          </span>
-        }
-        name="username"
-        rules={[
-          { required: true, message: t("settings.username.requiredMessage") },
-        ]}
-      >
-        <Input placeholder={t("settings.username.placeholder")} />
-      </Form.Item>
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.surnameKa.label")}
+        </label>
+        <Controller
+          name="surname_ka"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="Enter your surname in Georgian" />
+          )}
+        />
+        {errors.surname_ka && (
+          <Error message={t(`${errors.surname_ka.message}`)} />
+        )}
+      </div>
 
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">
-            {t("settings.surnameKa.label")}
-          </span>
-        }
-        name="surname_ka"
-        rules={[
-          { required: true, message: t("settings.surnameKa.requiredMessage") },
-        ]}
-      >
-        <Input placeholder={t("settings.surnameKa.placeholder")} />
-      </Form.Item>
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.surnameEn.label")}
+        </label>
+        <Controller
+          name="surname_en"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="Enter your surname in English" />
+          )}
+        />
+        {errors.surname_en && (
+          <Error message={t(`${errors.surname_en.message}`)} />
+        )}
+      </div>
 
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">
-            {t("settings.surnameEn.label")}
-          </span>
-        }
-        name="surname_en"
-        rules={[
-          { required: true, message: t("settings.surnameEn.requiredMessage") },
-        ]}
-      >
-        <Input placeholder={t("settings.surnameEn.placeholder")} />
-      </Form.Item>
-
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">
-            {t("settings.phone.label")}
-          </span>
-        }
-        name="phone"
-        rules={[
-          { required: true, message: t("settings.phone.requiredMessage") },
-        ]}
-      >
-        <Input placeholder={t("settings.phone.placeholder")} />
-      </Form.Item>
-
-      <Form.Item>
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.phone.label")}
+        </label>
+        <Controller
+          name="phone"
+          control={control}
+          render={({ field }) => (
+            <Input {...field} placeholder="Enter your phone number" />
+          )}
+        />
+        {errors.phone && <Error message={t(`${errors.phone.message}`)} />}
+      </div>
+      <div>
         <Button
           color="danger"
-          htmlType="submit"
           variant="solid"
-          className="w-full"
+          htmlType="submit"
+          className="w-full font-semibold"
         >
           {t("settings.save")}
         </Button>
-      </Form.Item>
-    </Form>
+      </div>
+    </form>
   );
 };
 

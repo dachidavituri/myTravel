@@ -3,33 +3,33 @@
   "password": "პაროლი",
   "nameKa": {
     "label": "სახელი (ქართული)",
-    "placeholder": "შეიყვანეთ  სახელი ქართულად",
     "requiredMessage": "შეიყვანეთ სახელი ქართულად!"
   },
   "nameEn": {
     "label": "სახელი (ინგლისური)",
-    "placeholder": "შეიყვანეთ  სახელი ინგლისურად",
     "requiredMessage": "შეიყვანეთ  სახელი ინგლისურად!"
   },
   "username": {
     "label": "მომხმარებლის სახელი",
-    "placeholder": "შეიყვანეთ მომხმარებლის სახელი",
     "requiredMessage": "შეიყვანეთ მომხმარებლის სახელი!"
   },
   "surnameKa": {
     "label": "გვარი (ქართული)",
-    "placeholder": "შეიყვანეთ  გვარი ქართულად",
     "requiredMessage": "შეიყვანეთ  გვარი ქართულად!"
   },
   "surnameEn": {
     "label": "გვარი (ინგლისური)",
-    "placeholder": "შეიყვანეთ გვარი ინგლისურად",
-    "requiredMessage": "შეიყვანეთ   ინგლისურად!"
+    "requiredMessage": "შეიყვანეთ გვარი  ინგლისურად!"
   },
   "phone": {
     "label": "ტელეფონი",
-    "placeholder": "შეიყვანეთ ტელეფონის ნომერი",
     "requiredMessage": "შეიყვანეთ ტელეფონის ნომერი!"
   },
-  "save": "შენახვა"
+  "save": "შენახვა",
+  "current": "შეიყვანე შენი პაროლი",
+  "confirmPassword": "გაიმეორე პაროლი",
+  "currentPassText": "ახლანდელი პაროლი",
+  "newPass": "ახალი პაროლი",
+  "confirmPass": "გაიმეორე პაროლი",
+  "updatePass": "განაახლე პაროლი"
 }

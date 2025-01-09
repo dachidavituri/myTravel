@@ -12,7 +12,13 @@ import ProfileSection from "&/base/header/profile-section";
 
 const Menu: React.FC<MenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const { t } = useTranslation();
+
   const user = useAtomValue(loginAtom);
+
+  const navLinkClass = (isActive: boolean) => {
+    return `${navItem({ isMenuOpen })} ${isActive ? "text-orange-600" : "text-gray-600"}`;
+  };
+
   return (
     isMenuOpen && (
       <div className="shadow-md lg:hidden">
@@ -27,9 +33,7 @@ const Menu: React.FC<MenuProps> = ({ isMenuOpen, setIsMenuOpen }) => {
               <NavLink
                 key={key}
                 to={path}
-                className={({ isActive }) =>
-                  `${navItem({ isMenuOpen })} ${isActive ? "text-orange-500" : "text-gray-600"}`
-                }
+                className={({ isActive }) => navLinkClass(isActive)}
               >
                 {t(`header.${key.toLowerCase()}`)}
               </NavLink>

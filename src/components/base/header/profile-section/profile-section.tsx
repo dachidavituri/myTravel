@@ -18,7 +18,7 @@ const ProfileSection: React.FC = () => {
 
   const { data } = useGetProfile({
     id: user?.user.id ?? "",
-    queryOptions: { enabled: !!user?.user.id, staleTime: 0 },
+    queryOptions: { enabled: !!user?.user.id },
   });
 
   const items: MenuProps["items"] = [

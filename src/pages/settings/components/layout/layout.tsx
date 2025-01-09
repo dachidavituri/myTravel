@@ -39,8 +39,8 @@ const SettingsLayout: React.FC<SettingsLayoutProps> = ({
           items={menuData}
           className="block bg-white shadow-md md:hidden"
         />
-        <Layout.Content className="p-4">
-          <div className="mx-auto max-w-sm rounded-lg border bg-white p-4 shadow-md">
+        <Layout.Content className="p-4 dark:bg-gray-300">
+          <div className="mx-auto max-w-screen-lg rounded-lg border bg-white p-4 shadow-md">
             {children}
           </div>
         </Layout.Content>
@@ -48,5 +48,4 @@ const SettingsLayout: React.FC<SettingsLayoutProps> = ({
     </Layout>
   );
 };
-
 export default SettingsLayout;

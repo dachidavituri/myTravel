@@ -1,74 +1,105 @@
-import { Input, Button, Form } from "antd";
-import { EditPasswordFormValues } from "../index.types";
+import { Input, Button, message } from "antd";
+import { useForm, Controller } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useUpdatePassword } from "@/react-query/mutation/auth";
+import { newPasswordSchema } from "@/schema";
+import Error from "@/components/error-message";
+import { resetDefaultValues } from "@/data";
+import { useTranslation } from "react-i18next";
+
+type EditPasswordFormValues = z.infer<typeof newPasswordSchema>;
 
 const EditPassword: React.FC = () => {
-  const [form] = Form.useForm();
+  const { t } = useTranslation();
 
-  const onFinish = (values: EditPasswordFormValues) => {
-    console.log("Form values:", values);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<EditPasswordFormValues>({
+    resolver: zodResolver(newPasswordSchema),
+    defaultValues: resetDefaultValues,
+  });
+
+  const { mutateAsync: updatePassword } = useUpdatePassword();
+
+  const onSubmit = async (data: EditPasswordFormValues) => {
+    const { currentPassword, newPassword } = data;
+    try {
+      await updatePassword({ currentPassword, newPassword });
+      message.success("Password updated successfully!");
+      reset();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      message.error(err.message);
+    }
   };
 
   return (
-    <Form
-      form={form}
-      layout="vertical"
-      onFinish={onFinish}
-      className="space-y-3"
-    >
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">Current Password</span>
-        }
-        name="currentPassword"
-        rules={[
-          { required: true, message: "Please enter your current password!" },
-        ]}
-      >
-        <Input.Password placeholder="Enter your current password" />
-      </Form.Item>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.currentPassText")}
+        </label>
+        <Controller
+          name="currentPassword"
+          control={control}
+          render={({ field }) => (
+            <Input.Password
+              {...field}
+              placeholder="Enter your current password"
+            />
+          )}
+        />
+        {errors.currentPassword && (
+          <Error message={t(`${errors.currentPassword.message}`)} />
+        )}
+      </div>
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.newPass")}
+        </label>
+        <Controller
+          name="newPassword"
+          control={control}
+          render={({ field }) => (
+            <Input.Password {...field} placeholder="Enter your new password" />
+          )}
+        />
+        {errors.newPassword && (
+          <Error message={t(`${errors.newPassword.message}`)} />
+        )}
+      </div>
+      <div>
+        <label className="font-semibold text-gray-700">
+          {t("settings.confirmPass")}
+        </label>
+        <Controller
+          name="confirmPassword"
+          control={control}
+          render={({ field }) => (
+            <Input.Password
+              {...field}
+              placeholder="Confirm your new password"
+            />
+          )}
+        />
+        {errors.confirmPassword && (
+          <Error message={t(`${errors.confirmPassword.message}`)} />
+        )}
+      </div>
 
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">New Password</span>
-        }
-        name="newPassword"
-        rules={[{ required: true, message: "Please enter your new password!" }]}
+      <Button
+        color="danger"
+        variant="solid"
+        htmlType="submit"
+        className="w-full font-semibold"
       >
-        <Input.Password placeholder="Enter your new password" />
-      </Form.Item>
-
-      <Form.Item
-        label={
-          <span className="font-semibold text-gray-700">Confirm Password</span>
-        }
-        name="confirmPassword"
-        rules={[
-          { required: true, message: "Please confirm your new password!" },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue("newPassword") === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(
-                new Error("The two passwords do not match!"),
-              );
-            },
-          }),
-        ]}
-      >
-        <Input.Password placeholder="Confirm your new password" />
-      </Form.Item>
-
-      <Form.Item>
-        <Button
-          type="primary"
-          htmlType="submit"
-          className="w-full border-none bg-orange-500 hover:bg-orange-600"
-        >
-          Update Password
-        </Button>
-      </Form.Item>
-    </Form>
+        {t("settings.updatePass")}
+      </Button>
+    </form>
   );
 };
 

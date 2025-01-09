@@ -3,33 +3,33 @@
   "password": "Password",
   "nameKa": {
     "label": "Name (Georgian)",
-    "placeholder": "Enter your name in Georgian",
-    "requiredMessage": "Please enter your name in Georgian!"
+    "requiredMessage": "Name in Georgian is required"
   },
   "nameEn": {
     "label": "Name (English)",
-    "placeholder": "Enter your name in English",
-    "requiredMessage": "Please enter your name in English!"
+    "requiredMessage": "Name in English is required"
   },
   "username": {
     "label": "Username",
-    "placeholder": "Enter your username",
-    "requiredMessage": "Please enter your username!"
+    "requiredMessage": "Username is required"
   },
   "surnameKa": {
     "label": "Surname (Georgian)",
-    "placeholder": "Enter your surname in Georgian",
-    "requiredMessage": "Please enter your surname in Georgian!"
+    "requiredMessage": "Surname in Georgian is required"
   },
   "surnameEn": {
     "label": "Surname (English)",
-    "placeholder": "Enter your surname in English",
-    "requiredMessage": "Please enter your surname in English!"
+    "requiredMessage": "Surname in English is required"
   },
   "phone": {
     "label": "Phone",
-    "placeholder": "Enter your phone number",
-    "requiredMessage": "Please enter your phone number!"
+    "requiredMessage": "Phone number is required"
   },
-  "save": "Save Changes"
+  "save": "Save Changes",
+  "current": "Please enter your current password!",
+  "confirmPassword": "Please confirm your new password!",
+  "currentPassText": "Current Password",
+  "newPass": "New Password",
+  "confirmPass": "Confirm Password",
+  "updatePass": "Update Password"
 }

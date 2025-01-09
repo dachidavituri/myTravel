@@ -7,7 +7,7 @@
   "signUpButton": "რეგისტრაცია",
   "footerText": "გაქვთ ანგარიში?",
   "loginLinkText": "შესვლა",
-  "passwordRequired": "სავალდებულოა",
+  "passwordRequired": "პაროლი სავალდებულოა",
   "passwordMinLength": "მინიმუმ 8 სიმბოლო",
   "passwordSpecialChar": "დაამატეთ სპეც სიმბოლო",
   "passwordUppercase": "დაამატეთ დიდი ასო",

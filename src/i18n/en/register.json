@@ -7,7 +7,7 @@
   "signUpButton": "Sign up",
   "footerText": "Already have an account?",
   "loginLinkText": "Login",
-  "passwordRequired": "Required",
+  "passwordRequired": "Password Required",
   "passwordMinLength": "Min 8 characters",
   "passwordSpecialChar": "Add a special character",
   "passwordUppercase": "Add an uppercase letter",

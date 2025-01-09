@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TravelWorldIcon from "&/base/travel-world";
 import { navItem, buttonStyles } from "./header-cva";
 import { ModeToggle } from "@/components/theme/mode-toggle";
@@ -15,6 +15,20 @@ const Header: React.FC = () => {
   const { t } = useTranslation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth > 1024) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const user = useAtomValue(loginAtom);
 

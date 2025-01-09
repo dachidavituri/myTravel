@@ -1,6 +1,10 @@
 import { AuthError, AuthResponse } from "@supabase/supabase-js";
 import { supabase } from "..";
-import { AuthPayload } from "./index.types";
+import {
+  AuthPayload,
+  UpdatePasswordProps,
+  UpdatePasswordResponse,
+} from "./index.types";
 
 export const register = ({
   email,
@@ -24,4 +28,41 @@ export const login = async ({ email, password }: AuthPayload) => {
 
 export const logout = (): Promise<{ error: AuthError | null }> => {
   return supabase.auth.signOut();
+};
+
+export const updatePassword = async ({
+  currentPassword,
+  newPassword,
+}: UpdatePasswordProps): Promise<UpdatePasswordResponse> => {
+  try {
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError) {
+      throw new Error("Failed to retrieve current user.");
+    }
+
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email: user?.email || "",
+      password: currentPassword,
+    });
+
+    if (signInError) {
+      throw new Error("Incorrect current password.");
+    }
+
+    const { error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    return { user };
+  } catch (error) {
+    throw new Error("Password update failed: " + error);
+  }
 };

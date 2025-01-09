@@ -5,3 +5,9 @@ export const registerDefaultValues = {
 };
 
 export const LoginDefaultValues = { email: "", password: "" };
+
+export const resetDefaultValues = {
+  currentPassword: "",
+  newPassword: "",
+  confirmPassword: "",
+};
