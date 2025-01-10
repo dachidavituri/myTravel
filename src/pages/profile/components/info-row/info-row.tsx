@@ -1,6 +1,6 @@
 interface InfoRowProps {
   label: string;
-  value?: string;
+  value?: string | null;
 }
 
 const InfoRow: React.FC<InfoRowProps> = ({ label, value }) => (
