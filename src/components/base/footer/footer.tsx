@@ -55,6 +55,14 @@ const Footer: React.FC = () => {
               )}
             </ul>
           </div>
+          <div>
+            <h3 className="mb-4 font-semibold text-gray-800">Fun</h3>
+            <ul className="flex flex-col space-y-2">
+              <NavLink to={ADDITION_PATH.GAME} className={navItem()}>
+                {t("footer.quiz")}
+              </NavLink>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>

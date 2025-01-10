@@ -4,6 +4,16 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      animation: {
+        fadeIn: "fadeIn 1s ease-out",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 0.5 },
+          "100%": { opacity: 1 },
+        },
+      },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui"],
       },

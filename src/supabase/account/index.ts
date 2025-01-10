@@ -1,5 +1,5 @@
 import { supabase } from "..";
-import { Profile, ProfileForm } from "./index.types";
+import { FillProfilePoints, Profile, ProfileForm } from "./index.types";
 
 export const fillProfileInfo = async (payload: ProfileForm) => {
   const { data, error } = await supabase.from("profiles").upsert(payload);
@@ -9,6 +9,22 @@ export const fillProfileInfo = async (payload: ProfileForm) => {
     }
     throw error;
   }
+  return data;
+};
+
+// Updated function using the payload
+export const fillProfilePoint = async (payload: FillProfilePoints) => {
+  const { points, userId, quizCompleted } = payload;
+
+  const { data, error } = await supabase
+    .from("profiles")
+    .update({ points, quiz_completed: quizCompleted })
+    .eq("id", userId);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
   return data;
 };
 

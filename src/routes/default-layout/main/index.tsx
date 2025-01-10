@@ -6,6 +6,7 @@ import ProfileGuard from "@/components/guard/profile-guard";
 const SettingsView = lazy(() => import("@/pages/settings/views"));
 const ProfileView = lazy(() => import("@/pages/profile/views"));
 const AboutView = lazy(() => import("@/pages/about/views"));
+const GameView = lazy(() => import("@/pages/game/views"));
 
 export const MAIN_ROUTES = [
   <Route key="home" path={MAIN_PATH.HOME} element={<div>home</div>}></Route>,
@@ -42,6 +43,17 @@ export const MAIN_ROUTES = [
       <Suspense fallback={<div>Loading</div>}>
         <ProfileGuard>
           <ProfileView />
+        </ProfileGuard>
+      </Suspense>
+    }
+  ></Route>,
+  <Route
+    key="game"
+    path={ADDITION_PATH.GAME}
+    element={
+      <Suspense fallback={<div>Loading</div>}>
+        <ProfileGuard>
+          <GameView />
         </ProfileGuard>
       </Suspense>
     }

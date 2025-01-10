@@ -17,6 +17,8 @@ export type Database = {
           name_en: string | null;
           name_ka: string | null;
           phone: string | null;
+          points: number | null;
+          quiz_completed: boolean | null;
           surname_en: string | null;
           surname_ka: string | null;
           updated_at: string | null;
@@ -29,6 +31,8 @@ export type Database = {
           name_en?: string | null;
           name_ka?: string | null;
           phone?: string | null;
+          points?: number | null;
+          quiz_completed?: boolean | null;
           surname_en?: string | null;
           surname_ka?: string | null;
           updated_at?: string | null;
@@ -41,6 +45,8 @@ export type Database = {
           name_en?: string | null;
           name_ka?: string | null;
           phone?: string | null;
+          points?: number | null;
+          quiz_completed?: boolean | null;
           surname_en?: string | null;
           surname_ka?: string | null;
           updated_at?: string | null;

@@ -46,12 +46,12 @@ const EditProfile: React.FC = () => {
   useEffect(() => {
     if (data && data.length > 0) {
       const profileDefaultValue = {
-        name_ka: data[0]?.name_ka,
-        name_en: data[0]?.name_en,
-        username: data[0]?.username,
-        surname_ka: data[0]?.surname_ka,
-        surname_en: data[0]?.surname_en,
-        phone: data[0]?.phone,
+        name_ka: data[0]?.name_ka ?? undefined,
+        name_en: data[0]?.name_en ?? undefined,
+        username: data[0]?.username ?? undefined,
+        surname_ka: data[0]?.surname_ka ?? undefined,
+        surname_en: data[0]?.surname_en ?? undefined,
+        phone: data[0]?.phone ?? undefined,
       };
 
       reset(profileDefaultValue);
