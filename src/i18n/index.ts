@@ -13,6 +13,8 @@ import settingsKa from "@/i18n/ka/settings.json";
 import settingsEn from "@/i18n/en/settings.json";
 import aboutKa from "@/i18n/ka/about.json";
 import aboutEn from "@/i18n/en/about.json";
+import galleryKa from "@/i18n/ka/gallery.json";
+import galleryEn from "@/i18n/en/gallery.json";
 const options = {
   order: ["path"],
   lookupFromPathIndex: 0,
@@ -37,6 +39,7 @@ i18n
           register: registerKa,
           settings: settingsKa,
           about: aboutKa,
+          gallery: galleryKa,
         },
       },
       en: {
@@ -47,6 +50,7 @@ i18n
           register: registerEn,
           settings: settingsEn,
           about: aboutEn,
+          gallery: galleryEn,
         },
       },
     },

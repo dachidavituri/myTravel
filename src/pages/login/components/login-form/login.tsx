@@ -81,11 +81,6 @@ const Login: React.FC = () => {
           )}
         />
         {errors.password && <Error message={t(`${errors.password.message}`)} />}
-        <div className="flex justify-end">
-          <a href="#" className={link()}>
-            {t("login.forgotPassword")}
-          </a>
-        </div>
         <Button
           htmlType="submit"
           color="danger"

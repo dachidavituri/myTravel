@@ -7,3 +7,7 @@ export interface UploadImageResult {
   } | null;
   error: string | StorageError | null;
 }
+export interface GalleryResponse {
+  id: number;
+  image_url: string | null;
+}
