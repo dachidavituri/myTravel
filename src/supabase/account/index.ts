@@ -12,7 +12,6 @@ export const fillProfileInfo = async (payload: ProfileForm) => {
   return data;
 };
 
-// Updated function using the payload
 export const fillProfilePoint = async (payload: FillProfilePoints) => {
   const { points, userId, quizCompleted } = payload;
 

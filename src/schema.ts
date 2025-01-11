@@ -49,3 +49,9 @@ export const newPasswordSchema = z
   .refine((data) => data.newPassword === data.confirmPassword, {
     message: "The two passwords do not match!",
   });
+
+export const galleryFormSchema = z.object({
+  image_url: z.instanceof(File).refine((file) => file instanceof File, {
+    message: "Please upload image",
+  }),
+});

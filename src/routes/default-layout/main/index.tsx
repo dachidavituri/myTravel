@@ -7,6 +7,7 @@ const SettingsView = lazy(() => import("@/pages/settings/views"));
 const ProfileView = lazy(() => import("@/pages/profile/views"));
 const AboutView = lazy(() => import("@/pages/about/views"));
 const GameView = lazy(() => import("@/pages/game/views"));
+const GalleryView = lazy(() => import("@/pages/gallery/views"));
 
 export const MAIN_ROUTES = [
   <Route key="home" path={MAIN_PATH.HOME} element={<div>home</div>}></Route>,
@@ -20,11 +21,6 @@ export const MAIN_ROUTES = [
     }
   ></Route>,
   <Route key="tours" path={MAIN_PATH.TOURS} element={<div>tours</div>}></Route>,
-  <Route
-    key="gallery"
-    path={ADDITION_PATH.GALLERY}
-    element={<div>gallery</div>}
-  ></Route>,
   <Route
     key="settings"
     path={ADDITION_PATH.SETTINGS}
@@ -55,6 +51,15 @@ export const MAIN_ROUTES = [
         <ProfileGuard>
           <GameView />
         </ProfileGuard>
+      </Suspense>
+    }
+  ></Route>,
+  <Route
+    key="gallery"
+    path={ADDITION_PATH.GALLERY}
+    element={
+      <Suspense fallback={<div>Loading</div>}>
+        <GalleryView />
       </Suspense>
     }
   ></Route>,

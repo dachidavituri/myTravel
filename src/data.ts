@@ -55,3 +55,7 @@ export const countryNames = [
   "Netherlands",
   "Belgium",
 ];
+
+export const galleryDefaultValue = {
+  image_url: null,
+};
