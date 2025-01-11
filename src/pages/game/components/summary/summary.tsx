@@ -9,6 +9,7 @@ import { loginAtom } from "@/store";
 import { useQueryClient } from "react-query";
 import { PROFILE_QUERY_KEYS } from "@/react-query/query/account/enum";
 import { FillProfilePoints } from "@/supabase/account/index.types";
+import { useTranslation } from "react-i18next";
 
 const QuizSummary: React.FC<QuizSummaryProps> = ({
   score,
@@ -16,6 +17,7 @@ const QuizSummary: React.FC<QuizSummaryProps> = ({
   isModalOpen,
   setIsModalOpen,
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const currentLang = useCurrentLang();
   const user = useAtomValue(loginAtom);
@@ -62,7 +64,7 @@ const QuizSummary: React.FC<QuizSummaryProps> = ({
       <p className="text-lg text-black">
         Your score: {score} out of {questionLength}
       </p>
-      <p className="mt-2">Check your Game Balance on profile</p>
+      <p className="mt-2">{t("quiz.checkPoints")}</p>
     </Modal>
   );
 };

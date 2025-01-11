@@ -1,6 +1,7 @@
 import React from "react";
 import { QuizControlProps } from "../index.types";
 import { Button } from "antd";
+import { useTranslation } from "react-i18next";
 
 const QuizControl: React.FC<QuizControlProps> = ({
   showNext,
@@ -8,6 +9,7 @@ const QuizControl: React.FC<QuizControlProps> = ({
   onNextQuestion,
   onFinishQuiz,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="mt-6">
       {showNext && !isLastQuestion && (
@@ -17,13 +19,13 @@ const QuizControl: React.FC<QuizControlProps> = ({
           color="danger"
           className="font-semibold"
         >
-          Next Question
+          {t("quiz.next")}
         </Button>
       )}
 
       {isLastQuestion && showNext && (
         <Button onClick={onFinishQuiz} variant="solid" color="cyan">
-          Finish Quiz
+          {t("quiz.finish")}
         </Button>
       )}
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { message } from "antd";
 import { QuestionCardProps } from "../index.types";
 import { gameButtonStyles } from "./card-cva";
-
+import { useTranslation } from "react-i18next";
 const QuestionCard: React.FC<QuestionCardProps> = ({
   country,
   options,
@@ -10,6 +10,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   isCorrect,
   onAnswerClick,
 }) => {
+  const { t } = useTranslation();
   useEffect(() => {
     if (selectedAnswer !== null) {
       if (isCorrect) {
@@ -24,10 +25,6 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 
   return (
     <div>
-      <h1 className="mb-6 text-3xl font-bold text-white">
-        Guess the Country! (Question)
-      </h1>
-
       <div className="mb-6 mt-9 flex flex-col items-center justify-center gap-3 md:flex-row">
         {options.map((option) => (
           <button
@@ -43,7 +40,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             })}
             disabled={selectedAnswer !== null}
           >
-            {option}
+            {t(option)}
           </button>
         ))}
       </div>

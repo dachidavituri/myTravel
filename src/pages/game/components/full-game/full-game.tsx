@@ -73,10 +73,8 @@ const FullGame: React.FC = () => {
     setQuizCompleted(true);
     showModal();
   };
-
-  const { data: countriesData } = useGetCountry(
-    currentQuestion?.country || null,
-  );
+  const country = currentQuestion?.country.substring(5) || null;
+  const { data: countriesData } = useGetCountry(country);
 
   if (!currentQuestion) return <p>Loading questions...</p>;
 

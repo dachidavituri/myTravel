@@ -15,6 +15,9 @@ import aboutKa from "@/i18n/ka/about.json";
 import aboutEn from "@/i18n/en/about.json";
 import galleryKa from "@/i18n/ka/gallery.json";
 import galleryEn from "@/i18n/en/gallery.json";
+import quizKa from "@/i18n/ka/quiz.json";
+import quizEn from "@/i18n/en/quiz.json";
+
 const options = {
   order: ["path"],
   lookupFromPathIndex: 0,
@@ -40,6 +43,7 @@ i18n
           settings: settingsKa,
           about: aboutKa,
           gallery: galleryKa,
+          quiz: quizKa,
         },
       },
       en: {
@@ -51,6 +55,7 @@ i18n
           settings: settingsEn,
           about: aboutEn,
           gallery: galleryEn,
+          quiz: quizEn,
         },
       },
     },
