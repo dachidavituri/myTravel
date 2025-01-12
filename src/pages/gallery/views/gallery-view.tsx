@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
-import Form from "../components/form";
+import Form from "#/gallery/components/form";
 import { loginAtom } from "@/store";
-import Photos from "../components/photos";
+import Photos from "#/gallery/components/photos";
 
 const GalleryView: React.FC = () => {
   const user = useAtomValue(loginAtom);

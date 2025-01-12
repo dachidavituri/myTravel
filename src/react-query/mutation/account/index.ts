@@ -17,8 +17,13 @@ export const useFillProfileInfo = (
   });
 };
 
-export const useFillProfilePoint = () => {
-  return useMutation({
+export const useFillProfilePoint = (): UseMutationResult<
+  null,
+  Error,
+  FillProfilePoints,
+  unknown
+> => {
+  return useMutation<null, Error, FillProfilePoints, unknown>({
     mutationKey: [PROFILE_MUTATION_KEYS.FILLPOINTS],
     mutationFn: (payload: FillProfilePoints) => fillProfilePoint(payload),
   });
