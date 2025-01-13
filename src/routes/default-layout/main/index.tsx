@@ -8,9 +8,18 @@ const ProfileView = lazy(() => import("@/pages/profile/views"));
 const AboutView = lazy(() => import("@/pages/about/views"));
 const GameView = lazy(() => import("@/pages/game/views"));
 const GalleryView = lazy(() => import("@/pages/gallery/views"));
+const HomeView = lazy(() => import("@/pages/home/pages"));
 
 export const MAIN_ROUTES = [
-  <Route key="home" path={MAIN_PATH.HOME} element={<div>home</div>}></Route>,
+  <Route
+    key="home"
+    path={MAIN_PATH.HOME}
+    element={
+      <Suspense fallback={<div>Loading</div>}>
+        <HomeView />
+      </Suspense>
+    }
+  ></Route>,
   <Route
     key="about"
     path={MAIN_PATH.ABOUT}

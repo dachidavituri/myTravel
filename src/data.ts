@@ -1,3 +1,6 @@
+import Nature from "!/52849-473336269_tiny.mp4";
+import France from "!/203403-921381908_tiny.mp4";
+import Prague from "!/56076-478688149_tiny.mp4";
 export const registerDefaultValues = {
   email: "",
   password: "",
@@ -59,3 +62,4 @@ export const countryNames = [
 export const galleryDefaultValue = {
   image_url: null,
 };
+export const videos = [Nature, France, Prague];

@@ -17,6 +17,8 @@ import galleryKa from "@/i18n/ka/gallery.json";
 import galleryEn from "@/i18n/en/gallery.json";
 import quizKa from "@/i18n/ka/quiz.json";
 import quizEn from "@/i18n/en/quiz.json";
+import homeKa from "@/i18n/ka/home.json";
+import homeEn from "@/i18n/en/home.json";
 
 const options = {
   order: ["path"],
@@ -44,6 +46,7 @@ i18n
           about: aboutKa,
           gallery: galleryKa,
           quiz: quizKa,
+          home: homeKa,
         },
       },
       en: {
@@ -56,6 +59,7 @@ i18n
           about: aboutEn,
           gallery: galleryEn,
           quiz: quizEn,
+          home: homeEn,
         },
       },
     },
