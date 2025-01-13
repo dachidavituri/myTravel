@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { useGetGalleryImages } from "@/react-query/query/gallery";
 import { CloseOutlined } from "@ant-design/icons";
+import {
+  gridContainer,
+  imageWrapper,
+  image,
+  modalWrapper,
+  modalImageWrapper,
+  modalImage,
+  closeButton,
+} from "./photos-cva";
 
 const Photos: React.FC = () => {
   const { data } = useGetGalleryImages();
@@ -16,15 +25,15 @@ const Photos: React.FC = () => {
 
   return (
     <div>
-      <div className="m-auto mt-4 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className={gridContainer()}>
         {data?.map((photo) => {
           const galleryImg = photo.image_url
             ? `${import.meta.env.VITE_SUPABASE_GALLERY_IMAGES}/${photo.image_url}`
             : "";
           return (
-            <div key={photo.id} className="relative overflow-hidden rounded-lg">
+            <div key={photo.id} className={imageWrapper()}>
               <img
-                className="h-auto w-full transform cursor-pointer object-cover transition-transform duration-300 hover:scale-110"
+                className={image()}
                 src={galleryImg}
                 alt="Gallery Image"
                 onClick={() => handleImageClick(galleryImg)}
@@ -34,23 +43,13 @@ const Photos: React.FC = () => {
         })}
       </div>
       {selectedImage && (
-        <div
-          className="fixed inset-0 flex items-center justify-center rounded-lg bg-black bg-opacity-50 p-4"
-          onClick={closeModal}
-        >
+        <div className={modalWrapper()} onClick={closeModal}>
           <div
-            className="relative rounded-lg"
+            className={modalImageWrapper()}
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              className="max-h-[90vh] max-w-full rounded-lg object-contain"
-              src={selectedImage}
-              alt="Selected"
-            />
-            <button
-              className="absolute right-0 top-0 p-2 text-2xl text-white"
-              onClick={closeModal}
-            >
+            <img className={modalImage()} src={selectedImage} alt="Selected" />
+            <button className={closeButton()} onClick={closeModal}>
               <CloseOutlined />
             </button>
           </div>

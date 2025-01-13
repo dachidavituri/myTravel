@@ -10,7 +10,7 @@ const AgencyDescription: React.FC = () => {
         </span>
         <span className="ml-2 text-2xl">🌍</span>
       </div>
-      <h1 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white md:text-5xl">
+      <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white md:text-4xl">
         {t("home.travelling")}{" "}
         <span className="text-orange-500">{t("home.memories")}</span>
       </h1>

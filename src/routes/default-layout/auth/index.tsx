@@ -3,6 +3,7 @@ import { Route } from "react-router";
 import { MAIN_PATH } from "../index.enum";
 import { lazy, Suspense } from "react";
 import AuthRegisterGuard from "@/components/guard/auth-guard";
+import Loading from "@/components/loading";
 const LoginView = lazy(() => import("@/pages/login/views"));
 const RegisterView = lazy(() => import("@/pages/register/views"));
 export const AUTH_ROUTES = [
@@ -10,7 +11,7 @@ export const AUTH_ROUTES = [
     key="login"
     path={MAIN_PATH.LOGIN}
     element={
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loading />}>
         <AuthRegisterGuard>
           <LoginView />
         </AuthRegisterGuard>
@@ -21,7 +22,7 @@ export const AUTH_ROUTES = [
     key="register"
     path={MAIN_PATH.REGISTER}
     element={
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loading />}>
         <AuthRegisterGuard>
           <RegisterView />
         </AuthRegisterGuard>

@@ -3,6 +3,7 @@ import { Route } from "react-router";
 import { ADDITION_PATH, MAIN_PATH } from "../index.enum";
 import { lazy, Suspense } from "react";
 import ProfileGuard from "@/components/guard/profile-guard";
+import Loading from "@/components/loading";
 const SettingsView = lazy(() => import("@/pages/settings/views"));
 const ProfileView = lazy(() => import("@/pages/profile/views"));
 const AboutView = lazy(() => import("@/pages/about/views"));
@@ -15,7 +16,7 @@ export const MAIN_ROUTES = [
     key="home"
     path={MAIN_PATH.HOME}
     element={
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loading />}>
         <HomeView />
       </Suspense>
     }
@@ -24,7 +25,7 @@ export const MAIN_ROUTES = [
     key="about"
     path={MAIN_PATH.ABOUT}
     element={
-      <Suspense fallback={<div>loading</div>}>
+      <Suspense fallback={<Loading />}>
         <AboutView />
       </Suspense>
     }
@@ -34,7 +35,7 @@ export const MAIN_ROUTES = [
     key="settings"
     path={ADDITION_PATH.SETTINGS}
     element={
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loading />}>
         <ProfileGuard>
           <SettingsView />
         </ProfileGuard>
@@ -45,7 +46,7 @@ export const MAIN_ROUTES = [
     key="profile"
     path={ADDITION_PATH.PROFILE}
     element={
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loading />}>
         <ProfileGuard>
           <ProfileView />
         </ProfileGuard>
@@ -56,7 +57,7 @@ export const MAIN_ROUTES = [
     key="game"
     path={ADDITION_PATH.GAME}
     element={
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loading />}>
         <ProfileGuard>
           <GameView />
         </ProfileGuard>
@@ -67,7 +68,7 @@ export const MAIN_ROUTES = [
     key="gallery"
     path={ADDITION_PATH.GALLERY}
     element={
-      <Suspense fallback={<div>Loading</div>}>
+      <Suspense fallback={<Loading />}>
         <GalleryView />
       </Suspense>
     }

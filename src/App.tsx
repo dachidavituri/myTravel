@@ -4,6 +4,7 @@ import { useSetAtom } from "jotai";
 import { loginAtom } from "./store";
 import { useEffect, useState } from "react";
 import { supabase } from "./supabase";
+import Loading from "./components/loading";
 
 const App = () => {
   const setUser = useSetAtom(loginAtom);
@@ -23,7 +24,11 @@ const App = () => {
     return () => subscription.unsubscribe();
   }, [setUser]);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
