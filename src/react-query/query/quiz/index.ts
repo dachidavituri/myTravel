@@ -10,5 +10,6 @@ export const useGetCountry = (
     queryKey: [COUNTRIES_QUERY_KEYS.COUNTRY_FLAG, countryName],
     queryFn: () => getCountry(countryName),
     enabled: !!countryName,
+    retry: 0,
   });
 };

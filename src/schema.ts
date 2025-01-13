@@ -30,6 +30,12 @@ export const loginFormSchema = z.object({
   email: z.string().email({ message: "register.emailInvalid" }),
   password: passwordSchema,
 });
+export const searchWeatherSchema = z.object({
+  country: z
+    .string()
+    .min(1, { message: "weather.countryRequired" })
+    .min(3, { message: "weather.countryThree" }),
+});
 
 export const profileSchema = z.object({
   username: z.string().min(1, { message: "settings.username.requiredMessage" }),

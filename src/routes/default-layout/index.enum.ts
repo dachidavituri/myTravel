@@ -11,4 +11,5 @@ export enum ADDITION_PATH {
   SETTINGS = "settings",
   PROFILE = "profile",
   GAME = "game",
+  WEATHER = "weather",
 }

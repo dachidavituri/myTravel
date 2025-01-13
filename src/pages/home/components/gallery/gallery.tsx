@@ -19,7 +19,7 @@ const Gallery: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-3">
+    <div className="mt-3 text-left">
       <div className={sectionHeader()}>
         <span className="rounded-full bg-orange-300 px-4 py-2 font-bold text-orange-900">
           {t("home.gallery")}

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 const AgencyDescription: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className="text-center md:w-1/2 md:text-left">
+    <div className="text-left md:w-1/2">
       <div className="mb-4 flex items-center justify-center md:justify-start">
         <span className="rounded-full bg-orange-300 px-4 py-2 font-bold text-orange-900">
           {t("home.know")}

@@ -19,6 +19,8 @@ import quizKa from "@/i18n/ka/quiz.json";
 import quizEn from "@/i18n/en/quiz.json";
 import homeKa from "@/i18n/ka/home.json";
 import homeEn from "@/i18n/en/home.json";
+import weatherKa from "@/i18n/ka/weather.json";
+import weatherEn from "@/i18n/en/weather.json";
 
 const options = {
   order: ["path"],
@@ -47,6 +49,7 @@ i18n
           gallery: galleryKa,
           quiz: quizKa,
           home: homeKa,
+          weather: weatherKa,
         },
       },
       en: {
@@ -60,6 +63,7 @@ i18n
           gallery: galleryEn,
           quiz: quizEn,
           home: homeEn,
+          weather: weatherEn,
         },
       },
     },

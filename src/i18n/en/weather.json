@@ -1,0 +1,7 @@
+{
+  "search": "Search",
+  "countryRequired": "Country Name is required",
+  "countryThree": "Country Name must contain 3 symbol",
+  "noData": "No Data On This Country",
+  "prediction": "Weather Prediction"
+}

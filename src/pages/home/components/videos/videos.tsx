@@ -39,6 +39,7 @@ const Videos: React.FC = () => {
             className="h-full w-full object-cover"
             autoPlay
             muted
+            loop
           />
           <button
             onClick={() => handlePlayPause(index)}
