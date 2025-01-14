@@ -62,4 +62,16 @@ export const countryNames = [
 export const galleryDefaultValue = {
   image_url: null,
 };
+export const tourDefaultValue = {
+  tourName: "",
+  img: null,
+  country: "",
+  description: "",
+  location: "",
+  price: 0,
+  duration: 0,
+  type: "",
+  airport: "",
+  hotel: "",
+};
 export const videos = [Nature, France, Prague];

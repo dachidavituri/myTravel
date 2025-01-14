@@ -11,6 +11,8 @@ const GameView = lazy(() => import("@/pages/game/views"));
 const GalleryView = lazy(() => import("@/pages/gallery/views"));
 const HomeView = lazy(() => import("@/pages/home/pages"));
 const WeatherView = lazy(() => import("@/pages/weather/views"));
+const ToursView = lazy(() => import("@/pages/tours/views"));
+
 export const MAIN_ROUTES = [
   <Route
     key="home"
@@ -30,7 +32,7 @@ export const MAIN_ROUTES = [
       </Suspense>
     }
   ></Route>,
-  <Route key="tours" path={MAIN_PATH.TOURS} element={<div>tours</div>}></Route>,
+  <Route key="tours" path={MAIN_PATH.TOURS} element={<ToursView />}></Route>,
   <Route
     key="settings"
     path={ADDITION_PATH.SETTINGS}

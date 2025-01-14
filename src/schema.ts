@@ -57,7 +57,23 @@ export const newPasswordSchema = z
   });
 
 export const galleryFormSchema = z.object({
-  image_url: z.instanceof(File).refine((file) => file instanceof File, {
-    message: "Please upload image",
-  }),
+  image_url: z.instanceof(File).refine((file) => file instanceof File),
+});
+
+export const TourSchema = z.object({
+  tourName: z.string().min(3, "Tour Name is minimum 3 symbool"),
+  img: z.instanceof(File).refine((file) => file instanceof File),
+  country: z.string().min(3, "Country is required min 3 symbol"),
+  description: z.string().min(20, "Description is required"),
+  location: z.string().min(3, "Location is min 3 symbol"),
+  price: z.number().min(1, "Price must be greater than 0"),
+  duration: z.number().min(1, "Duration is required"),
+  type: z.enum(
+    ["adventure", "cultural", "luxury", "Educational", "Historical"],
+    {
+      errorMap: () => ({ message: "Type Is Required" }),
+    },
+  ),
+  airport: z.string().min(3, "Airport min 3 symbol"),
+  hotel: z.string().min(3, "Hotel min 3 symbol"),
 });

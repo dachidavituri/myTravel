@@ -26,6 +26,7 @@ export type Database = {
       };
       profiles: {
         Row: {
+          admin: boolean | null;
           avatar_url: string | null;
           full_name: string | null;
           id: string;
@@ -40,6 +41,7 @@ export type Database = {
           username: string | null;
         };
         Insert: {
+          admin?: boolean | null;
           avatar_url?: string | null;
           full_name?: string | null;
           id: string;
@@ -54,6 +56,7 @@ export type Database = {
           username?: string | null;
         };
         Update: {
+          admin?: boolean | null;
           avatar_url?: string | null;
           full_name?: string | null;
           id?: string;
@@ -66,6 +69,51 @@ export type Database = {
           surname_ka?: string | null;
           updated_at?: string | null;
           username?: string | null;
+        };
+        Relationships: [];
+      };
+      tours: {
+        Row: {
+          airport: string | null;
+          country: string | null;
+          created_at: string;
+          description: string | null;
+          duration: number | null;
+          hotel: string | null;
+          id: number;
+          img: string | null;
+          location: string | null;
+          price: number | null;
+          tourName: string | null;
+          type: string | null;
+        };
+        Insert: {
+          airport?: string | null;
+          country?: string | null;
+          created_at?: string;
+          description?: string | null;
+          duration?: number | null;
+          hotel?: string | null;
+          id?: number;
+          img?: string | null;
+          location?: string | null;
+          price?: number | null;
+          tourName?: string | null;
+          type?: string | null;
+        };
+        Update: {
+          airport?: string | null;
+          country?: string | null;
+          created_at?: string;
+          description?: string | null;
+          duration?: number | null;
+          hotel?: string | null;
+          id?: number;
+          img?: string | null;
+          location?: string | null;
+          price?: number | null;
+          tourName?: string | null;
+          type?: string | null;
         };
         Relationships: [];
       };

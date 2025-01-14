@@ -29,7 +29,7 @@ const WeatherView: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 px-8 py-12">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 px-8 py-12 dark:bg-black">
       <div className="w-full transform rounded-xl bg-white p-8 shadow-lg transition-shadow duration-300 hover:shadow-2xl md:w-96 lg:w-1/2">
         <h1 className="mb-6 text-center text-2xl font-bold text-gray-700">
           {t(`weather.prediction`)}

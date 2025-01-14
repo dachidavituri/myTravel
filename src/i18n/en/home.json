@@ -5,5 +5,9 @@
   "description": "Our travel agency specializes in creating unforgettable experiences. From exotic destinations to tailored itineraries, we ensure every journey is seamless and filled with cherished memories. Let us handle the details while you explore the world!",
   "gallery": "Gallery",
   "visit": "Visit our customers tour gallery",
-  "moreGallery": "See More..."
+  "moreGallery": "See More...",
+  "serve": "What We Serve",
+  "offer": "We offer our best services",
+  "weatherDesc": "Get accurate weather forecasts for your destination to plan your trip better.",
+  "tourDesc": "Explore exclusive tour packages to make your journey memorable and exciting."
 }
