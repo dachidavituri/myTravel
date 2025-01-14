@@ -10,11 +10,14 @@ import { useTranslation } from "react-i18next";
 
 const WeatherView: React.FC = () => {
   const { t } = useTranslation();
+
   const [searchParams] = useSearchParams();
   const [countryName, setCountryName] = useState<string>("");
+
   const { data: countryData, error } = useGetCountry(countryName || "");
   const latLng =
     countryData && countryData.length > 0 ? countryData[0].latlng : [0, 0];
+
   const { data: weatherData, isLoading } = useGetWeather(latLng[0], latLng[1]);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import AgencyDescription from "../components/agecy-description";
+import AgencyDescription from "#/home/components/agecy-description";
 import Gallery from "#/home/components/gallery";
 import Videos from "#/home/components/videos";
 import Services from "#/home/components/services";

@@ -13,6 +13,7 @@ const FullGame: React.FC = () => {
       options: string[];
     }[]
   >([]);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -73,7 +74,9 @@ const FullGame: React.FC = () => {
     setQuizCompleted(true);
     showModal();
   };
+
   const country = currentQuestion?.country.substring(5) || null;
+
   const { data: countriesData } = useGetCountry(country);
 
   if (!currentQuestion) return <p>Loading questions...</p>;

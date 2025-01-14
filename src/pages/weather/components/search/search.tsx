@@ -12,8 +12,11 @@ import { useTranslation } from "react-i18next";
 
 const WeatherSearch: React.FC<WeatherSearchProps> = ({ onSearch }) => {
   type SearchWeather = z.infer<typeof searchWeatherSchema>;
+
   const [searchParams, setSearchParams] = useSearchParams();
+
   const searchWeatherDefaultValues = qs.parse(searchParams.toString());
+
   const { t } = useTranslation();
 
   const {

@@ -20,6 +20,7 @@ import { Link, useNavigate } from "react-router";
 import useCurrentLang from "@/i18n/current-lang";
 import { useLogin } from "@/react-query/mutation/auth";
 import { useTranslation } from "react-i18next";
+
 const Login: React.FC = () => {
   type LoginForm = z.infer<typeof loginFormSchema>;
   const currentLang = useCurrentLang();

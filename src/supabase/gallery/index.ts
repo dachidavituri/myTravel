@@ -32,6 +32,7 @@ export const uploadImageToGallery = async (
   console.log("Upload and insert successful:", insertData);
   return { data: insertData, error: null };
 };
+
 export const getGalleryImages = async (): Promise<GalleryResponse[] | null> => {
   const { data, error } = await supabase
     .from("gallery")

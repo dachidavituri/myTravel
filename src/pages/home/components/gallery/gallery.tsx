@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 const Gallery: React.FC = () => {
   const { data } = useGetGalleryImages();
   const photos = data?.slice(0, 5);
+
   const currentLang = useCurrentLang();
   const { t } = useTranslation();
 

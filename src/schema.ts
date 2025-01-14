@@ -30,6 +30,7 @@ export const loginFormSchema = z.object({
   email: z.string().email({ message: "register.emailInvalid" }),
   password: passwordSchema,
 });
+
 export const searchWeatherSchema = z.object({
   country: z
     .string()
@@ -77,3 +78,5 @@ export const TourSchema = z.object({
   airport: z.string().min(3, "Airport min 3 symbol"),
   hotel: z.string().min(3, "Hotel min 3 symbol"),
 });
+
+export const TourSchemaWithoutImg = TourSchema.omit({ img: true });

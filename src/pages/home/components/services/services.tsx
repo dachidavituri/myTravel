@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 const Services: React.FC = () => {
   const currentLang = useCurrentLang();
   const { t } = useTranslation();
+
   return (
     <section className="mt-5 flex flex-col items-center gap-7 p-2 md:p-8 lg:flex-row">
       <div className="text-center lg:text-left">

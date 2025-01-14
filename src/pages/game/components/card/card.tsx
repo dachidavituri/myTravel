@@ -11,6 +11,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   onAnswerClick,
 }) => {
   const { t } = useTranslation();
+
   useEffect(() => {
     if (selectedAnswer !== null) {
       if (isCorrect) {

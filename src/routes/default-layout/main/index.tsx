@@ -15,7 +15,7 @@ const ToursView = lazy(() => import("@/pages/tours/views"));
 
 export const MAIN_ROUTES = [
   <Route
-    key="home"
+    key={MAIN_PATH.HOME}
     path={MAIN_PATH.HOME}
     element={
       <Suspense fallback={<Loading />}>
@@ -24,7 +24,7 @@ export const MAIN_ROUTES = [
     }
   ></Route>,
   <Route
-    key="about"
+    key={MAIN_PATH.ABOUT}
     path={MAIN_PATH.ABOUT}
     element={
       <Suspense fallback={<Loading />}>
@@ -32,9 +32,13 @@ export const MAIN_ROUTES = [
       </Suspense>
     }
   ></Route>,
-  <Route key="tours" path={MAIN_PATH.TOURS} element={<ToursView />}></Route>,
   <Route
-    key="settings"
+    key={MAIN_PATH.TOURS}
+    path={MAIN_PATH.TOURS}
+    element={<ToursView />}
+  ></Route>,
+  <Route
+    key={ADDITION_PATH.SETTINGS}
     path={ADDITION_PATH.SETTINGS}
     element={
       <Suspense fallback={<Loading />}>
@@ -45,7 +49,7 @@ export const MAIN_ROUTES = [
     }
   ></Route>,
   <Route
-    key="profile"
+    key={ADDITION_PATH.PROFILE}
     path={ADDITION_PATH.PROFILE}
     element={
       <Suspense fallback={<Loading />}>
@@ -56,7 +60,7 @@ export const MAIN_ROUTES = [
     }
   ></Route>,
   <Route
-    key="game"
+    key={ADDITION_PATH.GAME}
     path={ADDITION_PATH.GAME}
     element={
       <Suspense fallback={<Loading />}>
@@ -67,7 +71,7 @@ export const MAIN_ROUTES = [
     }
   ></Route>,
   <Route
-    key="gallery"
+    key={ADDITION_PATH.GALLERY}
     path={ADDITION_PATH.GALLERY}
     element={
       <Suspense fallback={<Loading />}>
@@ -76,7 +80,7 @@ export const MAIN_ROUTES = [
     }
   ></Route>,
   <Route
-    key="weather"
+    key={ADDITION_PATH.WEATHER}
     path={ADDITION_PATH.WEATHER}
     element={
       <Suspense fallback={<Loading />}>

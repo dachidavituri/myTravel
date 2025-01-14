@@ -44,7 +44,34 @@ export const getTours = async (): Promise<ToursResponse[] | null> => {
   return data;
 };
 
-export const editTour = () => {};
+export const editTour = async (
+  tour: Omit<AddTourTypes, "img">,
+  id: number,
+): Promise<void> => {
+  try {
+    const { data, error } = await supabase
+      .from("tours")
+      .update({
+        tourName: tour.tourName,
+        country: tour.country,
+        description: tour.description,
+        location: tour.location,
+        price: tour.price,
+        duration: tour.duration,
+        type: tour.type,
+        airport: tour.airport,
+        hotel: tour.hotel,
+      })
+      .eq("id", id);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    console.log("Tour updated successfully", data);
+  } catch (error) {
+    console.error("Error editing tour", error);
+  }
+};
 
 export const deleteTour = async (
   tourId: number,

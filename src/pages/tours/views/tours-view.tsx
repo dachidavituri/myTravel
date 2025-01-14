@@ -1,7 +1,6 @@
-import Form from "../components/form";
-import Hero from "../components/hero";
-
-import Tours from "../components/tours";
+import Form from "#/tours/components/form";
+import Hero from "#/tours/components/hero";
+import Tours from "#/tours/components/tours";
 
 const ToursView: React.FC = () => {
   return (

@@ -6,14 +6,11 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Error from "@/components/error-message";
 import { galleryDefaultValue } from "@/data";
 import { useQueryClient } from "react-query";
-import { QUERY_GALLERY_IMAGES } from "@/react-query/query/gallery/enum";
+import { GALLERY_QUERY_KEYS } from "@/react-query/query/gallery/enum";
 import { useTranslation } from "react-i18next";
+import { ImageUpload } from "../index.types";
 export const Form: React.FC = () => {
   const { t } = useTranslation();
-
-  interface ImageUpload {
-    image_url: File | null;
-  }
   const queryClient = useQueryClient();
 
   const {
@@ -30,7 +27,7 @@ export const Form: React.FC = () => {
   const onSubmit: SubmitHandler<ImageUpload> = (data) => {
     handleAddImage(data.image_url, {
       onSuccess: () => {
-        queryClient.invalidateQueries(QUERY_GALLERY_IMAGES.GALLERY_IMAGES);
+        queryClient.invalidateQueries(GALLERY_QUERY_KEYS.GALLERY_IMAGES);
       },
     });
   };

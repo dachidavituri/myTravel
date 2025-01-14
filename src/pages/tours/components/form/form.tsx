@@ -12,30 +12,30 @@ import { useAtomValue } from "jotai";
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useQueryClient } from "react-query";
+import { TourFormValues } from "../index.types";
+
 const { TextArea } = Input;
 const { Option } = Select;
 
-interface TourFormValues {
-  tourName: string;
-  img: File | null;
-  country: string;
-  description: string;
-  location: string;
-  price: number;
-  duration: number;
-  type: string;
-  airport: string;
-  hotel: string;
-}
-
 const Form: React.FC = () => {
   const user = useAtomValue(loginAtom);
+
   const { data } = useGetProfile({
     id: user?.user.id ?? "",
     queryOptions: { enabled: !!user?.user.id },
   });
+
   const queryClient = useQueryClient();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    reset();
+  };
 
   const {
     control,
@@ -71,24 +71,15 @@ const Form: React.FC = () => {
         <PlusCircleTwoTone
           className="cursor-pointer text-5xl hover:scale-105"
           twoToneColor="orange"
-          onClick={() => setIsModalOpen(true)}
+          onClick={openModal}
         />
       )}
       <Modal
         title="Add New Tour"
         open={isModalOpen}
-        onCancel={() => {
-          setIsModalOpen(false);
-          reset();
-        }}
+        onCancel={closeModal}
         footer={[
-          <Button
-            key="cancel"
-            onClick={() => {
-              setIsModalOpen(false);
-              reset();
-            }}
-          >
+          <Button key="cancel" onClick={closeModal}>
             Cancel
           </Button>,
           <Button key="save" type="primary" onClick={handleSubmit(onSubmit)}>

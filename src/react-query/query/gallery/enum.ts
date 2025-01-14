@@ -1,3 +1,3 @@
-export enum QUERY_GALLERY_IMAGES {
+export enum GALLERY_QUERY_KEYS {
   GALLERY_IMAGES = "gallery-images",
 }

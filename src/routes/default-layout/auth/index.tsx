@@ -8,7 +8,7 @@ const LoginView = lazy(() => import("@/pages/login/views"));
 const RegisterView = lazy(() => import("@/pages/register/views"));
 export const AUTH_ROUTES = [
   <Route
-    key="login"
+    key={MAIN_PATH.LOGIN}
     path={MAIN_PATH.LOGIN}
     element={
       <Suspense fallback={<Loading />}>
@@ -19,7 +19,7 @@ export const AUTH_ROUTES = [
     }
   />,
   <Route
-    key="register"
+    key={MAIN_PATH.REGISTER}
     path={MAIN_PATH.REGISTER}
     element={
       <Suspense fallback={<Loading />}>

@@ -31,6 +31,7 @@ const EditPassword: React.FC = () => {
       await updatePassword({ currentPassword, newPassword });
       message.success("Password updated successfully!");
       reset();
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       message.error(err.message);
