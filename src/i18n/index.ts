@@ -21,6 +21,8 @@ import homeKa from "@/i18n/ka/home.json";
 import homeEn from "@/i18n/en/home.json";
 import weatherKa from "@/i18n/ka/weather.json";
 import weatherEn from "@/i18n/en/weather.json";
+import toursKa from "@/i18n/ka/tours.json";
+import toursEn from "@/i18n/en/tours.json";
 
 const options = {
   order: ["path"],
@@ -50,6 +52,7 @@ i18n
           quiz: quizKa,
           home: homeKa,
           weather: weatherKa,
+          tour: toursKa,
         },
       },
       en: {
@@ -64,6 +67,7 @@ i18n
           quiz: quizEn,
           home: homeEn,
           weather: weatherEn,
+          tour: toursEn,
         },
       },
     },

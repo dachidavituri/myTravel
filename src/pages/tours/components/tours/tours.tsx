@@ -13,12 +13,14 @@ import TourCard from "./card";
 import EditTourForm from "./edit";
 import { EditTour } from "../index.types";
 import Search from "./search";
+import { useTranslation } from "react-i18next";
 
 dayjs.extend(relativeTime);
 
 type SelectedTour = ToursResponse | null;
 
 const Tours: React.FC = () => {
+  const { t } = useTranslation();
   const currentLang = useCurrentLang();
   dayjs.locale(currentLang);
 
@@ -74,10 +76,11 @@ const Tours: React.FC = () => {
         ))}
 
         <Modal
-          title="Edit Tour"
+          title={t("tour.edit")}
           open={isModalVisible}
           onCancel={hideModal}
           footer={null}
+          style={{ padding: "5px" }}
         >
           {selectedTour && (
             <EditTourForm

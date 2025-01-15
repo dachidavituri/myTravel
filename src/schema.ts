@@ -62,22 +62,22 @@ export const galleryFormSchema = z.object({
 });
 
 export const TourSchema = z.object({
-  tourName: z.string().min(3, "Tour Name is minimum 3 symbool"),
+  tourName: z.string().min(3, "tour.tourNameErr"),
   img: z.instanceof(File).refine((file) => file instanceof File),
-  country: z.string().min(3, "Country is required min 3 symbol"),
-  city: z.string().min(3, "City is required min 3 symbol"),
-  description: z.string().min(20, "Description is required"),
-  location: z.string().min(3, "Location is min 3 symbol"),
-  price: z.number().min(1, "Price must be greater than 0"),
-  duration: z.number().min(1, "Duration is required"),
+  country: z.string().min(3, "tour.countryErr"),
+  city: z.string().min(3, "tour.cityErr"),
+  description: z.string().min(20, "tour.descriptionErr"),
+  location: z.string().min(3, "tour.locationErr"),
+  price: z.number().min(1, "tour.priceErr"),
+  duration: z.number().min(1, "tour.durationErr"),
   type: z.enum(
     ["adventure", "cultural", "luxury", "Educational", "Historical"],
     {
-      errorMap: () => ({ message: "Type Is Required" }),
+      errorMap: () => ({ message: "tour.typeErr" }),
     },
   ),
-  airport: z.string().min(3, "Airport min 3 symbol"),
-  hotel: z.string().min(3, "Hotel min 3 symbol"),
+  airport: z.string().min(3, "tour.airportErr"),
+  hotel: z.string().min(3, "tour.hotelErr"),
 });
 
 export const TourSchemaWithoutImg = TourSchema.omit({ img: true });

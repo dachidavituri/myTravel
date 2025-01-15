@@ -13,11 +13,14 @@ import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useQueryClient } from "react-query";
 import { TourFormValues } from "../index.types";
+import { useTranslation } from "react-i18next";
 
 const { TextArea } = Input;
 const { Option } = Select;
 
 const Form: React.FC = () => {
+  const { t } = useTranslation();
+
   const user = useAtomValue(loginAtom);
 
   const { data } = useGetProfile({
@@ -75,15 +78,16 @@ const Form: React.FC = () => {
         />
       )}
       <Modal
-        title="Add New Tour"
+        title={t("tour.add")}
         open={isModalOpen}
         onCancel={closeModal}
+        style={{ padding: "5px" }}
         footer={[
           <Button key="cancel" onClick={closeModal}>
-            Cancel
+            {t("tour.cancel")}
           </Button>,
           <Button key="save" type="primary" onClick={handleSubmit(onSubmit)}>
-            Save
+            {t("tour.save")}
           </Button>,
         ]}
       >
@@ -96,7 +100,9 @@ const Form: React.FC = () => {
                 <Input {...field} placeholder="Tour Name" />
               )}
             />
-            {errors.tourName && <Error message={errors.tourName.message} />}
+            {errors.tourName && (
+              <Error message={t(`${errors.tourName.message}`)} />
+            )}
           </div>
           <div>
             <Controller
@@ -122,7 +128,9 @@ const Form: React.FC = () => {
               control={control}
               render={({ field }) => <Input {...field} placeholder="Country" />}
             />
-            {errors.country && <Error message={errors.country.message} />}
+            {errors.country && (
+              <Error message={t(`${errors.country.message}`)} />
+            )}
           </div>
           <div>
             <Controller
@@ -130,7 +138,7 @@ const Form: React.FC = () => {
               control={control}
               render={({ field }) => <Input {...field} placeholder="City" />}
             />
-            {errors.city && <Error message={errors.city.message} />}
+            {errors.city && <Error message={t(`${errors.city.message}`)} />}
           </div>
           <div>
             <Controller
@@ -141,7 +149,7 @@ const Form: React.FC = () => {
               )}
             />
             {errors.description && (
-              <Error message={errors.description.message} />
+              <Error message={t(`${errors.description.message}`)} />
             )}
           </div>
           <div>
@@ -152,10 +160,12 @@ const Form: React.FC = () => {
                 <Input {...field} placeholder="Location" />
               )}
             />
-            {errors.location && <Error message={errors.location.message} />}
+            {errors.location && (
+              <Error message={t(`${errors.location.message}`)} />
+            )}
           </div>
           <div>
-            <label>Journey Price</label>
+            <label>{t("tour.price")}</label>
             <Controller
               name="price"
               control={control}
@@ -168,10 +178,10 @@ const Form: React.FC = () => {
                 />
               )}
             />
-            {errors.price && <Error message={errors.price.message} />}
+            {errors.price && <Error message={t(`${errors.price.message}`)} />}
           </div>
           <div>
-            <label>Journey Duration</label>
+            <label>{t("tour.duration")}</label>
             <Controller
               name="duration"
               control={control}
@@ -185,10 +195,12 @@ const Form: React.FC = () => {
               )}
             />
 
-            {errors.duration && <Error message={errors.duration.message} />}
+            {errors.duration && (
+              <Error message={t(`${errors.duration.message}`)} />
+            )}
           </div>
           <div>
-            <label>Journey Type</label>
+            <label>{t("tour.type")}</label>
             <Controller
               name="type"
               control={control}
@@ -206,7 +218,7 @@ const Form: React.FC = () => {
                 </Select>
               )}
             />
-            {errors.type && <Error message={errors.type.message} />}
+            {errors.type && <Error message={t(`${errors.type.message}`)} />}
           </div>
           <div>
             <Controller
@@ -214,7 +226,9 @@ const Form: React.FC = () => {
               control={control}
               render={({ field }) => <Input {...field} placeholder="Airport" />}
             />
-            {errors.airport && <Error message={errors.airport.message} />}
+            {errors.airport && (
+              <Error message={t(`${errors.airport.message}`)} />
+            )}
           </div>
           <div>
             <Controller
@@ -222,7 +236,7 @@ const Form: React.FC = () => {
               control={control}
               render={({ field }) => <Input {...field} placeholder="Hotel" />}
             />
-            {errors.hotel && <Error message={errors.hotel.message} />}
+            {errors.hotel && <Error message={t(`${errors.hotel.message}`)} />}
           </div>
         </form>
       </Modal>

@@ -31,3 +31,7 @@ export type EditTourFormProps = {
 export interface SeachFilterValue {
   search: string;
 }
+
+export interface SearchProps {
+  setSearched: React.Dispatch<React.SetStateAction<string>>;
+}

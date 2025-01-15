@@ -1,15 +1,13 @@
 import { Controller, useForm } from "react-hook-form";
-import { SeachFilterValue } from "../../index.types";
+import { SeachFilterValue, SearchProps } from "../../index.types";
 import { useSearchParams } from "react-router";
 import qs from "qs";
 import { useEffect } from "react";
 import { Input } from "antd";
-
-interface SearchProps {
-  setSearched: React.Dispatch<React.SetStateAction<string>>;
-}
+import { useTranslation } from "react-i18next";
 
 const Search: React.FC<SearchProps> = ({ setSearched }) => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const defaultFilterValues = qs.parse(searchParams.toString());
 
@@ -27,10 +25,10 @@ const Search: React.FC<SearchProps> = ({ setSearched }) => {
           { skipNulls: true, filter: (_, value) => value || undefined },
         ),
       );
-      setSearched(searched); // Update the searched value in parent
+      setSearched(searched);
     } else {
       setSearchParams({}, { replace: true });
-      setSearched(""); // Clear the searched value if empty
+      setSearched("");
     }
   }, [searched, setSearchParams, setSearched]);
 
@@ -42,7 +40,7 @@ const Search: React.FC<SearchProps> = ({ setSearched }) => {
         render={({ field }) => (
           <Input
             {...field}
-            placeholder="Search Tour"
+            placeholder={t("tour.search")}
             value={field.value || ""}
           />
         )}
