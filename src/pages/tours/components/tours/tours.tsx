@@ -1,23 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import dayjs from "dayjs";
+import "dayjs/locale/ka";
+import "dayjs/locale/en";
 import { useGetTours } from "@/react-query/query/tours";
 import { useDeleteTour, useEditTour } from "@/react-query/mutation/tours";
 import { Modal } from "antd";
 import { useDebounce } from "@uidotdev/usehooks";
 import { ToursResponse } from "@/supabase/tours/index.types";
-import "dayjs/locale/ka";
-import "dayjs/locale/en";
-import relativeTime from "dayjs/plugin/relativeTime";
 import useCurrentLang from "@/i18n/current-lang";
 import TourCard from "./card";
 import EditTourForm from "./edit";
-import { EditTour } from "../index.types";
+import { EditTour, SelectedTour } from "../index.types";
 import Search from "./search";
 import { useTranslation } from "react-i18next";
-
-dayjs.extend(relativeTime);
-
-type SelectedTour = ToursResponse | null;
 
 const Tours: React.FC = () => {
   const { t } = useTranslation();

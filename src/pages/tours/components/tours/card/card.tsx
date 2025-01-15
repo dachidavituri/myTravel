@@ -1,8 +1,12 @@
 import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import { formatDate } from "@/lib/format-date";
 import { TourCardProps } from "../../index.types";
+import { Link } from "react-router";
+import useCurrentLang from "@/i18n/current-lang";
+import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 
 const TourCard: React.FC<TourCardProps> = ({ tour, onEdit, onDelete }) => {
+  const currentLang = useCurrentLang();
   const galleryImg = tour.img
     ? `${import.meta.env.VITE_SUPABASE_GALLERY_IMAGES}/${tour.img}`
     : "";
@@ -10,15 +14,17 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onEdit, onDelete }) => {
 
   return (
     <div className="cursor-pointer overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-      <div className="relative">
-        <img src={galleryImg} className="h-48 w-full object-cover" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
-          <h2 className="text-3xl font-bold text-white drop-shadow-lg">
-            {tour.city}
-          </h2>
-          <p className="text-lg text-white drop-shadow-lg">{tour.country}</p>
+      <Link to={`/${currentLang}/${MAIN_PATH.TOURS}/${tour.id}`}>
+        <div className="relative">
+          <img src={galleryImg} className="h-48 w-full object-cover" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
+            <h2 className="text-3xl font-bold text-white drop-shadow-lg">
+              {tour.city}
+            </h2>
+            <p className="text-lg text-white drop-shadow-lg">{tour.country}</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="flex items-center justify-between bg-gray-50 p-4">
         <p className="text-sm text-gray-600">
           {oneDay ? timePassed : fullDate}

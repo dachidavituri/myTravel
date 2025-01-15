@@ -35,3 +35,5 @@ export interface SeachFilterValue {
 export interface SearchProps {
   setSearched: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export type SelectedTour = ToursResponse | null;

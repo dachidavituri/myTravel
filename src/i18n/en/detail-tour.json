@@ -1,0 +1,9 @@
+{
+  "country": "Country: ",
+  "city": "City: ",
+  "location": "Location: ",
+  "airport": "Airport: ",
+  "hotel": "Hotel: ",
+  "duration": "Duration: ",
+  "days": "Days"
+}

@@ -12,6 +12,7 @@ const GalleryView = lazy(() => import("@/pages/gallery/views"));
 const HomeView = lazy(() => import("@/pages/home/pages"));
 const WeatherView = lazy(() => import("@/pages/weather/views"));
 const ToursView = lazy(() => import("@/pages/tours/views"));
+const DetailTourView = lazy(() => import("@/pages/single-tour/views"));
 
 export const MAIN_ROUTES = [
   <Route
@@ -85,6 +86,15 @@ export const MAIN_ROUTES = [
     element={
       <Suspense fallback={<Loading />}>
         <WeatherView />
+      </Suspense>
+    }
+  ></Route>,
+  <Route
+    key={ADDITION_PATH.DETAIL}
+    path={MAIN_PATH.TOURS + "/:id"}
+    element={
+      <Suspense fallback={<Loading />}>
+        <DetailTourView />
       </Suspense>
     }
   ></Route>,

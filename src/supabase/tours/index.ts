@@ -118,3 +118,13 @@ export const deleteTour = async (
     console.log("Error in deleteTour:", error);
   }
 };
+
+export const getToursById = async (id: number) => {
+  return await supabase
+    .from("tours")
+    .select("*")
+    .eq("id", id)
+    .single()
+    .throwOnError()
+    .then((res) => res.data as ToursResponse);
+};

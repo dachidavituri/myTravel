@@ -7,6 +7,6 @@ export const getCountry = async (name: string | null) => {
     return response.data;
   } catch (error) {
     console.log("Error fetching country data:", error);
-    throw new Error("weather.noData");
+    throw new Error("Error fetching country data");
   }
 };
