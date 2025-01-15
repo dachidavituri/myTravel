@@ -75,6 +75,7 @@ export type Database = {
       tours: {
         Row: {
           airport: string | null;
+          city: string | null;
           country: string | null;
           created_at: string;
           description: string | null;
@@ -89,6 +90,7 @@ export type Database = {
         };
         Insert: {
           airport?: string | null;
+          city?: string | null;
           country?: string | null;
           created_at?: string;
           description?: string | null;
@@ -103,6 +105,7 @@ export type Database = {
         };
         Update: {
           airport?: string | null;
+          city?: string | null;
           country?: string | null;
           created_at?: string;
           description?: string | null;

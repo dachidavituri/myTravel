@@ -21,6 +21,7 @@
     "@supabase/supabase-js": "^2.47.11",
     "@types/npm": "^7.19.3",
     "@types/qs": "^6.9.17",
+    "@uidotdev/usehooks": "^2.4.1",
     "antd": "^5.23.0",
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",

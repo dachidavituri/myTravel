@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { useGetTours } from "@/react-query/query/tours";
 import { useDeleteTour, useEditTour } from "@/react-query/mutation/tours";
 import { Modal } from "antd";
-
+import { useDebounce } from "@uidotdev/usehooks";
 import { ToursResponse } from "@/supabase/tours/index.types";
 import "dayjs/locale/ka";
 import "dayjs/locale/en";
@@ -12,6 +12,7 @@ import useCurrentLang from "@/i18n/current-lang";
 import TourCard from "./card";
 import EditTourForm from "./edit";
 import { EditTour } from "../index.types";
+import Search from "./search";
 
 dayjs.extend(relativeTime);
 
@@ -21,9 +22,16 @@ const Tours: React.FC = () => {
   const currentLang = useCurrentLang();
   dayjs.locale(currentLang);
 
-  const { data } = useGetTours();
   const { mutate: deleteTour } = useDeleteTour();
   const { mutate: editTour } = useEditTour();
+
+  const [searched, setSearched] = useState<string>("");
+
+  const debouncedSearched = useDebounce(searched, 1200);
+
+  const { data: toursList } = useGetTours({
+    search: debouncedSearched || "",
+  });
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedTour, setSelectedTour] = useState<SelectedTour>(null);
@@ -53,31 +61,33 @@ const Tours: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {data?.map((tour) => (
-        <TourCard
-          key={tour.id}
-          tour={tour}
-          onEdit={() => showModal(tour)}
-          onDelete={deleteTourHandler}
-        />
-      ))}
-
-      <Modal
-        title="Edit Tour"
-        open={isModalVisible}
-        onCancel={hideModal}
-        footer={null}
-      >
-        {selectedTour && (
-          <EditTourForm
-            defaultValues={selectedTour as EditTour}
-            onSubmit={handleEditTour}
+    <div className="px-6 lg:px-36">
+      <Search setSearched={setSearched} />
+      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {toursList?.map((tour) => (
+          <TourCard
+            key={tour.id}
+            tour={tour}
+            onEdit={() => showModal(tour)}
+            onDelete={deleteTourHandler}
           />
-        )}
-      </Modal>
+        ))}
+
+        <Modal
+          title="Edit Tour"
+          open={isModalVisible}
+          onCancel={hideModal}
+          footer={null}
+        >
+          {selectedTour && (
+            <EditTourForm
+              defaultValues={selectedTour as EditTour}
+              onSubmit={handleEditTour}
+            />
+          )}
+        </Modal>
+      </div>
     </div>
   );
 };
-
 export default Tours;

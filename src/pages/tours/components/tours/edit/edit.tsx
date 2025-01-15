@@ -43,6 +43,15 @@ const EditTourForm: React.FC<EditTourFormProps> = ({
           {errors.country && <Error message={errors.country.message} />}
         </div>
         <div>
+          <label htmlFor="country">City</label>
+          <Controller
+            name="city"
+            control={control}
+            render={({ field }) => <Input {...field} className="w-full" />}
+          />
+          {errors.city && <Error message={errors.city.message} />}
+        </div>
+        <div>
           <label htmlFor="description">Description</label>
           <Controller
             name="description"

@@ -73,5 +73,6 @@ export const tourDefaultValue = {
   type: "",
   airport: "",
   hotel: "",
+  city: "",
 };
 export const videos = [Nature, France, Prague];

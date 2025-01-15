@@ -65,6 +65,7 @@ export const TourSchema = z.object({
   tourName: z.string().min(3, "Tour Name is minimum 3 symbool"),
   img: z.instanceof(File).refine((file) => file instanceof File),
   country: z.string().min(3, "Country is required min 3 symbol"),
+  city: z.string().min(3, "City is required min 3 symbol"),
   description: z.string().min(20, "Description is required"),
   location: z.string().min(3, "Location is min 3 symbol"),
   price: z.number().min(1, "Price must be greater than 0"),

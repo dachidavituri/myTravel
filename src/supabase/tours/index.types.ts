@@ -2,6 +2,7 @@ export interface AddTourTypes {
   tourName: string;
   img: File | null;
   country: string;
+  city: string;
   description: string;
   location: string;
   price: number;
@@ -23,4 +24,5 @@ export interface ToursResponse {
   airport: string | null;
   hotel: string | null;
   img: string | null;
+  city: string | null;
 }

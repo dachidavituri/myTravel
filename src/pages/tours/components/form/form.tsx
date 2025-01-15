@@ -126,6 +126,14 @@ const Form: React.FC = () => {
           </div>
           <div>
             <Controller
+              name="city"
+              control={control}
+              render={({ field }) => <Input {...field} placeholder="City" />}
+            />
+            {errors.city && <Error message={errors.city.message} />}
+          </div>
+          <div>
+            <Controller
               name="description"
               control={control}
               render={({ field }) => (

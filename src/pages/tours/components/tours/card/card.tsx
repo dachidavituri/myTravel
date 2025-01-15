@@ -9,25 +9,33 @@ const TourCard: React.FC<TourCardProps> = ({ tour, onEdit, onDelete }) => {
   const { oneDay, timePassed, fullDate } = formatDate(tour.created_at);
 
   return (
-    <div className="overflow-hidden rounded-lg bg-white shadow-lg transition-transform duration-300 hover:scale-105">
-      <img src={galleryImg} className="h-48 w-full object-cover" />
-      <div className="p-4">
-        <h2 className="text-xl font-semibold text-gray-800">{tour.tourName}</h2>
-        <div className="mt-4">
-          <p className="text-gray-700">Price: ${tour.price}</p>
-          <p className="text-gray-700">Duration: {tour.duration} days</p>
-          <p className="text-gray-700">Type: {tour.type}</p>
+    <div className="cursor-pointer overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
+      <div className="relative">
+        <img src={galleryImg} className="h-48 w-full object-cover" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
+          <h2 className="text-3xl font-bold text-white drop-shadow-lg">
+            {tour.city}
+          </h2>
+          <p className="text-lg text-white drop-shadow-lg">{tour.country}</p>
         </div>
-        <div className="mt-6 flex items-center justify-between">
-          <p className="dark:text-gray-600">{oneDay ? timePassed : fullDate}</p>
-          <div>
-            <button onClick={onEdit}>
-              <EditTwoTone className="text-xl" />
-            </button>
-            <button onClick={() => onDelete(tour.id, tour.img)}>
-              <DeleteTwoTone className="ml-3 text-xl" />
-            </button>
-          </div>
+      </div>
+      <div className="flex items-center justify-between bg-gray-50 p-4">
+        <p className="text-sm text-gray-600">
+          {oneDay ? timePassed : fullDate}
+        </p>
+        <div className="flex items-center space-x-3">
+          <button
+            onClick={onEdit}
+            className="rounded-full bg-blue-100 p-2 transition-all hover:bg-blue-200"
+          >
+            <EditTwoTone className="text-xl" />
+          </button>
+          <button
+            onClick={() => onDelete(tour.id, tour.img)}
+            className="rounded-full bg-red-100 p-2 transition-all hover:bg-red-200"
+          >
+            <DeleteTwoTone className="text-xl" />
+          </button>
         </div>
       </div>
     </div>

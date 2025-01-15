@@ -11,10 +11,15 @@ export const addTour = async ({
       const res = await supabase.storage
         .from("tours")
         .upload(payload.img.name, payload.img);
+
+      if (res.error) {
+        throw new Error(`Error uploading image: ${res.error.message}`);
+      }
       const insertRes = await supabase.from("tours").insert({
         tourName: payload.tourName,
         img: res.data?.fullPath,
         country: payload.country,
+        city: payload.city,
         description: payload.description,
         location: payload.location,
         price: payload.price,
@@ -23,25 +28,29 @@ export const addTour = async ({
         airport: payload.airport,
         hotel: payload.hotel,
       });
+
       if (insertRes.error) {
-        throw new Error(insertRes.error.message);
+        throw new Error(`Error inserting tour: ${insertRes.error.message}`);
       }
+
       console.log("Successfully created", insertRes);
     }
   } catch (error) {
-    console.log("error creating tour", error);
+    console.error("Error creating tour:", error);
   }
 };
 
-export const getTours = async (): Promise<ToursResponse[] | null> => {
-  const { data, error } = await supabase
-    .from("tours")
-    .select("*")
-    .throwOnError();
-  if (error) {
-    console.log(error);
+export const getTours = async ({
+  search,
+}: {
+  search: string;
+}): Promise<ToursResponse[] | null> => {
+  const query = supabase.from("tours").select("*");
+  if (search && search.length > 2) {
+    query.or(`country.ilike.%${search}%, city.ilike.%${search}%`);
   }
-  return data;
+  const { data } = await query.throwOnError();
+  return data as ToursResponse[];
 };
 
 export const editTour = async (
@@ -54,6 +63,7 @@ export const editTour = async (
       .update({
         tourName: tour.tourName,
         country: tour.country,
+        city: tour.city,
         description: tour.description,
         location: tour.location,
         price: tour.price,

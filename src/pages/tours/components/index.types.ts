@@ -13,6 +13,7 @@ export interface TourFormValues {
   type: string;
   airport: string;
   hotel: string;
+  city: string;
 }
 export type EditTour = z.infer<typeof TourSchemaWithoutImg>;
 
@@ -26,3 +27,7 @@ export type EditTourFormProps = {
   defaultValues: z.infer<typeof TourSchemaWithoutImg>;
   onSubmit: (values: EditTour) => void;
 };
+
+export interface SeachFilterValue {
+  search: string;
+}
