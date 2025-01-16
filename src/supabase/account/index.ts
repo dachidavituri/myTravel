@@ -35,3 +35,8 @@ export const getProfile = async (profileId: string) => {
 
   return data as Profile[];
 };
+
+export const getAllProfile = async () => {
+  const { data } = await supabase.from("profiles").select("*").throwOnError();
+  return data as Profile[];
+};

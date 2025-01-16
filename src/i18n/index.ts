@@ -25,6 +25,8 @@ import toursKa from "@/i18n/ka/tours.json";
 import toursEn from "@/i18n/en/tours.json";
 import detailKa from "@/i18n/ka/detail-tour.json";
 import detailEn from "@/i18n/en/detail-tour.json";
+import profileKa from "@/i18n/ka/profile.json";
+import profileEn from "@/i18n/en/profile.json";
 
 const options = {
   order: ["path"],
@@ -56,6 +58,7 @@ i18n
           weather: weatherKa,
           tour: toursKa,
           detail: detailKa,
+          profile: profileKa,
         },
       },
       en: {
@@ -72,6 +75,7 @@ i18n
           weather: weatherEn,
           tour: toursEn,
           detail: detailEn,
+          profile: profileEn,
         },
       },
     },

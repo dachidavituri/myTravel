@@ -42,6 +42,7 @@ const QuizSummary: React.FC<QuizSummaryProps> = ({
             PROFILE_QUERY_KEYS.INFO,
             user.user.id,
           ]);
+          queryClient.invalidateQueries([PROFILE_QUERY_KEYS.ALL_PROFILE]);
           navigate(`/${currentLang}/${ADDITION_PATH.PROFILE}`);
         },
       });

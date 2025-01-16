@@ -4,11 +4,14 @@ import { useAtomValue } from "jotai";
 
 const Items: React.FC = () => {
   const user = useAtomValue(loginAtom);
+
   const { data } = useGetProfile({
     id: user?.user.id ?? "",
     queryOptions: { enabled: !!user?.user.id },
   });
+
   const points = data && data[0].points;
+
   return (
     <div className="mt-4 flex gap-8">
       <div className="text-center">
