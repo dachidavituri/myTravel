@@ -22,6 +22,7 @@ export interface Profile {
   updated_at: string | null;
   username: string | null;
   admin: boolean | null;
+  type: string;
 }
 export interface FillProfilePoints {
   points: number;

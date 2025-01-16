@@ -8,7 +8,7 @@ export const useGetWeather = (
   lon: number,
 ): UseQueryResult<WeatherData, Error> => {
   return useQuery<WeatherData, Error>({
-    queryKey: [WEATHER_QUERY_KEYS.WEATHHER],
+    queryKey: [WEATHER_QUERY_KEYS.WEATHHER, lat, lon],
     queryFn: () => GetWeather(lat, lon),
     enabled: !!lat || !!lon,
     cacheTime: 0,

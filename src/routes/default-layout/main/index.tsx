@@ -13,6 +13,7 @@ const HomeView = lazy(() => import("@/pages/home/pages"));
 const WeatherView = lazy(() => import("@/pages/weather/views"));
 const ToursView = lazy(() => import("@/pages/tours/views"));
 const DetailTourView = lazy(() => import("@/pages/single-tour/views"));
+const PersonalityView = lazy(() => import("@/pages/personality/views"));
 
 export const MAIN_ROUTES = [
   <Route
@@ -56,6 +57,17 @@ export const MAIN_ROUTES = [
       <Suspense fallback={<Loading />}>
         <ProfileGuard>
           <ProfileView />
+        </ProfileGuard>
+      </Suspense>
+    }
+  ></Route>,
+  <Route
+    key={ADDITION_PATH.PERSONALITY}
+    path={ADDITION_PATH.PERSONALITY}
+    element={
+      <Suspense fallback={<Loading />}>
+        <ProfileGuard>
+          <PersonalityView />
         </ProfileGuard>
       </Suspense>
     }

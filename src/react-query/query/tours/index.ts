@@ -21,7 +21,7 @@ export const useGetTourById = (
   id: number,
 ): UseQueryResult<ToursResponse, Error> => {
   return useQuery<ToursResponse, Error>({
-    queryKey: [TOURS_QUERY_KEYS.DETAILTOUR],
+    queryKey: [TOURS_QUERY_KEYS.DETAILTOUR, id],
     queryFn: () => getToursById(id),
   });
 };

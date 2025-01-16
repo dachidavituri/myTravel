@@ -27,7 +27,10 @@ const Favourite: React.FC<ProfileProps> = ({ tData }) => {
             ? `${import.meta.env.VITE_SUPABASE_GALLERY_IMAGES}/${item.tours.img}`
             : "";
           return (
-            <Link to={`/${currentLang}/${MAIN_PATH.TOURS}/$${item.tours.id}`}>
+            <Link
+              to={`/${currentLang}/${MAIN_PATH.TOURS}/${item.tours.id}`}
+              key={item.tours.id}
+            >
               <Card
                 key={item.tours.id}
                 hoverable

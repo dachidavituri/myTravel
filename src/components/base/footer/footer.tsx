@@ -19,7 +19,9 @@ const Footer: React.FC = () => {
           <div className="mb-4 flex items-center">
             <TravelWorldIcon />
           </div>
-          <p className="text-sm leading-relaxed">{t("footer.info")}</p>
+          <p className="hidden text-sm leading-relaxed lg:block">
+            {t("footer.info")}
+          </p>
         </div>
 
         <div className="flex flex-col gap-8 md:flex-row">
@@ -60,6 +62,9 @@ const Footer: React.FC = () => {
             <ul className="flex flex-col space-y-2">
               <NavLink to={ADDITION_PATH.GAME} className={navItem()}>
                 {t("footer.quiz")}
+              </NavLink>
+              <NavLink to={ADDITION_PATH.PERSONALITY} className={navItem()}>
+                {t("footer.personality")}
               </NavLink>
             </ul>
           </div>

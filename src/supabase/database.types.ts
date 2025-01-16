@@ -73,6 +73,7 @@ export type Database = {
           quiz_completed: boolean | null;
           surname_en: string | null;
           surname_ka: string | null;
+          type: string | null;
           updated_at: string | null;
           username: string | null;
         };
@@ -88,6 +89,7 @@ export type Database = {
           quiz_completed?: boolean | null;
           surname_en?: string | null;
           surname_ka?: string | null;
+          type?: string | null;
           updated_at?: string | null;
           username?: string | null;
         };
@@ -103,6 +105,7 @@ export type Database = {
           quiz_completed?: boolean | null;
           surname_en?: string | null;
           surname_ka?: string | null;
+          type?: string | null;
           updated_at?: string | null;
           username?: string | null;
         };
