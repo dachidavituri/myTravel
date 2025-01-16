@@ -1,9 +1,9 @@
 export type TravelType =
-  | "cultural"
-  | "historical"
-  | "educational"
-  | "luxury"
-  | "adventurous";
+  | "Cultural"
+  | "Historical"
+  | "Educational"
+  | "Luxury"
+  | "Adventurous";
 
 interface AnswerOption {
   answerText: string;

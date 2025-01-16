@@ -5,12 +5,15 @@ import { useFillProfileType } from "@/react-query/mutation/account";
 import { useAtomValue } from "jotai";
 import { loginAtom } from "@/store";
 import { FillProfileType } from "@/supabase/account/index.types";
+import { useQueryClient } from "react-query";
+import { TOURS_QUERY_KEYS } from "@/react-query/query/tours/enum";
 
 const Questions: React.FC<QuestionsProps> = ({
   onAnswers,
   onComplete,
   travelType,
 }) => {
+  const queryClient = useQueryClient();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
   const user = useAtomValue(loginAtom);
@@ -23,7 +26,14 @@ const Questions: React.FC<QuestionsProps> = ({
         tourType: travelType,
         userId: user.user.id,
       };
-      handleTypeUpdate(payload);
+      handleTypeUpdate(payload, {
+        onSuccess: () => {
+          queryClient.invalidateQueries([
+            TOURS_QUERY_KEYS.RECCOMEND,
+            payload.tourType,
+          ]);
+        },
+      });
     }
   };
 

@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from "react-query";
 
-import { getTours, getToursById } from "@/supabase/tours";
+import { getReccomendTour, getTours, getToursById } from "@/supabase/tours";
 import { TOURS_QUERY_KEYS } from "./enum";
 import { ToursResponse } from "@/supabase/tours/index.types";
 import { getCurrency } from "@/api/tours";
@@ -23,6 +23,15 @@ export const useGetTourById = (
   return useQuery<ToursResponse, Error>({
     queryKey: [TOURS_QUERY_KEYS.DETAILTOUR, id],
     queryFn: () => getToursById(id),
+  });
+};
+
+export const useGetReccomendTour = (
+  tour: string,
+): UseQueryResult<ToursResponse[] | null, Error> => {
+  return useQuery<ToursResponse[] | null, Error>({
+    queryKey: [TOURS_QUERY_KEYS.RECCOMEND, tour],
+    queryFn: () => getReccomendTour(tour),
   });
 };
 

@@ -53,6 +53,19 @@ export const getTours = async ({
   return data as ToursResponse[];
 };
 
+export const getReccomendTour = async (
+  type: string,
+): Promise<ToursResponse[] | null> => {
+  const { data, error } = await supabase
+    .from("tours")
+    .select("*")
+    .eq("type", type);
+  if (error) {
+    throw new Error(`Error fetching reccoment tours, ${error.message}`);
+  }
+  return data;
+};
+
 export const editTour = async (
   tour: Omit<AddTourTypes, "img">,
   id: number,

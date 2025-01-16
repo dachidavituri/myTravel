@@ -2,6 +2,8 @@ import AgencyDescription from "#/home/components/agecy-description";
 import Gallery from "#/home/components/gallery";
 import Videos from "#/home/components/videos";
 import Services from "#/home/components/services";
+import Reccomend from "#/home/components/reccomend";
+
 const HomeView: React.FC = () => {
   return (
     <div className="p-6 md:p-12">
@@ -10,6 +12,7 @@ const HomeView: React.FC = () => {
         <Videos />
       </section>
       <Services />
+      <Reccomend />
       <Gallery />
     </div>
   );

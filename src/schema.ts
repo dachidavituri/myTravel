@@ -71,7 +71,7 @@ export const TourSchema = z.object({
   price: z.number().min(1, "tour.priceErr"),
   duration: z.number().min(1, "tour.durationErr"),
   type: z.enum(
-    ["adventure", "cultural", "luxury", "Educational", "Historical"],
+    ["Adventure", "Cultural", "Luxury", "Educational", "Historical"],
     {
       errorMap: () => ({ message: "tour.typeErr" }),
     },

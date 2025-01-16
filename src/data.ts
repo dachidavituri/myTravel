@@ -93,11 +93,11 @@ export const questions: Question[] = [
   {
     questionText: "What is your ideal vacation activity?",
     answerOptions: [
-      { answerText: "Exploring ancient ruins", travelType: "historical" },
-      { answerText: "Relaxing at a luxury resort", travelType: "luxury" },
+      { answerText: "Exploring ancient ruins", travelType: "Historical" },
+      { answerText: "Relaxing at a luxury resort", travelType: "Luxury" },
       {
         answerText: "Hiking through national parks",
-        travelType: "adventurous",
+        travelType: "Adventurous",
       },
     ],
   },
@@ -106,15 +106,15 @@ export const questions: Question[] = [
     answerOptions: [
       {
         answerText: "A bustling city with rich culture",
-        travelType: "cultural",
+        travelType: "Cultural",
       },
       {
         answerText: "A historic city with ancient landmarks",
-        travelType: "historical",
+        travelType: "Historical",
       },
       {
         answerText: "A vibrant city with a focus on technology and innovation",
-        travelType: "educational",
+        travelType: "Educational",
       },
     ],
   },
@@ -123,23 +123,23 @@ export const questions: Question[] = [
     answerOptions: [
       {
         answerText: "Boutique hotels with local charm",
-        travelType: "cultural",
+        travelType: "Cultural",
       },
-      { answerText: "All-inclusive luxury resorts", travelType: "luxury" },
+      { answerText: "All-inclusive luxury resorts", travelType: "Luxury" },
       {
         answerText: "Eco-friendly lodges in remote areas",
-        travelType: "adventurous",
+        travelType: "Adventurous",
       },
     ],
   },
   {
     questionText: "How do you like to spend your evenings while traveling?",
     answerOptions: [
-      { answerText: "Attending cultural performances", travelType: "cultural" },
-      { answerText: "Dining at gourmet restaurants", travelType: "luxury" },
+      { answerText: "Attending cultural performances", travelType: "Cultural" },
+      { answerText: "Dining at gourmet restaurants", travelType: "Luxury" },
       {
         answerText: "Exploring local nightlife and music scenes",
-        travelType: "adventurous",
+        travelType: "Adventurous",
       },
     ],
   },
@@ -148,15 +148,15 @@ export const questions: Question[] = [
     answerOptions: [
       {
         answerText: "Guided tours with historical insights",
-        travelType: "historical",
+        travelType: "Historical",
       },
       {
         answerText: "Private jets and chauffeur-driven cars",
-        travelType: "luxury",
+        travelType: "Luxury",
       },
       {
         answerText: "Backpacking and public transit",
-        travelType: "adventurous",
+        travelType: "Adventurous",
       },
     ],
   },
