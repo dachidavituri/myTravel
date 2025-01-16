@@ -1,5 +1,10 @@
 import { supabase } from "..";
-import { FillProfilePoints, Profile, ProfileForm } from "./index.types";
+import {
+  FillProfilePoints,
+  FillProfileType,
+  Profile,
+  ProfileForm,
+} from "./index.types";
 
 export const fillProfileInfo = async (payload: ProfileForm) => {
   const { data, error } = await supabase.from("profiles").upsert(payload);
@@ -24,6 +29,20 @@ export const fillProfilePoint = async (payload: FillProfilePoints) => {
     throw new Error(error.message);
   }
 
+  return data;
+};
+
+export const fillProfileType = async (payload: FillProfileType) => {
+  const { userId, tourType } = payload;
+
+  const { data, error } = await supabase
+    .from("profiles")
+    .update({ type: tourType })
+    .eq("id", userId);
+
+  if (error) {
+    throw new Error(error.message);
+  }
   return data;
 };
 

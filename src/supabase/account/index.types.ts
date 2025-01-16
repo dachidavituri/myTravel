@@ -29,3 +29,8 @@ export interface FillProfilePoints {
   userId: string;
   quizCompleted: boolean;
 }
+
+export interface FillProfileType {
+  userId: string;
+  tourType: string;
+}

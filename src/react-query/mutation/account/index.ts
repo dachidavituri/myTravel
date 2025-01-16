@@ -1,5 +1,13 @@
-import { fillProfileInfo, fillProfilePoint } from "@/supabase/account";
-import { FillProfilePoints, ProfileForm } from "@/supabase/account/index.types";
+import {
+  fillProfileInfo,
+  fillProfilePoint,
+  fillProfileType,
+} from "@/supabase/account";
+import {
+  FillProfilePoints,
+  FillProfileType,
+  ProfileForm,
+} from "@/supabase/account/index.types";
 import {
   useMutation,
   UseMutationOptions,
@@ -26,5 +34,17 @@ export const useFillProfilePoint = (): UseMutationResult<
   return useMutation<null, Error, FillProfilePoints, unknown>({
     mutationKey: [PROFILE_MUTATION_KEYS.FILLPOINTS],
     mutationFn: (payload: FillProfilePoints) => fillProfilePoint(payload),
+  });
+};
+
+export const useFillProfileType = (): UseMutationResult<
+  null,
+  Error,
+  FillProfileType,
+  unknown
+> => {
+  return useMutation<null, Error, FillProfileType, unknown>({
+    mutationKey: [PROFILE_MUTATION_KEYS.FILLPOINTS],
+    mutationFn: (payload: FillProfileType) => fillProfileType(payload),
   });
 };

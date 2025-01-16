@@ -16,10 +16,11 @@ export interface Question {
 }
 
 export interface ResultProps {
-  answers: TravelType[];
+  travelType: TravelType | undefined;
 }
 
 export interface QuestionsProps {
+  travelType: TravelType | undefined;
   onAnswers: React.Dispatch<React.SetStateAction<TravelType[]>>;
   onComplete: React.Dispatch<React.SetStateAction<boolean>>;
 }

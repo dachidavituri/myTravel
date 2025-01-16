@@ -1,18 +1,43 @@
 import { questions } from "@/data";
 import React, { useState } from "react";
 import { QuestionsProps, TravelType } from "../index.types";
+import { useFillProfileType } from "@/react-query/mutation/account";
+import { useAtomValue } from "jotai";
+import { loginAtom } from "@/store";
+import { FillProfileType } from "@/supabase/account/index.types";
 
-const Questions: React.FC<QuestionsProps> = ({ onAnswers, onComplete }) => {
+const Questions: React.FC<QuestionsProps> = ({
+  onAnswers,
+  onComplete,
+  travelType,
+}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+
+  const user = useAtomValue(loginAtom);
+
+  const { mutate: handleTypeUpdate } = useFillProfileType();
+
+  const handleUpdate = () => {
+    if (user?.user.id && travelType) {
+      const payload: FillProfileType = {
+        tourType: travelType,
+        userId: user.user.id,
+      };
+      handleTypeUpdate(payload);
+    }
+  };
+
   const handleAnswerOptionClick = (travelType: TravelType): void => {
     onAnswers((prevAnswers) => [...prevAnswers, travelType]);
     const nextQuestion = currentQuestionIndex + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestionIndex(nextQuestion);
     } else {
+      handleUpdate();
       onComplete(true);
     }
   };
+
   return (
     <div className="w-full rounded-lg bg-white p-8 shadow-xl sm:w-96 lg:w-1/2 xl:w-1/3">
       <h2 className="mb-8 text-center text-4xl font-semibold text-black sm:text-3xl">
