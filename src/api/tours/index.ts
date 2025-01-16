@@ -4,7 +4,7 @@ import { ExchangeRateAPIResponse } from "./index.types";
 export const getCurrency = async () => {
   try {
     const response = await axios.get<ExchangeRateAPIResponse>(
-      `https://v6.exchangerate-api.com/v6/ac3f7c68ee27ce2162e68520/latest/USD`,
+      `https://v6.exchangerate-api.com/v6/${import.meta.env.VITE_CURRENCY_API_KEY}/latest/USD`,
     );
     return response.data;
   } catch (error) {

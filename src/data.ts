@@ -76,3 +76,14 @@ export const tourDefaultValue = {
   city: "",
 };
 export const videos = [Nature, France, Prague];
+
+export const items = [
+  {
+    key: "1",
+    label: "Favourite Tour",
+  },
+  {
+    key: "2",
+    label: "Booked Tour",
+  },
+];

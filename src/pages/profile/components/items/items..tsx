@@ -1,8 +1,9 @@
 import { useGetProfile } from "@/react-query/query/account";
 import { loginAtom } from "@/store";
 import { useAtomValue } from "jotai";
+import { ProfileProps } from "../index.types";
 
-const Items: React.FC = () => {
+const Items: React.FC<ProfileProps> = ({ tData }) => {
   const user = useAtomValue(loginAtom);
 
   const { data } = useGetProfile({
@@ -19,8 +20,8 @@ const Items: React.FC = () => {
         <p className="text-sm text-gray-500">Booked</p>
       </div>
       <div className="text-center">
-        <p className="text-xl font-bold">5</p>
-        <p className="text-sm text-gray-500">Favorite</p>
+        <p className="text-xl font-bold">{tData?.length}</p>
+        <p className="text-sm text-gray-500">Favourite</p>
       </div>
       <div className="text-center">
         <p className="text-xl font-bold">{points}</p>

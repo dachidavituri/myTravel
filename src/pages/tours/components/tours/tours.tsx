@@ -29,7 +29,6 @@ const Tours: React.FC = () => {
   const { data: toursList } = useGetTours({
     search: debouncedSearched || "",
   });
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedTour, setSelectedTour] = useState<SelectedTour>(null);
 
@@ -69,7 +68,6 @@ const Tours: React.FC = () => {
             onDelete={deleteTourHandler}
           />
         ))}
-
         <Modal
           title={t("tour.edit")}
           open={isModalVisible}

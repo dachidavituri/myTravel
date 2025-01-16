@@ -1,7 +1,4 @@
-interface InfoRowProps {
-  label: string;
-  value?: string | null;
-}
+import { InfoRowProps } from "../index.types";
 
 const InfoRow: React.FC<InfoRowProps> = ({ label, value }) => (
   <div className="flex items-center justify-between gap-5">
