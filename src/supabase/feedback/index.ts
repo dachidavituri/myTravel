@@ -4,6 +4,7 @@ import {
   deleteFeedbackPayload,
   FeedbackData,
   FeedbackResponse,
+  updateFeedBackPayload,
 } from "./index.types";
 
 export const addFeedback = async ({
@@ -80,4 +81,24 @@ export const deleteFeedback = async ({
     }
     return data;
   }
+};
+
+export const editFeedback = async ({
+  feedbackId,
+  comment,
+  stars,
+}: updateFeedBackPayload) => {
+  const { data, error } = await supabase
+    .from("feedback")
+    .update({
+      comment: comment,
+      stars: stars,
+    })
+    .eq("id", feedbackId);
+
+  if (error) {
+    console.log("Error updating feedback:", error);
+  }
+
+  return data;
 };

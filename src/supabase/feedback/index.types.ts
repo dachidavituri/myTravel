@@ -20,12 +20,18 @@ export interface deleteFeedbackPayload {
   userId: string | undefined;
 }
 
+export interface updateFeedBackPayload {
+  feedbackId: number;
+  comment: string;
+  stars: number;
+}
+
 interface Profile {
   username: string | null;
   avatar_url: string | null;
 }
 
-interface Feedback {
+export interface Feedback {
   id: number;
   comment: string | null;
   stars: number | null;

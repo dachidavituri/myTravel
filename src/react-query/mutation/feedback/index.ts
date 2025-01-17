@@ -1,9 +1,10 @@
 import { useMutation, UseMutationResult } from "react-query";
 import { FEEDBACK_MUTATION_KEYS } from "./enum";
-import { addFeedback, deleteFeedback } from "@/supabase/feedback";
+import { addFeedback, deleteFeedback, editFeedback } from "@/supabase/feedback";
 import {
   addFeedbackPayload,
   deleteFeedbackPayload,
+  updateFeedBackPayload,
 } from "@/supabase/feedback/index.types";
 
 export const useAddFeedback = (): UseMutationResult<
@@ -15,6 +16,18 @@ export const useAddFeedback = (): UseMutationResult<
   return useMutation<null, Error, addFeedbackPayload, unknown>({
     mutationKey: [FEEDBACK_MUTATION_KEYS.ADD_FEEDBACK],
     mutationFn: (payload: addFeedbackPayload) => addFeedback(payload),
+  });
+};
+
+export const useUpdateFeedback = (): UseMutationResult<
+  null,
+  Error,
+  updateFeedBackPayload,
+  unknown
+> => {
+  return useMutation<null, Error, updateFeedBackPayload, unknown>({
+    mutationKey: [FEEDBACK_MUTATION_KEYS.EDIT_FEEDBACK],
+    mutationFn: (payload: updateFeedBackPayload) => editFeedback(payload),
   });
 };
 
