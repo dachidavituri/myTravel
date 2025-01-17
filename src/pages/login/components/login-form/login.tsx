@@ -17,7 +17,7 @@ import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import Error from "@/components/error-message";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { Link, useNavigate } from "react-router";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { useLogin } from "@/react-query/mutation/auth";
 import { useTranslation } from "react-i18next";
 

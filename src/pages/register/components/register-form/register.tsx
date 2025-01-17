@@ -17,7 +17,7 @@ import { registerDefaultValues } from "@/data";
 import Error from "@/components/error-message";
 import { Link, useNavigate } from "react-router";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { useRegister } from "@/react-query/mutation/auth";
 import { useTranslation } from "react-i18next";
 

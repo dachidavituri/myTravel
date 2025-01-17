@@ -4,7 +4,7 @@ import { formatDate } from "@/lib/format-date";
 import "dayjs/locale/ka";
 import "dayjs/locale/en";
 import dayjs from "dayjs";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { HeartTwoTone } from "@ant-design/icons";
 import {
   useAddToFavourite,

@@ -4,7 +4,7 @@ import { loginAtom } from "@/store";
 import { useAtomValue } from "jotai";
 import { sectionHeader, title } from "../gallery/gallery-cva";
 import { Link } from "react-router";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 
 const Reccomend: React.FC = () => {

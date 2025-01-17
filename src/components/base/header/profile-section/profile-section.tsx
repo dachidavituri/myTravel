@@ -2,15 +2,21 @@ import { useLogOut } from "@/react-query/mutation/auth";
 import type { MenuProps } from "antd";
 import { Dropdown, Space, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
+import { ADDITION_PATH, MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { useGetProfile } from "@/react-query/query/account";
 import { useAtomValue } from "jotai";
 import { loginAtom } from "@/store";
 
 const ProfileSection: React.FC = () => {
-  const { mutate: handleLogOut } = useLogOut();
+  const navigate = useNavigate();
+  const { mutate: logOut } = useLogOut();
+
+  const handleLogOut = () => {
+    logOut();
+    navigate(MAIN_PATH.HOME);
+  };
 
   const { t } = useTranslation();
 

@@ -1,4 +1,4 @@
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
 import { Button } from "antd";
 import { Link } from "react-router";

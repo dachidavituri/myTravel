@@ -1,4 +1,4 @@
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { useGetGalleryImages } from "@/react-query/query/gallery";
 import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
 import { Button } from "antd";

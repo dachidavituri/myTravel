@@ -15,7 +15,7 @@ import { z } from "zod";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 
 type EditProfile = z.infer<typeof profileSchema>;
 

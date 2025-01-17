@@ -2,7 +2,7 @@ import { DeleteTwoTone, EditTwoTone } from "@ant-design/icons";
 import { formatDate } from "@/lib/format-date";
 import { TourCardProps } from "../../index.types";
 import { Link } from "react-router";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { useGetProfile } from "@/react-query/query/account";
 import { loginAtom } from "@/store";

@@ -1,4 +1,4 @@
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { loginAtom } from "@/store";
 import { useAtomValue } from "jotai";

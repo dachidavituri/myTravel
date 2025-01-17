@@ -2,7 +2,7 @@ import Card from "./card";
 import weatherImg from "!/reshot-icon-weather-EJPNZMV8U5.svg";
 import EiffelImg from "!/reshot-icon-eiffel-tower-E6NB9JDQ5X.svg";
 import { Link } from "react-router";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { ADDITION_PATH, MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { useTranslation } from "react-i18next";
 const Services: React.FC = () => {

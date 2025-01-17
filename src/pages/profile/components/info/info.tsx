@@ -1,4 +1,4 @@
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { useGetProfile } from "@/react-query/query/account";
 import { loginAtom } from "@/store";
 import { useAtomValue } from "jotai";

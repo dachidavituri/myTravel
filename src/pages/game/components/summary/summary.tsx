@@ -1,7 +1,7 @@
 import { QuizSummaryProps } from "../index.types";
 import { Modal } from "antd";
 import { useNavigate } from "react-router";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
 import { useFillProfilePoint } from "@/react-query/mutation/account";
 import { useAtomValue } from "jotai";

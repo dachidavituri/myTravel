@@ -7,7 +7,7 @@ import { useDeleteTour, useEditTour } from "@/react-query/mutation/tours";
 import { Modal } from "antd";
 import { useDebounce } from "@uidotdev/usehooks";
 import { ToursResponse } from "@/supabase/tours/index.types";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
 import TourCard from "./card";
 import EditTourForm from "./edit";
 import { EditTour, SelectedTour } from "../index.types";

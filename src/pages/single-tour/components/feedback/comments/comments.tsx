@@ -7,11 +7,12 @@ import "dayjs/locale/ka";
 import "dayjs/locale/en";
 import dayjs from "dayjs";
 import { DeleteTwoTone, UserOutlined } from "@ant-design/icons";
-import { Avatar, message, Rate } from "antd";
+import { Avatar, message, Pagination, Rate } from "antd";
 import { useAtomValue } from "jotai";
 import { useQueryClient } from "react-query";
 import { useParams } from "react-router";
-import useCurrentLang from "@/i18n/current-lang";
+import useCurrentLang from "@/i18n/hooks/current-lang";
+import usePagination from "@/hooks/pagination/usePagination";
 
 const Comments: React.FC = () => {
   const { id } = useParams();
@@ -37,10 +38,16 @@ const Comments: React.FC = () => {
     });
   };
 
+  const {
+    currentPage,
+    paginatedData: paginatedFeedbacks,
+    handlePageChange,
+  } = usePagination({ data: feedbacksTour, pageSize: 3 });
+
   return (
     <div className="mt-8 w-full max-w-4xl space-y-6">
       {feedbacksTour &&
-        feedbacksTour.map((feedback) => {
+        paginatedFeedbacks.map((feedback) => {
           const { profiles, stars, comment, user_id, created_at } =
             feedback || {};
           const { avatar_url, username } = profiles || {};
@@ -86,6 +93,13 @@ const Comments: React.FC = () => {
             </div>
           );
         })}
+      <Pagination
+        showQuickJumper
+        current={currentPage}
+        total={feedbacksTour?.length || 0}
+        pageSize={3}
+        onChange={handlePageChange}
+      />
     </div>
   );
 };
