@@ -4,7 +4,9 @@ import Loading from "@/components/loading";
 import InfoImg from "#/single-tour/components/info-img";
 import Info from "#/single-tour/components/info";
 import Map from "#/single-tour/components/map";
-import Currency from "#/single-tour/components/currency";
+import Add from "#/single-tour/components/feedback/add";
+import Comments from "#/single-tour/components/feedback/comments";
+// import Currency from "#/single-tour/components/currency";
 
 const DetailTourView: React.FC = () => {
   const { id } = useParams();
@@ -19,15 +21,19 @@ const DetailTourView: React.FC = () => {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b p-4">
       <div className="mt-10 w-full max-w-4xl overflow-hidden rounded-lg bg-white shadow-lg transition-all hover:shadow-2xl">
         <InfoImg detailTour={detailTour} />
         <div className="p-6">
           <Info detailTour={detailTour} />
-          <Currency detailTour={detailTour} />
+          {/* <Currency detailTour={detailTour} /> */}
           <Map detailTour={detailTour} />
         </div>
       </div>
+      <div className="mt-8 w-full max-w-4xl">
+        <Add />
+      </div>
+      <Comments />
     </div>
   );
 };

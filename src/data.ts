@@ -161,3 +161,5 @@ export const questions: Question[] = [
     ],
   },
 ];
+
+export const addFeedbackDefaultValues = { comment: "", stars: 0 };

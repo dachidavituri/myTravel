@@ -19,7 +19,6 @@ const Reccomend: React.FC = () => {
   const tourType = data?.[0]?.type ?? "";
 
   const { data: reccomendTour } = useGetReccomendTour(tourType);
-  console.log(reccomendTour);
 
   return (
     <>

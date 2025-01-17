@@ -3,6 +3,7 @@ import Gallery from "#/home/components/gallery";
 import Videos from "#/home/components/videos";
 import Services from "#/home/components/services";
 import Reccomend from "#/home/components/reccomend";
+import FeedBacks from "#/home/components/feedbacks";
 
 const HomeView: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const HomeView: React.FC = () => {
       <Services />
       <Reccomend />
       <Gallery />
+      <FeedBacks />
     </div>
   );
 };
