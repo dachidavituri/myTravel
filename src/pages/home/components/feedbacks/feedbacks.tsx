@@ -19,7 +19,7 @@ const FeedBacks: React.FC = () => {
         </span>
       </div>
       <h1 className={title()}>See Customer Reccomendation</h1>
-      <div className="mt-10 flex flex-wrap gap-4">
+      <div className="mt-10 flex flex-wrap gap-4 gap-y-10">
         {allFeedbacks.map((feedback) => (
           <div
             key={feedback.id}
@@ -30,7 +30,7 @@ const FeedBacks: React.FC = () => {
                 size="large"
                 src={feedback?.profiles?.avatar_url || undefined}
                 icon={!feedback?.profiles?.avatar_url && <UserOutlined />}
-                className="h-16 w-16 border-4 border-white bg-white"
+                className="h-16 w-16 border-4"
               />
             </div>
 
