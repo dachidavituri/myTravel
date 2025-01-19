@@ -41,7 +41,7 @@ const Leaderboard: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <p className="text-lg font-semibold">{username}</p>
+                  <p className="text-lg font-semibold text-black">{username}</p>
                   <p className="text-sm text-gray-500">{quizStatus}</p>
                 </div>
               </div>

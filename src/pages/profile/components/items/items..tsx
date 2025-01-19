@@ -19,15 +19,15 @@ const Items: React.FC<ProfileProps> = ({ tData }) => {
   return (
     <div className="mt-4 flex gap-8">
       <div className="text-center">
-        <p className="text-xl font-bold">2</p>
+        <p className="text-xl font-bold text-black">2</p>
         <p className="text-sm text-gray-500">{t("profile.book")}</p>
       </div>
       <div className="text-center">
-        <p className="text-xl font-bold">{tData?.length}</p>
+        <p className="text-xl font-bold text-black">{tData?.length}</p>
         <p className="text-sm text-gray-500">{t("profile.favourite")}</p>
       </div>
       <div className="text-center">
-        <p className="text-xl font-bold">{points}</p>
+        <p className="text-xl font-bold text-black">{points}</p>
         <p className="text-sm text-gray-500">{t("profile.points")}</p>
       </div>
     </div>

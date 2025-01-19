@@ -57,7 +57,9 @@ const Currency: React.FC<TourProps> = ({ detailTour }) => {
             onClick={() => setSelectedCurrency(currency as CurrencyType)}
           >
             {currencyIcons[currency as CurrencyType]}
-            <span className="capitalize">{currency.toUpperCase()}</span>
+            <span className="font-semibold capitalize text-black">
+              {currency.toUpperCase()}
+            </span>
           </button>
         ))}
       </div>

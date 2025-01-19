@@ -22,7 +22,7 @@ const FeedBacks: React.FC = () => {
             {allFeedbacks.map((feedback) => (
               <div
                 key={feedback.id}
-                className="relative w-full rounded-lg border border-gray-200 bg-white px-2 pb-2 pt-6 shadow-lg sm:w-1/2 md:w-1/3 lg:w-1/4"
+                className="relative w-full rounded-lg border border-gray-200 bg-white px-2 pb-2 pt-6 shadow-lg dark:bg-slate-200 sm:w-1/2 md:w-1/3 lg:w-1/4"
               >
                 <div className="absolute left-1/2 top-[-35px] -translate-x-1/2 transform">
                   <Avatar

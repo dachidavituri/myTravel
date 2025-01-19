@@ -22,7 +22,7 @@ const PersonalityView: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4">
       {!quizCompleted ? (
         <Questions
           onAnswers={setAnswers}

@@ -15,9 +15,10 @@ const Favourite: React.FC<ProfileProps> = ({ tData }) => {
   return (
     <div className="mx-auto mt-10 max-w-6xl">
       <Menu
+        theme="dark"
         mode="horizontal"
         defaultSelectedKeys={["1"]}
-        className="dark:bg-black"
+        className=""
         items={items}
       />
 

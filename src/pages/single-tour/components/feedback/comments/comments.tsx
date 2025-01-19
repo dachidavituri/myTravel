@@ -13,7 +13,7 @@ import { DeleteTwoTone, EditTwoTone, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, message, Pagination, Rate } from "antd";
 import { useAtomValue } from "jotai";
 import { useQueryClient } from "react-query";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import useCurrentLang from "@/i18n/hooks/current-lang";
 import usePagination from "@/hooks/pagination/usePagination";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -33,15 +33,23 @@ const Comments: React.FC = () => {
   const queryClient = useQueryClient();
   const currentLang = useCurrentLang();
   dayjs.locale(currentLang);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialPage = Number(searchParams.get("page")) || 1;
 
   const { data: feedbacksTour } = useGetFeedBacksByTour(Number(id));
   const { mutate: deleteFeedback } = useDeleteFeedback();
+  const { mutate: handleEditFeedBack } = useUpdateFeedback();
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({ page: String(page) });
+    handlePageChangeLocal(page);
+  };
 
   const {
     currentPage,
     paginatedData: paginatedFeedbacks,
-    handlePageChange,
-  } = usePagination({ data: feedbacksTour, pageSize: 3 });
+    handlePageChange: handlePageChangeLocal,
+  } = usePagination({ data: feedbacksTour, pageSize: 3, initialPage });
 
   const {
     control,
@@ -86,8 +94,6 @@ const Comments: React.FC = () => {
 
   const cancelEditFeedback = () => setEditableFeedbackId(null);
 
-  const { mutate: handleEditFeedBack } = useUpdateFeedback();
-
   const onSubmit: SubmitHandler<FeedbackTypes> = (data) => {
     const payload = {
       feedbackId: editableFeedbackId as number,
@@ -126,7 +132,9 @@ const Comments: React.FC = () => {
 
         <div className="flex-1">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold sm:text-base">{username}</p>
+            <p className="text-sm font-semibold text-black sm:text-base">
+              {username || "Unknown User"}
+            </p>
             {isEditable ? (
               <Controller
                 name="stars"
@@ -150,7 +158,7 @@ const Comments: React.FC = () => {
                     <textarea
                       {...field}
                       rows={2}
-                      className="w-full rounded border border-gray-300 p-2"
+                      className="w-full rounded border border-gray-300 p-2 text-black"
                     />
                   )}
                 />
@@ -222,6 +230,7 @@ const Comments: React.FC = () => {
           total={feedbacksTour?.length || 0}
           pageSize={3}
           onChange={handlePageChange}
+          className="dark:text-white"
         />
       )}
     </div>

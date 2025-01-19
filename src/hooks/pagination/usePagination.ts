@@ -1,8 +1,25 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useSearchParams } from "react-router";
 import { UsePaginationProps } from "./index.types";
 
-const usePagination = <T>({ data, pageSize }: UsePaginationProps<T>) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const usePagination = <T>({
+  data,
+  pageSize,
+  initialPage = 1,
+}: UsePaginationProps<T>) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get("page")) || initialPage,
+  );
+
+  useEffect(() => {
+    if (currentPage === 1) {
+      searchParams.delete("page");
+      setSearchParams(searchParams, { replace: true });
+    } else {
+      setSearchParams({ page: String(currentPage) }, { replace: true });
+    }
+  }, [currentPage, setSearchParams, searchParams]);
 
   const paginatedData = useMemo(() => {
     if (data) {
