@@ -6,8 +6,10 @@ import { sectionHeader, title } from "../gallery/gallery-cva";
 import { Link } from "react-router";
 import useCurrentLang from "@/i18n/hooks/current-lang";
 import { MAIN_PATH } from "@/routes/default-layout/index.enum";
+import { useTranslation } from "react-i18next";
 
 const Reccomend: React.FC = () => {
+  const { t } = useTranslation();
   const currentLang = useCurrentLang();
   const user = useAtomValue(loginAtom);
 
@@ -26,10 +28,10 @@ const Reccomend: React.FC = () => {
         <div className="mt-3 text-left">
           <div className={sectionHeader()}>
             <span className="rounded-full bg-orange-300 px-4 py-2 font-bold text-orange-900">
-              Tours
+              {t("home.tours")}
             </span>
           </div>
-          <h1 className={title()}>Recommendation Tours</h1>
+          <h1 className={title()}>{t("home.recTours")}</h1>
           <div className="flex flex-wrap justify-start gap-6">
             {reccomendTour &&
               reccomendTour.map((tour) => {

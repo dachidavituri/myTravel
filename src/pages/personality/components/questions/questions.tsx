@@ -7,6 +7,11 @@ import { loginAtom } from "@/store";
 import { FillProfileType } from "@/supabase/account/index.types";
 import { useQueryClient } from "react-query";
 import { TOURS_QUERY_KEYS } from "@/react-query/query/tours/enum";
+import {
+  buttonStyles,
+  containerStyles,
+  questionHeadingStyles,
+} from "./questions-cva";
 
 const Questions: React.FC<QuestionsProps> = ({
   onAnswers,
@@ -49,8 +54,8 @@ const Questions: React.FC<QuestionsProps> = ({
   };
 
   return (
-    <div className="w-full rounded-lg bg-white p-8 shadow-xl sm:w-96 lg:w-1/2 xl:w-1/3">
-      <h2 className="mb-8 text-center text-4xl font-semibold text-black sm:text-3xl">
+    <div className={containerStyles({ size: "lg" })}>
+      <h2 className={questionHeadingStyles({ size: "lg" })}>
         {questions[currentQuestionIndex].questionText}
       </h2>
       <div className="space-y-6">
@@ -58,7 +63,7 @@ const Questions: React.FC<QuestionsProps> = ({
           <button
             key={index}
             onClick={() => handleAnswerOptionClick(option.travelType)}
-            className="w-full transform rounded-lg bg-gray-200 p-5 text-left text-lg text-black transition duration-300 ease-in-out hover:scale-105 hover:bg-gray-300 focus:outline-none sm:text-base"
+            className={buttonStyles({ state: "default", size: "lg" })}
           >
             {option.answerText}
           </button>
@@ -67,4 +72,5 @@ const Questions: React.FC<QuestionsProps> = ({
     </div>
   );
 };
+
 export default Questions;

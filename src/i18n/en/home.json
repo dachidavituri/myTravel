@@ -9,5 +9,9 @@
   "serve": "What We Serve",
   "offer": "We offer our best services",
   "weatherDesc": "Get accurate weather forecasts for your destination to plan your trip better.",
-  "tourDesc": "Explore exclusive tour packages to make your journey memorable and exciting."
+  "tourDesc": "Explore exclusive tour packages to make your journey memorable and exciting.",
+  "recTours": "Recommendation Tours",
+  "tours": "Tours",
+  "customerFeed": "Customer FeedBack",
+  "seeFeed": "See Customer Reccomendation"
 }

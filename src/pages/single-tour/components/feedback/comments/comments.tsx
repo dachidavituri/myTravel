@@ -24,8 +24,10 @@ import { FeedbackTypes } from "../../index.types";
 import { useState } from "react";
 import { Feedback } from "@/supabase/feedback/index.types";
 import Error from "@/components/error-message";
+import { useTranslation } from "react-i18next";
 
 const Comments: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const user = useAtomValue(loginAtom);
   const queryClient = useQueryClient();
@@ -152,7 +154,9 @@ const Comments: React.FC = () => {
                     />
                   )}
                 />
-                {errors.comment && <Error message={errors.comment.message} />}
+                {errors.comment && (
+                  <Error message={t(`${errors.comment.message}`)} />
+                )}
               </div>
             ) : (
               <p className="text-sm text-gray-600 sm:text-base">{comment}</p>
@@ -185,7 +189,7 @@ const Comments: React.FC = () => {
           {isEditable && (
             <div className="flex gap-3">
               <Button className="mt-2" onClick={cancelEditFeedback}>
-                Cancel
+                {t("detail.cancelFeed")}
               </Button>
               <Button
                 color="danger"
@@ -195,7 +199,7 @@ const Comments: React.FC = () => {
                 htmlType="submit"
                 onClick={handleSubmit(onSubmit)}
               >
-                Save
+                {t("detail.editFeedback")}
               </Button>
             </div>
           )}

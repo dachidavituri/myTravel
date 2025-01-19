@@ -83,11 +83,9 @@ export const TourSchema = z.object({
 export const TourSchemaWithoutImg = TourSchema.omit({ img: true });
 
 export const feedbackShema = z.object({
-  comment: z
-    .string()
-    .min(15, { message: "Comment should be contain min 15 character" }),
+  comment: z.string().min(15, { message: "detail.comment" }),
   stars: z
     .number()
-    .min(0.5, { message: "Stars should be at least 0" })
-    .max(5, { message: "Stars should be not exceed 5" }),
+    .min(0.5, { message: "detail.starsMin" })
+    .max(5, { message: "detail.starsMax" }),
 });

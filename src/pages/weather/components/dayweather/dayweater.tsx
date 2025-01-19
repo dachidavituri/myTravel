@@ -2,11 +2,14 @@ import Loading from "@/components/loading";
 import React from "react";
 import { FaSun, FaCloud, FaCloudSun, FaSnowflake } from "react-icons/fa";
 import { WeatherDisplayProps } from "../index.types";
+import { useTranslation } from "react-i18next";
 
 const WeatherDay: React.FC<WeatherDisplayProps> = ({
   isLoading,
   weatherData,
 }) => {
+  const { t } = useTranslation();
+
   const getWeatherIcon = (temp: number) => {
     if (temp < 0) return <FaSnowflake className="text-blue-200" />;
     if (temp <= 10) return <FaCloud className="text-gray-400" />;
@@ -23,7 +26,7 @@ const WeatherDay: React.FC<WeatherDisplayProps> = ({
   }
 
   if (!weatherData) {
-    return <div>No weather data available</div>;
+    return <div>{t("weather.noData")}</div>;
   }
 
   return (

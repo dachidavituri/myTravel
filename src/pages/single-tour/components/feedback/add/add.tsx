@@ -12,17 +12,19 @@ import { useAtomValue } from "jotai";
 import { loginAtom } from "@/store";
 import { useQueryClient } from "react-query";
 import { FEEDBACK_QUERY_KEYS } from "@/react-query/query/feedback/enum";
+import { useTranslation } from "react-i18next";
 
 const Add: React.FC = () => {
   const { id } = useParams();
   const queryClient = useQueryClient();
   const user = useAtomValue(loginAtom);
+  const { t } = useTranslation();
 
   const {
     control,
     handleSubmit,
     reset,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors },
   } = useForm<FeedbackTypes>({
     resolver: zodResolver(feedbackShema),
     defaultValues: addFeedbackDefaultValues,
@@ -43,7 +45,7 @@ const Add: React.FC = () => {
           FEEDBACK_QUERY_KEYS.FEEDBACKS_TOUR,
           payload.tourId,
         ]);
-        message.success("Commnet add successfully");
+        message.success("Comment add successfully");
         reset();
       },
     });
@@ -61,23 +63,18 @@ const Add: React.FC = () => {
               <TextArea {...field} placeholder="Add Comment" />
             )}
           />
-          {errors.comment && <Error message={errors.comment.message} />}
+          {errors.comment && <Error message={t(`${errors.comment.message}`)} />}
         </div>
-        <div className="mt-3">
+        <div className="mt-3 flex gap-2">
           <Controller
             control={control}
             name="stars"
             render={({ field }) => <Rate {...field} allowHalf />}
           />
-          {errors.stars && <Error message={errors.stars.message} />}
+          {errors.stars && <Error message={t(`${errors.stars.message}`)} />}
         </div>
-        <Button
-          type="primary"
-          className="mt-4"
-          htmlType="submit"
-          disabled={!isValid || isSubmitting}
-        >
-          {isSubmitting ? "Submitting... " : "Submit Feedback"}
+        <Button type="primary" className="mt-4" htmlType="submit">
+          {t("detail.addFeedback")}
         </Button>
       </form>
     </div>

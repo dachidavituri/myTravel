@@ -5,5 +5,11 @@
   "airport": "Airport: ",
   "hotel": "Hotel: ",
   "duration": "Duration: ",
-  "days": "Days"
+  "days": "Days",
+  "comment": "Comment should be contain min 15 character",
+  "starsMin": "Stars should be at least 0",
+  "starsMax": "Stars should be not exceed 5",
+  "addFeedback": "Submit Feedback",
+  "editFeedback": "Edit",
+  "cancelFeed": "Cancel"
 }
