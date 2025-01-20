@@ -3,7 +3,7 @@ export interface addFavoriteProps {
   tourId: number | null;
 }
 
-interface Tour {
+export interface Tour {
   id: number;
   img: string;
   city: string;

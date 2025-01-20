@@ -11,5 +11,7 @@
   "starsMax": "Stars should be not exceed 5",
   "addFeedback": "Submit Feedback",
   "editFeedback": "Edit",
-  "cancelFeed": "Cancel"
+  "cancelFeed": "Cancel",
+  "book": "Book Now",
+  "pay": "Pay"
 }

@@ -1,3 +1,4 @@
+import { bookedTours } from "@/supabase/book/index.types";
 import { TourData } from "@/supabase/favourite/index.types";
 
 export interface InfoRowProps {
@@ -6,4 +7,5 @@ export interface InfoRowProps {
 }
 export interface ProfileProps {
   tData: TourData[] | undefined;
+  bData: bookedTours[] | undefined;
 }

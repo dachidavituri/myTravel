@@ -10,12 +10,18 @@ import Favourite from "#/profile/components/favourite";
 import { useGetFavouriteTours } from "@/react-query/query/favourite";
 import { loginAtom } from "@/store";
 import { useAtomValue } from "jotai";
+import { useGetBookedTours } from "@/react-query/query/book";
 
 const ProfileView: React.FC = () => {
   const { t } = useTranslation();
   const currentLang = useCurrentLang();
   const user = useAtomValue(loginAtom);
-  const { data } = useGetFavouriteTours({ userId: user?.user.id ?? null });
+  const { data: favTours } = useGetFavouriteTours({
+    userId: user?.user.id ?? null,
+  });
+  const { data: bookedTours } = useGetBookedTours({
+    userId: user?.user.id ?? null,
+  });
 
   return (
     <div className="p-3">
@@ -24,7 +30,7 @@ const ProfileView: React.FC = () => {
           <div className="h-24 bg-gradient-to-r from-orange-500 to-red-400"></div>
           <div className="-mt-16 flex flex-col items-center p-3">
             <Info />
-            <Items tData={data} />
+            <Items tData={favTours} bData={bookedTours} />
             <Link to={`/${currentLang}/${ADDITION_PATH.SETTINGS}`}>
               <Button variant="solid" color="danger" className="mt-5">
                 {t("profile.editProfile")}
@@ -34,7 +40,7 @@ const ProfileView: React.FC = () => {
         </div>
         <Leaderboard />
       </div>
-      <Favourite tData={data} />
+      <Favourite tData={favTours} bData={bookedTours} />
     </div>
   );
 };

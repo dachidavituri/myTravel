@@ -89,3 +89,19 @@ export const feedbackShema = z.object({
     .min(0.5, { message: "detail.starsMin" })
     .max(5, { message: "detail.starsMax" }),
 });
+
+export const bookSchema = z.object({
+  calendar: z
+    .date({ required_error: "Please select a date" })
+    .refine((date) => date > new Date(), {
+      message: "Date must be greater than today",
+    }),
+  cardNumber: z
+    .string()
+    .length(16, "Card number must be 16 digits")
+    .regex(/^\d{16}$/, "Card number must only contain digits"),
+  cvc: z.string().regex(/^\d{3}$/, "CVC must be a 3-digit number"),
+  expiryDate: z
+    .string()
+    .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, "Expiry date must be in MM/YY format"),
+});
