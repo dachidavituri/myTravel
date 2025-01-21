@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input, Modal } from "antd";
@@ -9,12 +9,21 @@ import { bookSchema } from "@/schema";
 import { useAddBook } from "@/react-query/mutation/book";
 import { useAtomValue } from "jotai";
 import { loginAtom } from "@/store";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { useQueryClient } from "react-query";
+import { BOOK_QUERY_KEYS } from "@/react-query/query/book/enum";
+import useCurrentLang from "@/i18n/hooks/current-lang";
+import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
+import { useGetBookedTours } from "@/react-query/query/book";
 
 const Form: React.FC<FormProps> = ({ isModalVisible, setIsModalVisible }) => {
   const { t } = useTranslation();
   const user = useAtomValue(loginAtom);
   const { id } = useParams();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const currentLang = useCurrentLang();
+  const [isBooked, setIsBooked] = useState(false);
 
   const {
     control,
@@ -29,7 +38,21 @@ const Form: React.FC<FormProps> = ({ isModalVisible, setIsModalVisible }) => {
     setIsModalVisible(false);
     reset();
   };
+  const { data: bookedTours } = useGetBookedTours({
+    userId: user?.user.id ?? null,
+  });
   const { mutate: handleAddBook } = useAddBook();
+
+  useEffect(() => {
+    if (user?.user.id) {
+      if (bookedTours) {
+        const alreadyBooked = bookedTours.some(
+          (tour) => tour.tours.id === Number(id),
+        );
+        setIsBooked(alreadyBooked);
+      }
+    }
+  }, [user?.user.id, id, bookedTours]);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     const payload = {
@@ -39,7 +62,11 @@ const Form: React.FC<FormProps> = ({ isModalVisible, setIsModalVisible }) => {
     };
     handleAddBook(payload, {
       onSuccess: () => {
-        console.log("booked");
+        queryClient.invalidateQueries([
+          BOOK_QUERY_KEYS.BOOKED_TOURS,
+          user?.user.id,
+        ]);
+        navigate(`/${currentLang}/${ADDITION_PATH.PROFILE}`);
       },
     });
   };
@@ -129,8 +156,9 @@ const Form: React.FC<FormProps> = ({ isModalVisible, setIsModalVisible }) => {
           variant="solid"
           color="danger"
           className="mt-4 font-semibold"
+          disabled={isBooked}
         >
-          {t("detail.pay")}
+          {isBooked ? t("detail.alreadyBooked") : t("detail.pay")}
         </Button>
       </form>
     </Modal>

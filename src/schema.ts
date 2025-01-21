@@ -103,5 +103,19 @@ export const bookSchema = z.object({
   cvc: z.string().regex(/^\d{3}$/, "CVC must be a 3-digit number"),
   expiryDate: z
     .string()
-    .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, "Expiry date must be in MM/YY format"),
+    .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, "Expiry date must be in MM/YY format")
+    .refine(
+      (expiry) => {
+        const [month, year] = expiry.split("/").map(Number);
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1;
+        const currentYear = currentDate.getFullYear() % 100;
+        return (
+          year > currentYear || (year === currentYear && month >= currentMonth)
+        );
+      },
+      {
+        message: "Expiry date must be greater than today",
+      },
+    ),
 });

@@ -13,5 +13,6 @@
   "editFeedback": "Edit",
   "cancelFeed": "Cancel",
   "book": "Book Now",
-  "pay": "Pay"
+  "pay": "Pay",
+  "alreadyBooked": "Already Booked"
 }
