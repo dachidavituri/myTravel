@@ -9,6 +9,7 @@ import Loading from "./components/loading";
 const App = () => {
   const setUser = useSetAtom(loginAtom);
   const [isLoading, setisLoading] = useState(true);
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session);
@@ -23,6 +24,7 @@ const App = () => {
 
     return () => subscription.unsubscribe();
   }, [setUser]);
+
   if (isLoading) {
     return (
       <div>

@@ -16,7 +16,6 @@ export function ChangeLanguage() {
     const currentParams = new URLSearchParams(location.search);
     const newPath = `/${lang}${location.pathname.substring(3)}`;
     const newSearch = currentParams.toString();
-
     i18n.changeLanguage(lang);
     navigate(`${newPath}?${newSearch}`, { replace: true });
   };

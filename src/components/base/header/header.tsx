@@ -11,6 +11,7 @@ import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { useAtomValue } from "jotai";
 import { loginAtom } from "@/store";
 import ProfileSection from "./profile-section";
+
 const Header: React.FC = () => {
   const { t } = useTranslation();
 

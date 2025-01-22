@@ -108,8 +108,6 @@ export const deleteTour = async (
           .from("tours")
           .remove([filename]);
 
-        console.log(`Attempting to delete image: ${filename}`);
-
         if (imgError) {
           throw new Error(`Error deleting image: ${imgError.message}`);
         } else {

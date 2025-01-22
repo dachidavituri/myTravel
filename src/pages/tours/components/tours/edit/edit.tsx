@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input, InputNumber, Select } from "antd";
-import { TourSchemaWithoutImg } from "@/schema";
+import { tourSchemaWithoutImg } from "@/schema";
 import Error from "@/components/error-message";
 import { EditTourFormProps } from "../../index.types";
 import { useTranslation } from "react-i18next";
@@ -19,7 +19,7 @@ const EditTourForm: React.FC<EditTourFormProps> = ({
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(TourSchemaWithoutImg),
+    resolver: zodResolver(tourSchemaWithoutImg),
     defaultValues,
   });
 
@@ -108,7 +108,7 @@ const EditTourForm: React.FC<EditTourFormProps> = ({
             control={control}
             render={({ field }) => (
               <Select {...field} className="w-full">
-                {TourSchemaWithoutImg.shape.type.options.map((option) => (
+                {tourSchemaWithoutImg.shape.type.options.map((option) => (
                   <Option key={option} value={option}>
                     {option}
                   </Option>

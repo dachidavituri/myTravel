@@ -1,4 +1,6 @@
+import { newPasswordSchema, profileSchema } from "@/schema";
 import { ReactNode } from "react";
+import { z } from "zod";
 
 export interface MenuItem {
   key: string;
@@ -12,3 +14,7 @@ export interface SettingsLayoutProps {
   menuItems: MenuItem[];
   children: ReactNode;
 }
+
+export type EditProfileForm = z.infer<typeof profileSchema>;
+
+export type EditPasswordFormValues = z.infer<typeof newPasswordSchema>;

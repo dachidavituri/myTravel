@@ -6,7 +6,7 @@ import Info from "#/single-tour/components/info";
 import Map from "#/single-tour/components/map";
 import Add from "#/single-tour/components/feedback/add";
 import Comments from "#/single-tour/components/feedback/comments";
-// import Currency from "#/single-tour/components/currency";
+import Currency from "#/single-tour/components/currency";
 
 const DetailTourView: React.FC = () => {
   const { id } = useParams();
@@ -26,7 +26,7 @@ const DetailTourView: React.FC = () => {
         <InfoImg detailTour={detailTour} />
         <div className="p-6">
           <Info detailTour={detailTour} />
-          {/* <Currency detailTour={detailTour} /> */}
+          <Currency detailTour={detailTour} />
           <Map detailTour={detailTour} />
         </div>
       </div>

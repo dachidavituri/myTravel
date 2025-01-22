@@ -3,7 +3,7 @@ import { tourDefaultValue } from "@/data";
 import { useAddTours } from "@/react-query/mutation/tours";
 import { useGetProfile } from "@/react-query/query/account";
 import { TOURS_QUERY_KEYS } from "@/react-query/query/tours/enum";
-import { TourSchema } from "@/schema";
+import { tourSchema } from "@/schema";
 import { loginAtom } from "@/store";
 import { PlusCircleTwoTone } from "@ant-design/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -46,7 +46,7 @@ const Form: React.FC = () => {
     reset,
     formState: { errors },
   } = useForm<TourFormValues>({
-    resolver: zodResolver(TourSchema),
+    resolver: zodResolver(tourSchema),
     defaultValues: tourDefaultValue,
   });
 
@@ -210,7 +210,7 @@ const Form: React.FC = () => {
                   placeholder="Select Tour Type"
                   className="w-full"
                 >
-                  {TourSchema.shape.type.options.map((option, index) => (
+                  {tourSchema.shape.type.options.map((option, index) => (
                     <Option value={option} key={index}>
                       {option}
                     </Option>

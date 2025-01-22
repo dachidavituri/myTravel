@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { ADDITION_PATH, MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { useAtomValue } from "jotai";
 import { loginAtom } from "@/store";
+
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 

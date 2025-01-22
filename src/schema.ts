@@ -61,7 +61,7 @@ export const galleryFormSchema = z.object({
   image_url: z.instanceof(File).refine((file) => file instanceof File),
 });
 
-export const TourSchema = z.object({
+export const tourSchema = z.object({
   tourName: z.string().min(3, "tour.tourNameErr"),
   img: z.instanceof(File).refine((file) => file instanceof File),
   country: z.string().min(3, "tour.countryErr"),
@@ -80,7 +80,7 @@ export const TourSchema = z.object({
   hotel: z.string().min(3, "tour.hotelErr"),
 });
 
-export const TourSchemaWithoutImg = TourSchema.omit({ img: true });
+export const tourSchemaWithoutImg = tourSchema.omit({ img: true });
 
 export const feedbackShema = z.object({
   comment: z.string().min(15, { message: "detail.comment" }),

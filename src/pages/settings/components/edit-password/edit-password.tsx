@@ -1,14 +1,12 @@
 import { Input, Button, message } from "antd";
 import { useForm, Controller } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUpdatePassword } from "@/react-query/mutation/auth";
 import { newPasswordSchema } from "@/schema";
 import Error from "@/components/error-message";
 import { resetDefaultValues } from "@/data";
 import { useTranslation } from "react-i18next";
-
-type EditPasswordFormValues = z.infer<typeof newPasswordSchema>;
+import { EditPasswordFormValues } from "../index.types";
 
 const EditPassword: React.FC = () => {
   const { t } = useTranslation();

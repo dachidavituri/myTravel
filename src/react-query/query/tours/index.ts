@@ -1,5 +1,4 @@
 import { useQuery, UseQueryResult } from "react-query";
-
 import { getReccomendTour, getTours, getToursById } from "@/supabase/tours";
 import { TOURS_QUERY_KEYS } from "./enum";
 import { ToursResponse } from "@/supabase/tours/index.types";

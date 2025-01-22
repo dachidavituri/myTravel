@@ -2,6 +2,7 @@ import Nature from "!/52849-473336269_tiny.mp4";
 import France from "!/203403-921381908_tiny.mp4";
 import Prague from "!/56076-478688149_tiny.mp4";
 import { Question } from "./pages/personality/components/index.types";
+
 export const registerDefaultValues = {
   email: "",
   password: "",
@@ -15,6 +16,26 @@ export const resetDefaultValues = {
   newPassword: "",
   confirmPassword: "",
 };
+
+export const galleryDefaultValue = {
+  image_url: null,
+};
+
+export const tourDefaultValue = {
+  tourName: "",
+  img: null,
+  country: "",
+  description: "",
+  location: "",
+  price: 0,
+  duration: 0,
+  type: "",
+  airport: "",
+  hotel: "",
+  city: "",
+};
+
+export const addFeedbackDefaultValues = { comment: "", stars: 0 };
 
 export const servicesData = [
   {
@@ -60,22 +81,6 @@ export const countryNames = [
   "quiz.Belgium",
 ];
 
-export const galleryDefaultValue = {
-  image_url: null,
-};
-export const tourDefaultValue = {
-  tourName: "",
-  img: null,
-  country: "",
-  description: "",
-  location: "",
-  price: 0,
-  duration: 0,
-  type: "",
-  airport: "",
-  hotel: "",
-  city: "",
-};
 export const videos = [Nature, France, Prague];
 
 export const items = [
@@ -161,5 +166,3 @@ export const questions: Question[] = [
     ],
   },
 ];
-
-export const addFeedbackDefaultValues = { comment: "", stars: 0 };

@@ -37,7 +37,11 @@ export const MAIN_ROUTES = [
   <Route
     key={MAIN_PATH.TOURS}
     path={MAIN_PATH.TOURS}
-    element={<ToursView />}
+    element={
+      <Suspense fallback={<Loading />}>
+        <ToursView />
+      </Suspense>
+    }
   ></Route>,
   <Route
     key={ADDITION_PATH.SETTINGS}

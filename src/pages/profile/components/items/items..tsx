@@ -1,18 +1,8 @@
-import { useGetProfile } from "@/react-query/query/account";
-import { loginAtom } from "@/store";
-import { useAtomValue } from "jotai";
-import { ProfileProps } from "../index.types";
 import { useTranslation } from "react-i18next";
+import { ItemsProps } from "../index.types";
 
-const Items: React.FC<ProfileProps> = ({ tData, bData }) => {
+const Items: React.FC<ItemsProps> = ({ tData, bData, data }) => {
   const { t } = useTranslation();
-
-  const user = useAtomValue(loginAtom);
-
-  const { data } = useGetProfile({
-    id: user?.user.id ?? "",
-    queryOptions: { enabled: !!user?.user.id },
-  });
 
   const points = data && data[0].points;
 

@@ -11,14 +11,22 @@ import { useGetFavouriteTours } from "@/react-query/query/favourite";
 import { loginAtom } from "@/store";
 import { useAtomValue } from "jotai";
 import { useGetBookedTours } from "@/react-query/query/book";
+import { useGetProfile } from "@/react-query/query/account";
 
 const ProfileView: React.FC = () => {
   const { t } = useTranslation();
   const currentLang = useCurrentLang();
   const user = useAtomValue(loginAtom);
+
+  const { data: profileData } = useGetProfile({
+    id: user?.user.id || "",
+    queryOptions: { enabled: Boolean(user?.user.id) },
+  });
+
   const { data: favTours } = useGetFavouriteTours({
     userId: user?.user.id ?? null,
   });
+
   const { data: bookedTours } = useGetBookedTours({
     userId: user?.user.id ?? null,
   });
@@ -29,8 +37,8 @@ const ProfileView: React.FC = () => {
         <div className="w-full overflow-hidden rounded-xl bg-white shadow-lg md:w-[65%]">
           <div className="h-24 bg-gradient-to-r from-orange-500 to-red-400"></div>
           <div className="-mt-16 flex flex-col items-center p-3">
-            <Info />
-            <Items tData={favTours} bData={bookedTours} />
+            <Info data={profileData} />
+            <Items tData={favTours} bData={bookedTours} data={profileData} />
             <Link to={`/${currentLang}/${ADDITION_PATH.SETTINGS}`}>
               <Button variant="solid" color="danger" className="mt-5">
                 {t("profile.editProfile")}

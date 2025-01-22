@@ -4,6 +4,7 @@ import { DEFAULT_LAYOUT_ROUTES } from "./default-layout";
 import Layout from "@/components/layout";
 import { lazy, Suspense } from "react";
 const NotFound = lazy(() => import("@/pages/not-found"));
+
 const AppRoutes = () => {
   return (
     <Routes>

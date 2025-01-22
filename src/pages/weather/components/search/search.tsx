@@ -4,15 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "antd";
 import React from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
 import qs from "qs";
 import { useSearchParams } from "react-router";
-import { WeatherSearchProps } from "../index.types";
+import { SearchWeather, WeatherSearchProps } from "../index.types";
 import { useTranslation } from "react-i18next";
 
 const WeatherSearch: React.FC<WeatherSearchProps> = ({ onSearch }) => {
-  type SearchWeather = z.infer<typeof searchWeatherSchema>;
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchWeatherDefaultValues = qs.parse(searchParams.toString());

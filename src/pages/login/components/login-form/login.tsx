@@ -8,7 +8,6 @@ import {
   footerText,
 } from "./login-cva";
 import { Input, Button } from "antd";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "@/schema";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
@@ -20,9 +19,9 @@ import { Link, useNavigate } from "react-router";
 import useCurrentLang from "@/i18n/hooks/current-lang";
 import { useLogin } from "@/react-query/mutation/auth";
 import { useTranslation } from "react-i18next";
+import { LoginForm } from "./index.types";
 
 const Login: React.FC = () => {
-  type LoginForm = z.infer<typeof loginFormSchema>;
   const currentLang = useCurrentLang();
   const { t } = useTranslation();
   const navigate = useNavigate();

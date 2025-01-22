@@ -1,4 +1,4 @@
-import { TourSchemaWithoutImg } from "@/schema";
+import { tourSchemaWithoutImg } from "@/schema";
 import { ToursResponse } from "@/supabase/tours/index.types";
 import { z } from "zod";
 
@@ -15,7 +15,7 @@ export interface TourFormValues {
   hotel: string;
   city: string;
 }
-export type EditTour = z.infer<typeof TourSchemaWithoutImg>;
+export type EditTour = z.infer<typeof tourSchemaWithoutImg>;
 
 export type TourCardProps = {
   tour: ToursResponse;
@@ -24,7 +24,7 @@ export type TourCardProps = {
 };
 
 export type EditTourFormProps = {
-  defaultValues: z.infer<typeof TourSchemaWithoutImg>;
+  defaultValues: z.infer<typeof tourSchemaWithoutImg>;
   onSubmit: (values: EditTour) => void;
 };
 

@@ -12,7 +12,6 @@ import {
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Input, Button } from "antd";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
 import { registerDefaultValues } from "@/data";
 import Error from "@/components/error-message";
 import { Link, useNavigate } from "react-router";
@@ -20,9 +19,9 @@ import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import useCurrentLang from "@/i18n/hooks/current-lang";
 import { useRegister } from "@/react-query/mutation/auth";
 import { useTranslation } from "react-i18next";
+import { RegisterForm } from "./index.types";
 
 const Register: React.FC = () => {
-  type RegisterForm = z.infer<typeof regiserFormSchema>;
   const currentLang = useCurrentLang();
   const { t } = useTranslation();
   const navigate = useNavigate();

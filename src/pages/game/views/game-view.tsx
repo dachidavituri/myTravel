@@ -10,9 +10,11 @@ const GameView: React.FC = () => {
     id: user?.user.id ?? "",
     queryOptions: { enabled: !!user?.user.id },
   });
+
   if (data && data[0].quiz_completed) {
     return <QuizCompleted />;
   }
+
   return <FullGame />;
 };
 

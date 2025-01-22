@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { TravelType } from "../components/index.types";
-import Result from "../components/result";
-import Questions from "../components/questions";
+import { TravelType } from "#/personality/components/index.types";
+import Result from "#/personality/components/result";
+import Questions from "#/personality/components/questions";
 
 const PersonalityView: React.FC = () => {
   const [quizCompleted, setQuizCompleted] = useState<boolean>(false);

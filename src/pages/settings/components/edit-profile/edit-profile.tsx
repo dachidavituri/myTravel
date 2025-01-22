@@ -11,13 +11,11 @@ import { loginAtom } from "@/store";
 import { useQueryClient } from "react-query";
 import Error from "@/components/error-message";
 import { profileSchema } from "@/schema";
-import { z } from "zod";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { ADDITION_PATH } from "@/routes/default-layout/index.enum";
 import useCurrentLang from "@/i18n/hooks/current-lang";
-
-type EditProfile = z.infer<typeof profileSchema>;
+import { EditProfileForm } from "../index.types";
 
 const EditProfile: React.FC = () => {
   const { t } = useTranslation();
@@ -38,7 +36,7 @@ const EditProfile: React.FC = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<EditProfile>({
+  } = useForm<EditProfileForm>({
     resolver: zodResolver(profileSchema),
     defaultValues: {},
   });
@@ -58,7 +56,7 @@ const EditProfile: React.FC = () => {
     }
   }, [data, reset]);
 
-  const onSubmit: SubmitHandler<EditProfile> = (data) => {
+  const onSubmit: SubmitHandler<EditProfileForm> = (data) => {
     if (user) {
       const avatarUrl = `https://api.dicebear.com/9.x/pixel-art/svg?seed=${data.username}`;
       handleProfile(

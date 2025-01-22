@@ -10,6 +10,7 @@ import {
 
 const Services: React.FC = () => {
   const { t } = useTranslation();
+
   return (
     <div className="p-3">
       <div className="container mx-auto px-6 text-center">

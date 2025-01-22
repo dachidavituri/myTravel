@@ -3,13 +3,13 @@ import { MAIN_PATH } from "@/routes/default-layout/index.enum";
 import { Menu, Card } from "antd";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { ProfileProps } from "../index.types";
+import { FavouriteProps } from "../index.types";
 import { items } from "@/data";
 import { useState } from "react";
 import { TourData } from "@/supabase/favourite/index.types";
 import { bookedTours } from "@/supabase/book/index.types";
 
-const Favourite: React.FC<ProfileProps> = ({ tData, bData }) => {
+const Favourite: React.FC<FavouriteProps> = ({ tData, bData }) => {
   const currentLang = useCurrentLang();
   const { t } = useTranslation();
 

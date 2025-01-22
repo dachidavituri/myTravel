@@ -1,19 +1,11 @@
 import useCurrentLang from "@/i18n/hooks/current-lang";
-import { useGetProfile } from "@/react-query/query/account";
-import { loginAtom } from "@/store";
-import { useAtomValue } from "jotai";
 import InfoRow from "../info-row";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { InfoProps } from "../index.types";
 
-const Info: React.FC = () => {
-  const user = useAtomValue(loginAtom);
+const Info: React.FC<InfoProps> = ({ data }) => {
   const currentLang = useCurrentLang();
-
-  const { data } = useGetProfile({
-    id: user?.user.id || "",
-    queryOptions: { enabled: Boolean(user?.user.id) },
-  });
 
   const profile = data?.[0];
   const avatarUrl = profile?.avatar_url;

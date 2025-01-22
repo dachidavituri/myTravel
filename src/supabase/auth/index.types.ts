@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { User } from "@supabase/supabase-js";
+
 export interface AuthPayload {
   email: string;
   password: string;
@@ -10,5 +11,5 @@ export interface UpdatePasswordProps {
 }
 
 export interface UpdatePasswordResponse {
-  user: any;
+  user: User | null;
 }
