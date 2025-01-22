@@ -12,7 +12,7 @@ const Map: React.FC<TourProps> = ({ detailTour }) => {
     data: countriesData,
     error: countriesError,
     isLoading,
-  } = useGetCountry("France");
+  } = useGetCountry(detailTour.country);
 
   useEffect(() => {
     if (countriesError) {

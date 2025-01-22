@@ -70,13 +70,15 @@ const Currency: React.FC<TourProps> = ({ detailTour }) => {
         <span className="text-lg font-medium text-gray-600">Price:</span>
         <div className="flex items-center justify-center space-x-2 text-2xl font-bold text-blue-600">
           {currencyIcons[selectedCurrency]}
-          {isDiscounted && displayPrice && (
-            <div className="flex items-center gap-3">
+          {isDiscounted && displayPrice ? (
+            <>
               <span className="text-lg font-semibold text-gray-500 line-through">
                 {displayPrice}
               </span>
               <span>{discountedPrice || "N/A"}</span>
-            </div>
+            </>
+          ) : (
+            convertedPrice && <p>{convertedPrice[selectedCurrency]}</p>
           )}
         </div>
       </div>
