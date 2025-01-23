@@ -102,7 +102,7 @@ export const questions: Question[] = [
       { answerText: "Relaxing at a luxury resort", travelType: "Luxury" },
       {
         answerText: "Hiking through national parks",
-        travelType: "Adventurous",
+        travelType: "Adventure",
       },
     ],
   },
@@ -133,7 +133,7 @@ export const questions: Question[] = [
       { answerText: "All-inclusive luxury resorts", travelType: "Luxury" },
       {
         answerText: "Eco-friendly lodges in remote areas",
-        travelType: "Adventurous",
+        travelType: "Adventure",
       },
     ],
   },
@@ -144,7 +144,7 @@ export const questions: Question[] = [
       { answerText: "Dining at gourmet restaurants", travelType: "Luxury" },
       {
         answerText: "Exploring local nightlife and music scenes",
-        travelType: "Adventurous",
+        travelType: "Adventure",
       },
     ],
   },
@@ -161,7 +161,7 @@ export const questions: Question[] = [
       },
       {
         answerText: "Backpacking and public transit",
-        travelType: "Adventurous",
+        travelType: "Adventure",
       },
     ],
   },

@@ -3,7 +3,7 @@ export type TravelType =
   | "Historical"
   | "Educational"
   | "Luxury"
-  | "Adventurous";
+  | "Adventure";
 
 interface AnswerOption {
   answerText: string;
