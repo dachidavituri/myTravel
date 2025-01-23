@@ -4,10 +4,11 @@ import { Avatar } from "antd";
 
 const Leaderboard: React.FC = () => {
   const { data: profileList } = useGetAllProfile();
-  const profileListLimit = profileList?.slice(0, 3);
 
   const sortedProfiles =
-    profileListLimit?.sort((a, b) => (b.points || 0) - (a.points || 0)) || [];
+    profileList
+      ?.sort((a, b) => (b.points || 0) - (a.points || 0))
+      .slice(0, 3) || [];
 
   return (
     <div className="w-full rounded-lg bg-white shadow-lg md:w-[35%]">
