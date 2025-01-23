@@ -26,8 +26,8 @@ export const login = async ({ email, password }: AuthPayload) => {
   }
 };
 
-export const logout = (): Promise<{ error: AuthError | null }> => {
-  return supabase.auth.signOut();
+export const logout = async (): Promise<{ error: AuthError | null }> => {
+  return await supabase.auth.signOut();
 };
 
 export const updatePassword = async ({

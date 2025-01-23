@@ -78,7 +78,9 @@ const Currency: React.FC<TourProps> = ({ detailTour }) => {
               <span>{discountedPrice || "N/A"}</span>
             </>
           ) : (
-            convertedPrice && <p>{convertedPrice[selectedCurrency]}</p>
+            convertedPrice && (
+              <p>{convertedPrice[selectedCurrency]?.toFixed(2)}</p>
+            )
           )}
         </div>
       </div>
